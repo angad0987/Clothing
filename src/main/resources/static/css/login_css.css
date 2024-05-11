@@ -1,0 +1,261 @@
+body{
+
+    background-color:#f0f8ff;
+}
+.row{
+    margin-bottom: 9rem;
+}
+
+.card{
+    height: auto;
+    width:24rem;
+    border-radius: 10px;
+    /*background-color: #e2e2e2;*/
+}
+.card-body{
+    padding:0.75rem;
+}
+.form-control{
+    padding: 8px 13px;
+}
+
+.icon{
+    width: 22px;
+    height: 21px;
+}
+.header1{
+    display:flex;
+    gap:0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:14px;
+}
+.header1 span{
+    font-family:'Mate SC', serif;
+    font-size:24px;
+    font-weight: bold;;
+}
+.loginheader{
+    display:flex;
+    justify-content: space-between;
+}
+.form-group input{
+    /* width:20rem; */
+}
+.btn{
+    margin-top:8px;
+    width:100%;
+}
+
+.btn-explore {
+    /*                padding: 2px 4px;
+                    height: 32px;*/
+    font-size: 13px;
+    color:white;
+    /*border-color:black;*/
+    background-color:black;
+    border-radius:9px;
+    transition: background-color 0.3s ease;
+    /*width:auto;*/
+}
+
+.btn-explore:hover {
+    background-color:white;
+    color:black;
+    border-radius:11px;
+
+}
+.forgot{
+    font-size:small;
+    color:#818589;
+}
+.container2{
+    display:flex;
+    justify-content: space-between;
+}
+.login-image{
+    height:500px;
+    width:400px;
+}
+.containerfooter {
+    background-color: #001f3f; /* Dark blue background color */
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.policies {
+    flex: 1;
+    text-align: left;
+    padding: 10px;
+}
+
+.policies h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icons img {
+    width: 30px;
+    height: 30px;
+}
+@media(max-width:540px){
+
+    .icons img {
+        width: 18px;
+        height: 16px;
+    }
+    .icons {
+        display: flex;
+        gap: 3px;
+    }
+    .policies {
+        flex: 1;
+        text-align: left;
+        padding: 5px;
+
+    }
+    .nav-link{
+        color: #041e3a!Important;
+    }
+
+    .containerfooter {
+        /*                    background-color: #001f3f;
+                            color: #fff;*/
+        padding: 2px
+    }
+    .card-container {
+        width: 320px;
+    }
+    .footer-p{
+        font-size:0.5rem;
+    }
+    .policies h2{
+
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+        width: max-content;
+    }
+}
+.google-login{
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap:1rem;
+    border-radius: 20px;
+    border:1px solid transparent;
+    background-color:#F2F3F4;
+    padding:8px 25px;
+    margin-right: 57px;
+    margin-left: 45px;
+}
+.google-login a {
+    color:black;
+}
+.google-login img{
+    width: 25px!Important;
+    height: 25px!Important;
+}
+.keep-sign-in{
+    display: flex;
+    margin-top:5px;
+    flex-direction: row;
+    align-items: center;
+    gap:0.6rem;
+}
+.keep-sign-in-label{
+    font-size: 0.9rem;
+    margin-bottom:2px;
+    width: max-content;
+}
+.detail-link{
+    font-size: 13px;
+    margin-bottom:0px;
+    width: max-content;
+}
+.detail-input{
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.detail-link-container{
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+}
+.detail-link-container img{
+    width:13px;
+    height:13px;
+}
+.btn-login{
+    margin-top: 10px;
+}
+.header_center { 
+    margin-top: 10px;
+    color:#818589;
+    font-size: 14px;
+    /* font-weight: bold; */
+    letter-spacing: 1px;
+    margin-right: 4px;
+    margin-left: 4px;
+    display: flex; 
+    flex-direction: row; 
+    gap:5px;
+    justify-content: space-around;
+}
+.header_center::before,
+.header_center::after{
+    content: ""; 
+            flex: 1 1; 
+            border-bottom: 1px solid #D3D3D3; 
+            margin: auto; 
+}
+.btn-signup button{
+    background-color: white;
+    color:#007BFF;
+    /* transition:  0.5s ease-in-out; */
+    border:1px solid #007BFF;
+    border-radius:18px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 5px 5px;
+    width:15rem;
+    transition: background-color 0.3s ease-in-out;
+}
+.btn-signin button{
+    /* transition: background-color 0.3s ease; */
+    background-color: white;
+    color:#007BFF;
+    border:1px solid #007BFF;
+    border-radius: 18px;
+    transition: background-color  0.3s ease-in-out;
+}
+.btn-signup button:hover{
+    background-color: #007BFF;
+    color:white;
+    border-radius: 20px;
+}
+.btn-signin button:hover{
+    background-color: #007BFF;
+    color:white;
+    border-radius: 20px;
+}
+.smooth-placeholder {
+    transition: padding-left 0.3s ease; /* Smooth transition for all properties */
+     /* padding-left: 30px;  */
+}
+
+.smooth-placeholder.active {
+    padding-left: 20px; /* Adjusted padding when input is focused */
+}
+
+
+

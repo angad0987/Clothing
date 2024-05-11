@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/destination.css}">
+    <script type="text/javascript" th:src="@{/js/destination.js}"></script>
+    <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+    <th:block th:include="base::headContent"></th:block>
+</head>
+<body>
+    <table class="marquee-table">
+        <tr height="30px" style="background-color:#001f3f;
+            margin-top: 5px">
+            <td colspan="2">
+                <marquee direction="Right" height="30px" onmouseover="this.stop()" onmouseout="this.start()"
+                    style="color:white"><b>Find the perfect outfits for your travels! Enter your destination and explore </b></marquee>
+            </td>
+        </tr>
+
+    </table>
+    <th:block th:include="navbar::navbar"></th:block>
+    
+
+<div class="container mx-auto">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mx-auto mt-5" style="background: rgba(0, 0, 0, 0.5);border-radius: 25px;width:70%">
+                <div class="card-body">
+                    <form th:action="@{/getPage}" method="GET" onsubmit="return Weather()" id="form">
+                        <input type="hidden" id="gender" name="gender">
+                        <input type="hidden" name="conditionCode" id="condition1" />
+                        <input type="hidden" name="temp" id="temp1" />
+                        <div class="form-group">
+                            <div class="container" style="display: flex;justify-content: space-between">
+                                <input class="form-control input-search"type="text" name="location" id="location1" placeholder="Enter your Destination" required  />
+                                <button class="search-button" type="submit"><img class="search-image" th:src="@{/images/searchmagnifierinterfacesymbol1_79893.png}" /></button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                    <div id="weatherDetails">
+                        <div class="weather">
+
+                            <img  class="weather-icon" id="weatherIcon" th:src="@{/images/cloudy.png}" />
+                            <h1 class="temperature" id="temp" ></h1>
+                            <p style="color:white;margin-bottom: 0" id="condition2"></p>
+                            <p class="city" id="city1"></p>
+                            <div class="details">
+                                <div class="col">
+                                    <img class="humidity" th:src="@{/images/newHumidity.png}" alt="alt"/>
+                                    <div>
+                                        <p class="info" id="humidityId"></p>
+                                        <p class="info2">Humidity</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <img class="wind" th:src="@{/images/windNew.png}" alt="alt"/>
+                                    <div>
+                                        <p class="info" id="windId"></p>
+                                        <p class="info2">Wind speed</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <div class="gender">
+                            <div>
+                                <a>
+                                    <button type="button" class="btn btn-male" onclick="toggleGender(this)">
+                                        <img class="male" th:src="@{/images/male.png}">
+                                    </button> 
+                                </a>
+
+                            </div>
+                            <div>
+                                <a>
+                                    <button type="button" class="btn btn-female" onclick="toggleGender(this)">
+                                        <img class="female" th:src="@{/images/female.png}">
+                                    </button>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="container text-center">
+                            <button style="width:100%" type="button" onclick="submitForm()"  class=" btn-explore">Explore Forecasting Fashion!</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    
+</body>
+</html>

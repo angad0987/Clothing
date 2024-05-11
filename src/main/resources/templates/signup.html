@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup page</title>
+    <link rel="stylesheet" th:href="@{/css/signup_css.css}">
+    <script type="text/javascript" th:src="@{/js/signup_js.js}"></script>
+    <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+   <th:block th:include="base::headContent"></th:block>
+</head>
+<body>
+    <th:block th:include="navbar::navbar"></th:block> 
+    
+    <div id="overlay">
+        <img th:src="@{/images/ZKZg.gif}" >
+    </div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <div class="heading-and-cross">
+                <div id="sidebar-heading"  class="sidebar-heading"></div>
+                <button id="category-button" onclick="hideSidebar()"><img class="cross-image" th:src="@{/images/cross.png}" ></button>
+            </div>
+ 
+            <div class="sidebar-login-link"> <a th:href="@{/login}"><button class="btn btn-sidebar-login">Login</button></a></div>
+            <div class="sidebar-question text-center" >or</div>
+            <div class="sidebar-question">Sign up with different Email id</div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <!--//col-md-6 it means on medium screens it will occpy only 6 columns out of 12 columns-->
+            <!--offset md 3 means from front it left 3 empty spaces and from right left 3 empty spaces-->
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="image-container">
+                            <img width="50" height="50" th:src="@{/images/registration.png}" alt=""/>
+                        </div>
+                        <h1 class="text-center form-heading">Sign up</h1>
+
+                        <form id="signupForm" th:action="@{/handleSignup}"  th:object="${signupData}" method="post" onsubmit="return ValidateForm()"> 
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" 
+                                name="username"
+                                th:value="${signupData.username}"
+                                  id="username"
+                                       class="form-control" 
+                                       placeholder="Enter your name"
+                                       required
+                                       />
+                                       <div id="usernameContainer" class="invalid-feedback">
+                                
+                                       </div>
+
+                                <small id="emailhelp" 
+                                       class="form-text text-muted"
+                                       >We will never share your name with anyone else</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="id">Email</label>
+                                <input type="email" 
+                               oninput="enableVerifyButton()"
+                                name="userId" 
+                                th:value="${signupData.userId}"
+                                 
+                                       id="userId" 
+                                       placeholder="enter id"
+                                       required
+                                       class="form-control"/>
+                                       <div id="userIdContainer" class="invalid-feedback">
+                                
+                                       </div>
+                                       <div class="verify-container">
+
+                                        <button id="verifyButton" type="button" disabled  onclick="verifyEmail()" class="btn btn-success">Verify !</button>
+
+                                       </div>
+                                       
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id">Mobile no</label>
+                                <input type="text" 
+                                th:value="${signupData.mobileno}"
+                                th:classappend=" ${#fields.hasErrors('mobileno')? 'is-invalid':''}"
+                                       name="mobileno" 
+                                       id="mobileno" 
+                                       placeholder="enter your mobile no"
+                                       oninput="limitMobileNumber(this,10)"
+                                       required
+                                       class="form-control"/>
+                                       <div id="mobilenoContainer" class="invalid-feedback">
+                                
+                                       </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="id">Password</label>
+                                <input type="password" 
+                                       name="password1" 
+                                
+                                       id="pass1" 
+                                       placeholder="create password"
+                                       required
+                                       class="form-control"/>
+                                      
+
+                            </div>
+                            <div class="form-group">
+                                <label for="id">Confirm Password</label>
+                                <input type="password" 
+                                       name="password" 
+                            
+                                       id="pass2" 
+                                       placeholder="confirm password"
+                                       required
+                                       class="form-control"/>
+                                       <div id="pass2Container" class="invalid-feedback">
+                                        
+                                    </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <span class="mr-3">Select Gender:</span>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input"
+                                    
+                        
+                                           type="radio" 
+                                           name="gender" 
+                                           id="gender"
+                                           required
+                                           value="male"/>
+                                    <label class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input"
+                                           type="radio" 
+                                           name="gender" 
+                                           id="gender"
+                                           required
+                                           value="female"/>
+                                    <label class="form-check-label">Female</label>
+                                </div>
+                                <div id="genderContainer" class="invalid-feedback">
+                                
+                                </div>
+
+                            
+                            
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                     <p>Address</p>
+                                     <div class="form-group">
+
+                                        <input type="text" 
+                                               name="house_no" 
+                                               th:value="${signupData.house_no}"
+                                
+                                     
+                                               id="houseno" 
+                                               placeholder="House no"
+                                               required
+                                               class="form-control"/>
+                                               <div id="house_noContainer" class="invalid-feedback">
+                                
+                                               </div>
+        
+                                    </div>
+                                     <div class="form-group">
+
+                                        <input type="text" 
+                                        th:value="${signupData.street_name}"
+                                        th:classappend="${#fields.hasErrors('street_name')? 'is-invalid':''}"
+                              
+                                               name="street_name" 
+                                               id="street_name" 
+                                               placeholder="Street Name"
+                                               required
+                                               class="form-control"/>
+                                               <div id="street_nameContainer" class="invalid-feedback">
+                                
+                                               </div>
+        
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" 
+                                        th:value="${signupData.pincode}"
+                                   
+                                               name="pincode" 
+                                               id="pincode" 
+                                               placeholder="Pincode"
+                                               required
+                                               class="form-control"/>
+                                               <div id="pincodeContainer" class="invalid-feedback">
+                                
+                                               </div>
+        
+                                               
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" 
+                                        th:value="${signupData.city}"
+                                        th:classappend="${#fields.hasErrors('city')? 'is-invalid':''}"
+                                               name="city" 
+                                               id="city" 
+                                               placeholder="City"
+                                               required
+                                               class="form-control"/>
+                                               <div id="cityContainer" class="invalid-feedback">
+                                
+                                               </div>
+        
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" 
+                                        th:value="${signupData.state}"
+                                       
+                                               name="state" 
+                                               id="state" 
+                                               placeholder="State"
+                                               required
+                                               class="form-control"/>
+                                               <div id="stateContainer" class="invalid-feedback">
+                                
+                                               </div>
+        
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" 
+                                        th:value="${signupData.country}"
+
+                                               name="country" 
+                                               id="country" 
+                                               placeholder="Country"
+                                               required
+                                               class="form-control"/>
+                                               <div id="countryContainer" class="invalid-feedback">
+                                
+                                               </div>
+        
+                                    </div>
+
+                                </div>
+                                   
+                               
+                            </div>
+                            <div class="container text-center">
+                                <button type="submit" class="btn btn-primary" >Submit</button>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections Page</title>
+    <link rel="stylesheet" th:href="@{/css/collections_css.css}">
+    <script type="text/javascript" th:src="@{/js/collections_js.js}"></script>
+    <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+    <th:block th:include="base::headContent"></th:block>
+</head>
+
+<body>
+    <table class="marquee-table">
+        <tr height="30px" style="background-color:#001f3f;
+            margin-top: 5px">
+            <td colspan="2">
+                <marquee direction="Right" height="30px" onmouseover="this.stop()" onmouseout="this.start()"
+                    style="color:white"><b>Welcome to Our Latest Collections </b></marquee>
+            </td>
+        </tr>
+
+    </table>
+    <th:block th:include="navbar::navbar"></th:block>
+    <div class="main-container">
+        <div class="nav-container">
+            <div>
+                <ul class="side-navbar">
+                    <li><a th:href="@{/collections/sunny}">Sunny</a></li>
+                    <li><a th:href="@{/collections/cloudy}">Cloudy</a></li>
+                    <li><a th:href="@{/collections/overcast}">Overcast</a></li>
+                    <li><a th:href="@{/collections/mist}">Mist</a></li>
+                    <li><a th:href="@{/collections/lightRain}">Light rain</a></li>
+                    <li><a th:href="@{/collections/heavyRain}">Heavy rain</a></li>
+                    <li><a th:href="@{/collections/coldWeather}">Cold Weather</a></li>
+                    <li><a th:href="@{/collections/extremeSnowDrizzle}">Extreme Snow drizzle</a></li>
+                    <li><a th:href="@{/collections/fog}">Fog</a></li>
+                    <li><a th:href="@{/collections/heavyFrezzingRain}">Heavy freezing rains</a></li>
+                    <li><a th:href="@{/collections/sleet}">Sleet</a></li>
+                    <li><a th:href="@{/collections/heavySleet}">Heavy sleet</a></li>
+                    <li><a th:href="@{/collections/lightSnow}">Light Snow</a></li>
+                    <li><a th:href="@{/collections/heavySnow}">Heavy Snow</a></li>
+                </ul>
+
+            </div>
+
+
+        </div>
+
+        <div th:if="${content}== 'visible'" class="container mt-5">
+            <div class="row ">
+                <div col="col-md-12 offset-md-3 ">
+                    <h2 class="text-center sectionHeading">Weather-Adaptive Fashion Collections </h2>
+                    <hr>
+                    <p class="text-center p-explore">EXPLORE</p>
+                    <div class="productCards">
+
+
+                    
+                            <div th:each="item : ${types}" class="card">
+                                <div class="card-body">
+                                    <img class="card-image" th:src="@{'/images/'+${item} +'.jpg'}">
+                                    <div class="card-text">
+
+
+                                        <div th:if="${item} == 'sunny_hot'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">25&deg;C-45&deg;C</h1>
+                                        </div>
+
+
+
+                                        <div th:if="${item} == 'sunny_moderate'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">18&deg;C-24&deg;C</h1>
+                                        </div>
+
+
+
+                                        <div th:if="${item} == 'sunny_cold'" class="title-container"><span
+                                                class="best">Best For: </span>
+                                            <h1 class="card-title">6&deg;C-17&deg;C</h1>
+                                        </div>
+
+
+                                        <div th:if="${item} == 'cloudy_moderate'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">17&deg;C-24&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'cloudy_cold'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">5&deg;C-17&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'overcast_moderate'" class="title-container"><span
+                                                class="best">Best For: </span>
+                                            <h1 class="card-title">15&deg;C-24&deg;C</h1>
+                                        </div>
+
+
+                                        <div th:if="${item} == 'overcast_cold'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">5&deg;C-17&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'mist_moderate'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">18&deg;C-24&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'mist_cold'" class="title-container"><span
+                                                class="best">Best For: </span>
+                                            <h1 class="card-title">5&deg;C-16&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'lightRain_moderate'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">15&deg;C-24&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'lightRain_cold'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">6&deg;C-16&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'heavyRain'" class="title-container"><span
+                                                class="best">Best For: </span>
+                                            <h1 class="card-title">7&deg;C-24&deg;C</h1>
+                                        </div>
+
+
+                                        <div th:if="${item} == 'coldWeather'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">0&deg;C-10&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'extremeSnowDrizzle'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">-5&deg;C-10&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'fog'" class="title-container"><span class="best">Best
+                                                For: </span>
+                                            <h1 class="card-title">12&deg;C-20&deg;C</h1>
+                                        </div>
+
+
+                                        <div th:if="${item} == 'heavyFrezzingRain'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">-5&deg;C-5&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'sleet'" class="title-container"><span class="best">Best
+                                                For: </span>
+                                            <h1 class="card-title">-2&deg;C-4&deg;C</h1>
+                                        </div>
+
+
+                                        <div th:if="${item} == 'heavySleet'" class="title-container"><span
+                                                class="best">Best For </span>
+                                            <h1 class="card-title">-6&deg;C-9&deg;C</h1>
+                                        </div>
+
+                                        <div th:if="${item} == 'lightSnow'" class="title-container"><span
+                                                class="best">Best For: </span>
+                                            <h1 class="card-title">-3&deg;C-8&deg;C</h1>
+                                        </div>
+
+
+                                        <div th:if="${item} == 'heavySnow'" class="title-container"><span
+                                                class="best">Best For: </span>
+                                            <h1 class="card-title">-10&deg;C-4&deg;C</h1>
+                                        </div>
+
+
+                                        <p class="card-description">
+
+                                        </p>
+
+                                        <div class="gender">
+                                            <div>
+                                                <a th:href="@{'/getTypes/'+${item}+'/Male'}">
+                                                    <button class="btn btn-primary" style="background-color: #041e3a; color:white;">Explore!</button>
+                                                </a>
+                                            </div>
+                                            <!-- <div>
+                                            
+                                                <a  th:href="@{'/getTypes/'+${item}+'/Male'}">
+                                                    <button type="button" class="btn"><img class="male"
+                                                            th:src="@{/images/male.png}">
+                                                    </button>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a    th:href="@{'/getTypes/'+${item}+'/Female'}">
+                                                    <button type="button" class="btn"><img class="female"
+                                                        th:src="@{/images/female.png}">
+                                                    </button>
+                                                </a>
+                                            </div> -->
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                  
+
+
+
+                    </div>
+                    <p class="text-center" style="margin-top:18px;
+                           color:black">EXPLORE OUR LATEST COLLECTIONS </p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    
+      
+            <div th:unless="${content}== 'visible'" class="container otherwise-cont mt-5">
+                <div class="row justify-content-center ">
+                    <div col="col-md-6 offset-md-3 ">
+                        <h2 class="text-center sectionHeading">STYLE MATCHES WEATHER</h2>
+                        <HR>
+                        <!--<p class="text-center p-explore" >EXPLORE</p>-->
+                        <div class="container card-container text-center">
+                            <div class="card ">
+                                <div class="card-body">
+                                    <div class="image-container">
+                                        <img id="image" onmouseout="retainImage()" onmouseover="changeImage()"
+                                            class="men-image" th:src="@{/images/men.jpg}" />
+                                    </div>
+                                    <div class="defaultdes">
+                                        <p class="text-center ">Explore our collection of stylish clothing designed to
+                                            match various weather conditions. Whether it's a sunny day or a cold
+                                            evening, we have the perfect outfits for you.</p>
+                                    </div>
+                                    <div class="defaultdes2">
+                                        <p class="text-center ">Visit our collections to discover the latest trends in
+                                            weather-based fashion.</p>
+                                    </div>
+                                    <div class="button-container">
+                                        <a th:href="@{/CheckWeather}"><button
+                                            class="btn btn-outline-primary">Check Weather</button></a>
+                                        <button class="btn btn-outline-danger">New Arrivals</button>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+                        <p class="text-center last" style="margin-top:18px;
+                           color:black">EXPLORE OUR LATEST COLLECTIONS </p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="containerfooter">
+        <div class="policies">
+            <h2>Policies</h2>
+            <p class="footer-p">Terms and Conditions</p>
+            <p class="footer-p">Delivery Shipping</p>
+            <p class="footer-p">Return Policy</p>
+            <p class="footer-p">Privacy Policy</p>
+            <p class="footer-p">Frequently Asked Questions</p>
+        </div>
+        <div class="policies">
+            <h2>Let us help you</h2>
+            <p class="footer-p">Contact Us </p>
+        </div>
+        <div class="policies">
+            <h2>About Us</h2>
+            <p class="footer-p">Our Story</p>
+        </div>
+        <div class="policies">
+            <h2>Follow us</h2>
+            <div class="icons">
+                <!-- Add your social media icons here -->
+                <img  th:src="@{/images/instagram.png}" alt="Instagram">
+                <img  th:src="@{/images/facebook.png}" alt="Facebook">
+                <img  th:src="@{/images/youtube.png}" alt="Instagram">
+                <img  th:src="@{/images/twitter.png}" alt="Twitter">
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

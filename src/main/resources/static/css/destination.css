@@ -1,0 +1,326 @@
+body {
+    /*background-color:#fff;*/
+    background-image: url('/Clothing/images/bluewater.jpg');
+    /* Replace 'path/to/your/image.jpg' with the actual path to your image file */
+    background-size: cover;
+    /* This ensures that the background image covers the entire screen */
+    background-position: center;
+    /* This centers the background image */
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.row {
+    margin-bottom: 9rem;
+}
+
+.search-image {
+    width: 15px;
+    height: 15px;
+}
+
+.search-button {
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    height: 40px;
+    width: 45px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.search-button:hover {
+    transform: scale(1.15);
+}
+
+.input-search {
+    width: 100%;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+.weather {
+    text-align: center;
+}
+
+.weather h1 {
+    color: white;
+    font-family: 'Mate SC', serif;
+    font-size: 40px;
+}
+
+.weather-icon {
+    margin: auto;
+    display: block;
+    width: 80px;
+    height: 70px
+}
+
+.city {
+    font-family: 'Mate SC', serif;
+    color: antiquewhite;
+    font-size: 30px;
+}
+
+.humidity {
+    width: 35px;
+    height: 35px;
+}
+
+.wind {
+    width: 35px;
+    height: 35px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    /*margin-top: 50px;*/
+}
+
+/*            .temperature{
+             display:block;
+             font-size: 50px;
+                font-weight: bold;
+            }
+*/
+.city {
+    font-size: 30px;
+}
+
+.info {
+    font-family: 'Mate SC', serif;
+    color: white;
+    margin-bottom: 0;
+    margin-bottom: 0;
+}
+
+.info2 {
+    color: white;
+    font-size: 1rem;
+    font-family: 'Mate SC', serif;
+}
+
+/*             .col2{
+                display:flex;
+                align-items: center;
+                text-align: left;
+                justify-content: space-evenly;
+            }*/
+#weatherDetails {
+    display: none;
+}
+
+.btn-explore {
+    color: white;
+    /*border-color:black;*/
+    background-color: black;
+    border-radius: 9px;
+    transition: background-color 0.3s ease;
+    white-space: normal;
+    /*width:auto;*/
+}
+
+.btn-explore:hover {
+    background-color: #fff;
+    color: black;
+    border-radius: 11px;
+
+}
+
+.containerfooter {
+    background-color: #001f3f;
+    /* Dark blue background color */
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    /* Add the following properties */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    justify-content: space-around;
+}
+
+.policies {
+    flex: 1;
+    text-align: left;
+    padding: 10px;
+}
+
+.policies h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icons img {
+    width: 30px;
+    height: 30px;
+}
+
+@media(max-width:540px) {
+
+    .icons img {
+        width: 18px;
+        height: 16px;
+    }
+
+    .icons {
+        display: flex;
+        gap: 3px;
+    }
+
+    .policies {
+        flex: 1;
+        text-align: left;
+        padding: 5px;
+
+    }
+
+    .containerfooter {
+        /*                    background-color: #001f3f;
+                            color: #fff;*/
+        position: absolute;
+        padding: 2px
+    }
+
+    .card-container {
+        width: 320px;
+    }
+
+    .footer-p {
+        font-size: 0.5rem;
+    }
+
+    .policies h2 {
+
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+        width: max-content;
+    }
+}
+
+@media(max-width:390px) {
+    .weather-icon {
+        margin: auto;
+        display: block;
+        width: 69px;
+        height: 68px;
+    }
+
+    .temperature {
+        font-size: 37px;
+        font-weight: 600;
+    }
+
+    #condition2 {
+        font-size: small;
+    }
+
+    .city {
+        font-size: 22px;
+        margin-top: 3px;
+        margin-bottom: 0.5rem;
+    }
+
+    .card {
+        height: 62vh !Important;
+    }
+
+    .humidity {
+        width: 30px;
+        height: 28px;
+    }
+
+    .search-button {
+        width: 54px;
+    }
+
+    .wind {
+        width: 30px;
+        height: 30px;
+    }
+
+    .info2 {
+        font-size: small;
+        white-space: nowrap;
+    }
+
+    .btn {
+        font-size: 0.7rem;
+    }
+
+    .form-control {
+        font-size: 0.7rem;
+    }
+
+}
+
+.navbar {
+    margin-top: -16px !Important;
+    background:rgba(0,0,0,0.5) !Important;
+}
+.navbar-brand{
+    color:white!Important;
+}
+.nav-link{
+    color:white!Important;
+}
+
+
+.navbar:hover {
+    background-color: #fff;
+}
+
+.btn-male {
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    transition:background-color 0.3s ease;
+}
+
+.btn-male:hover {
+    background-color: #D3D3D3;
+}
+
+.btn-female {
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    transition:background-color 0.3s ease;
+}
+
+.btn-female:hover {
+    background-color: #D3D3D3;
+}
+
+.male,
+.female {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    transition: background-color 0.5s ease;
+}
+
+.marquee-table {
+    width: 100%;
+    margin-top: 0px;
+}
+
+.gender {
+    gap:10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    align-items: center;
+    /*gap:0.5rem;*/
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <link rel="stylesheet" th:href="@{/css/wishlist.css}">
+    <script type="text/javascript" th:src="@{/js/wishlist.js}"></script>
+    <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+
+    <th:block th:include="base::headContent"></th:block>
+</head>
+<body>
+    <table class="marquee-table">
+        <tr height="30px" style="background-color:#001f3f;
+            margin-top: 5px">
+            <td colspan="2">
+                <marquee direction="Right" height="30px" onmouseover="this.stop()" onmouseout="this.start()"
+                    style="color:white"><b>Discover Your Desires </b></marquee>
+            </td>
+        </tr>
+
+    </table>
+    <th:block th:include="navbar::navbar"></th:block>
+
+    
+        <div th:if="${#strings.isEmpty(username)}"  class="empty-cart-message">
+            <div class="noLogin"><img th:src="@{/images/errorIcon.png}" > <h1 class="empty-cart-empty-message" >YOU ARE NOT LOGGED IN</h1></div>
+            <small> <a th:href="@{/login}" class="continue-shopping-link1">Click here</a> to log in</small>
+        </div>
+
+    <div th:unless="${#strings.isEmpty(username)}">
+       
+            <div th:if="${#strings.isEmpty(Wishlist)}" class="empty-wishlist-message">
+                <h1 class="empty-wishlist-empty-message">Oops! Your wishlist seems to be empty...</h1>
+                <p class="empty-wishlist-description">Looks like you haven't added anything to your wishlist yet. Start adding items now to save them for later!</p>
+                <small><a th:href="@{/collection}" class="continue-shopping-link">START EXPLORING</a></small>
+            </div>
+    
+
+        <!--<h1>Hello World!</h1>-->
+        
+            <div th:unless="${#strings.isEmpty(Wishlist)}" class="main-container">
+                <div class="left-container">
+                    <div class="wishlist-container container">
+
+                        <div class="cart-heading">
+                            <h1>WISHLIST(<span id='wishlistSize' th:text="${wishlistSize}"></span>)</h1>
+                        </div>
+                        <div class="cart-container">
+
+                  
+                                <div th:each="item: ${Wishlist}" class="card" th:data-itemid="${item.getItem_id()}">
+                                    <div class="card-body wishlist-items">
+                                        <div class="card-body-first-part">
+                                            <div class="image-container-senior">
+                                                <div class="item-image">
+                                                    <img   th:src="@{'/images/'+${item.getItem_id()}+'.jpg'}"  />
+                                                </div>
+                                            </div>
+
+                                            <div class="item-information">
+                                                <div class="stars" style="font-size: 12px;">                                                           
+                                                    <i th:id="'star-item'+${item.getItem_id()}" class="fa-regular fa-star" style="color: #f28c28;" th:onclick="'setRating(1,' + ${item.getItem_id()} + ')'"></i>
+                                                    <i th:id="'star-item'+${item.getItem_id()}" class="fa-regular fa-star" style="color: #f28c28;" th:onclick="'setRating(2,' + ${item.getItem_id()} + ')'"></i>
+                                                    <i th:id="'star-item'+${item.getItem_id()}" class="fa-regular fa-star" style="color: #f28c28;" th:onclick="'setRating(3,' + ${item.getItem_id()} + ')'"></i>
+                                                    <i th:id="'star-item'+${item.getItem_id()}" class="fa-regular fa-star" style="color: #f28c28;" th:onclick="'setRating(4,' + ${item.getItem_id()} + ')'"></i>
+                                                    <i th:id="'star-item'+${item.getItem_id()}" class="fa-regular fa-star" style="color: #f28c28;" th:onclick="'setRating(5,' + ${item.getItem_id()} + ')'"></i>
+                                                </div>
+                                                <div class="item-info">
+                                                    <h1  class="item-heading" th:text="${item.getItemname()}"></h1>
+                                                </div>
+                                                <div class="item-price">
+                                                    <h1 class="price" th:text="${item.getItemprice()}"></h1>
+                                                </div>
+                                                <div class="item-category">
+                                                    <p class="category" th:text="'Category :' +${item.getCategory()}"></p>
+                                                </div>
+
+
+                                                <div class="item-quan1">
+                                                    <i class="fa-solid fa-chevron-left quan-icon" th:onclick="'decreaseQuantity('+${item.getItem_id()}+')'" ></i>
+                                                    <div class="quan">
+                                                        <span th:id="'span-quantity'+${item.getItem_id()}"  th:text="${item.getQuantity()}"></span>
+                                                    </div>  
+                                                    <i class="fa-solid fa-chevron-right quan-icon" th:onclick="'increaseQuantity('+${item.getItem_id()}+')'"></i>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="item-remove-addcart">
+                                            <a class="ajax-link" href="#"><i class="fa-solid fa-trash " th:onclick="'handleLinkClick(event,'+${item.getItem_id()}+')'"  style="color:#001f3f; margin-right: 0px"></i></a>
+                                            <div class="wishlist-buttons">
+                                                <a th:href="@{/booking}"><button class="btn-new"  style="background-color:#FFD700">Buy Now</button></a>
+
+                                                <form th:id="'singleItemForm'+${item.getItem_id()}" th:action="@{/addtocart}" method="POST"  th:onsubmit="'addQuantity('+${item.getItem_id()}+',event)'">
+                                                    <input type="hidden" th:value="${item.getItem_id()}" name="item_id" >
+                                                    <input type="hidden" name="quan" th:id="'quanNew'+${item.getItem_id()}" >
+                                                    <div class="button-container text-center">
+                                                        <button class="btn-new" type="submit">Add to Cart</button>
+                                                    </div>
+                                                </form>
+                                                
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="right-container">
+                    <div class="wishlist-image">
+                        <iframe src="https://lottie.host/embed/5181b897-cf17-4254-9242-792ea9111163/8S3yImqGft.json" width="650px" height="500px"style="border: none;"></iframe>
+                    </div>
+                    <div class="button-container">
+                        <a th:href="@{/Cart}"><button class="btn btn-cart">CART</button></a>
+                        <p>Explore your Cart</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="related-products">
+                <div class="cart-heading" style="text-align:center;font-weight: bold;">
+                    <h1>RELATED PRODUCTS</h1>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 offset-md-0">
+                            <div class="productCards">
+                                
+
+                                    <div th:each="item: ${relatedItems}" class="card related-card" >
+                                        <a th:href="@{'/singleItem/'+${item.getItem_id()}}">
+                                        <div class="card-body related-cart-body">
+
+                                            <div class="card-image-container">
+                                                <img class="card-image" th:src="@{'/images/'+${item.getItem_id()}+'.jpg'}">
+                                            </div>
+
+
+                                            <div class="card-text">
+
+                                                <h1 class="card-title" th:text="${item.getItemname()}"></h1>
+
+                                                <p class=" card-price" th:text="${item.getItemprice()}"></p>
+                                                <p class=" card-initials">Add your initials</p>
+                                                <p class=" card-color" th:text="${item.getCategory()}"></p>
+
+
+                                            </div>
+
+
+
+                                        </div>
+                                        </a>
+                                    </div>
+                               
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+      
+    </div>
+
+    <div class="containerfooter">
+        <div class="policies">
+            <h2>Policies</h2>
+            <p class="footer-p">Terms and Conditions</p>
+            <p class="footer-p">Delivery Shipping</p>
+            <p class="footer-p">Return Policy</p>
+            <p class="footer-p">Privacy Policy</p>
+            <p class="footer-p">Frequently Asked Questions</p>
+        </div>
+        <div class="policies">
+            <h2>Let us help you</h2>
+            <p class="footer-p">Contact Us </p>
+        </div>
+        <div class="policies">
+            <h2>About Us</h2>
+            <p class="footer-p">Our Story</p>
+        </div>
+        <div class="policies">
+            <h2>Follow us</h2>
+            <div class="icons">
+                <!-- Add your social media icons here -->
+                <img  th:src="@{/images/instagram.png}" alt="Instagram">
+                <img  th:src="@{/images/facebook.png}" alt="Facebook">
+                <img  th:src="@{/images/youtube.png}" alt="Instagram">
+                <img  th:src="@{/images/twitter.png}" alt="Twitter">
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    
+</body>
+</html>

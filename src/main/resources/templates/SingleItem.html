@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product page</title>
+    <link rel="stylesheet" th:href="@{/css/singleItem.css}">
+    <script type="text/javascript" th:src="@{/js/singleItem.js}"></script>
+    <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+    <th:block th:include="base::headContent"></th:block>
+</head>
+<body>
+    <table class="marquee-table">
+        <tr height="30px" style="background-color:#001f3f;
+            margin-top: 5px">
+            <td colspan="2">
+                <marquee direction="Right" height="30px" onmouseover="this.stop()" onmouseout="this.start()"
+                    style="color:white"><b>Luxirious Clothes </b></marquee>
+            </td>
+        </tr>
+
+    </table>
+    <th:block th:include="navbar::navbar"></th:block>
+    <div id="userid" th:data-userid="${username}"></div>
+    <div id="addedMessage" th:data-userid="${itemAdded}"></div>
+    <div id="custom-alert" class="custom-alert">
+        <span id="alert-message"></span>
+    </div>
+
+    <div class="main-container">
+        <div class="item-image">
+            <img th:src="@{'/images/'+${item.id}+'.jpg'}"/>
+        </div>
+        <div class="item-information" >
+            <div class="upper-section">
+                <div class="item-attributes">
+                    <p class="item-type" th:text="${item.type}"></p>
+                    <h1 class="item-title" th:text="${item.name}"></h1>
+                    <div>
+                        <h1 class="item-price" th:text="${item.price}"></h1>
+                    </div>
+                </div>
+                <div class="color-info">
+                    <div id="color-box" class="color-box">
+                        <span></span>
+                    </div>
+                    <p id="item-color" class="item-color" th:data-itemid="${item.color}" th:text="${item.color}"></p>
+                </div>
+                <p class="item-material" th:text="${item.material}"></p>
+    
+                <form id="singleItemForm" th:action="@{/addtocart}" method="POST"  onsubmit="return checkUser(event)">
+                    <input type="hidden" th:value="${item.id}" name="item_id" >
+                    <select class="select-quan" name="quan">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <div class="button-container text-center">
+                        <button class="btn-new ">Buy Now</button>
+                        <button class="btn-new" type="submit">Add to Cart</button>
+                    </div>
+                </form>
+    
+    
+            </div>
+    
+            <div class="item-description-container">
+                <H1 class="description-heading">Product Description</h1>
+                <p class="item-description" th:text="${item.description}"></p>
+    
+            </div>
+        </div>
+    
+    
+    
+    </div>
+</body>
+</html>
