@@ -15,25 +15,56 @@ body{
     flex-direction: row;
     align-items: center;
     gap:1rem;
+    justify-content: center;
     margin-bottom: 100px;
 }
 /* .sticky-container{
     position: relative;
 } */
+.inner-heading{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:5px;
+}
+.inner-heading h1{
+    margin-bottom: 0px;
+}
+.filter-main-heading{
+    text-align: center;
+    font-size: 1.0rem;
+    font-weight: bold;
+    font-family: 'Mate SC', serif;
+    letter-spacing: 1px;
+    color:#041e3a;
+}
 .filter-container{
+
   /* top:0;
   position: sticky; */
-    margin-left: 10px;
+  transition:right 0.3s ease;
+  top:0;
+  height:100vh;
+  /* overflow:scroll;  */
+  z-index:1000;
+  right:-300px;
+  width:300px;
+  position: fixed;
+    /* margin-left: 10px; */
     background-color: aliceblue;
      /* max-width:40%; */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap:4rem;
+    /* justify-content: space-between; */
+    /* gap:4rem; */
     /* height: 893vh; */
     border-radius: 10px;
     align-items: left;
     padding:12px 16px;
+}
+.filter-container.active{
+
+    right:0px;
 }
 .filter-type{
     margin-top: 10px;
@@ -43,17 +74,52 @@ body{
     margin:2px 2px;
     padding:5px 5px;
 }
-.filter-type h1{
+.header_center::before,
+.header_center::after{
+    content: ""; 
+            flex: 1 1; 
+            border-bottom: 1px solid black; 
+            margin: auto; 
+}
+.inner-heading h1{
     font-family: 'Mate SC', serif;
     font-size:0.8rem;
+    letter-spacing: 2px;
     color:black;
     font-weight:bold;
 }
 .filter-content{
+    display: none;
+    /* opacity: 0; */
+    padding: 1px 16px;
+    animation: slideUp 0.5s ease-in-out forwards;
+    gap:0.5rem;
+}
+@keyframes slideDown{
+    from {
+        transform: translateY(-10%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+.filter-content.active{
+    animation: slideDown 0.5s ease-in-out forwards;
     display: flex;
     flex-direction: column;
     align-items: left;
-    gap:0.5rem;
+}
+.filter-content.deactive{
+    animation: slideUp 0.5s ease-in-out forwards;
+   opacity: 0;
 }
 .new_heart_container{
     display: flex;
@@ -83,11 +149,19 @@ body{
     margin-bottom: 0;
 } 
 .color-filter {
+    display: none;
+    /* opacity: 0; */
+    padding: 1px 16px;
+    animation: slideUp 0.5s ease-in-out forwards;
     width:8rem;
+   
+}
+.color-filter.active{
+    animation: slideDown 0.5s ease-in-out forwards;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* flex-direction: row; */
+     flex-direction: row; 
     gap: 5px;
 }
 
@@ -136,7 +210,7 @@ body{
  
 }
 .searched-items-container{
-    width:60%;
+    width:100%;
     
 }
 .itemType-container{
@@ -153,31 +227,34 @@ body{
     gap:1rem;
 }
 .itemType1{
+    margin-left: 40px;
+    margin-top: 50px;
     align-items: left;
 }
-.itemType h1{
-  
-    font-size: 0.9rem;
-    font-weight: bold;
-    font-family: 'Mate SC', serif;
-    color:black;
-}
 .itemType1 h1{
-   
     font-size: 0.9rem;
-    font-weight: bold;
+    letter-spacing: 2px;
+    /* font-weight: bold; */
     font-family: 'Mate SC', serif;
-    color:black;
+    color:#041e3a;
 }
+
 .itemType p{
     font-size: 0.7rem;
     font-family: 'Mate SC', serif;
     color:black;
 }
+.filter-icon-parent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: space-between;
+}
 .productCards{
     margin-top:20px;
     display:flex;
-
+justify-content: center;
     gap:2rem;
     align-items:center;
     flex-wrap:wrap;
@@ -628,6 +705,22 @@ font-size: 12px;
     width:15px;
     height: 15px;
     
+}
+.filter-icon{
+    margin-left: 40px;
+    margin-top:50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+}
+
+.filter-icon h1{
+    /* font-weight: bold; */
+ font-size: 1.3rem;
+ color:#041e3a;
+ font-family:'Mate SC', serif;
+ letter-spacing: 1px;
 }
 
 

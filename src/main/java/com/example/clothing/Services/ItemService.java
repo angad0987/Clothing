@@ -5,9 +5,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -15,14 +17,19 @@ import org.springframework.stereotype.Service;
 
 import com.example.clothing.DAO.CartRepository;
 import com.example.clothing.DAO.ClothingItemRepository;
+import com.example.clothing.DAO.OrderRepository;
 import com.example.clothing.DAO.OtpRepository;
+import com.example.clothing.DAO.PromoCodeRepository;
 import com.example.clothing.DAO.TokenRepository;
 import com.example.clothing.DAO.UserRepository;
 import com.example.clothing.DAO.WishlistRepository;
+import com.example.clothing.DTO.CartUpdateDTO;
 import com.example.clothing.DTO.SignUpDTO;
 import com.example.clothing.Entities.Cart;
 import com.example.clothing.Entities.ClothingItem;
 import com.example.clothing.Entities.OTP;
+import com.example.clothing.Entities.Order;
+import com.example.clothing.Entities.PromoCode;
 import com.example.clothing.Entities.Token;
 import com.example.clothing.Entities.User;
 import com.example.clothing.Entities.Wishlist;
@@ -31,6 +38,11 @@ import com.example.clothing.oAuthConfig.Provider;
 @Service
 @Component
 public class ItemService {
+    @Autowired
+    private OrderRepository order_Repository;
+
+    @Autowired
+    private PromoCodeRepository promoCodeRepository;
     @Autowired
     private OtpRepository otpRepository;
     @Autowired
@@ -77,6 +89,17 @@ public class ItemService {
 
     public void addToCart(String item_id, String customer_id, int quan) {
 
+        // first we will check is there any item with item_id of customer_id exists in
+        // database then not create new object
+        // only update the quantity
+        Cart cartItem = cartRepository.getByCustomerIdAndItemid(customer_id, Integer.parseInt(item_id));
+        if (cartItem != null) {
+            System.out.println("----------------------------------------------->Item is already exists");
+            cartItem.setQuantity(cartItem.getQuantity() + quan);
+            cartRepository.save(cartItem);
+            return;
+        }
+        // if not then create new object and save it in database
         Cart cart = new Cart();
         cart.setItem_id(Integer.parseInt(item_id));
         cart.setCustomer_id(customer_id);
@@ -363,6 +386,71 @@ public class ItemService {
             return false;
         }
 
+    }
+
+    public List<PromoCode> getAllPromoCodes() {
+        return (List<PromoCode>) this.promoCodeRepository.findAll();
+    }
+
+    public boolean updateCartItems(List<CartUpdateDTO> cartItems, String customerid) {
+        System.out.println(customerid);
+        try {
+            for (CartUpdateDTO cartItems2 : cartItems) {
+                System.out.println(cartItems2.getItemid());
+                Cart cartitem = cartRepository.getByCustomerIdAndItemid(customerid,
+                        Integer.parseInt(cartItems2.getItemid()));
+                cartitem.setQuantity(cartItems2.getQuantity());
+                cartRepository.save(cartitem);
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return false;
+    }
+
+    public List<ClothingItem> getAllClothingItemsFromCart(String customerId) {
+        // getting all items id's from cart respective to the customer id
+        List<Integer> list = cartRepository.getAllClothingItemsIdsFromCart(customerId);
+        System.out.println("Items id's are ");
+        list.forEach(item -> System.out.println(item));
+        // getting all clothing items from database
+        List<ClothingItem> list1 = (List<ClothingItem>) clothingItemRepository.findAllById(list);
+        System.out.println("Items are ");
+        list1.forEach(item -> System.out.println(item.toString()));
+        return list1;
+    }
+
+    public Boolean placeOrder(List<ClothingItem> clothingItems, Map<String, String> customerDetails) {
+        // now create object of Order class
+        try {
+            Order order = new Order(clothingItems, customerDetails);
+            System.out.println(order.toString());
+            order_Repository.save(order);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    public List<Order> getAllOrders(String customer_id) {
+        return order_Repository.findByCustomerid(customer_id);
+    }
+
+    public List<Object[]> getItem_and_quan_From_Cart(String customerId) {
+        try {
+            List<Object[]> cartItems = this.cartRepository.getItemIdAndQuantity(customerId);
+            if (cartItems != null) {
+                return cartItems;
+            } else
+                return Collections.emptyList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
     }
 
 }

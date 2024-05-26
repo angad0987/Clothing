@@ -1,4 +1,21 @@
-
+document.addEventListener('DOMContentLoaded',function(){
+    // Check if the block with ID 'emptyCartMessage' exists
+    var emptyCartMessage = document.getElementById('empty-cart-message');
+     var emptyWishlistMessage = document.getElementById('empty-wishlist-message');
+    if (emptyCartMessage || emptyWishlistMessage) {
+        // Run your JavaScript function here
+        yourFunction();
+    }
+    });
+     
+    
+     // Define your JavaScript function
+     function yourFunction() {
+         // Your function logic goes here
+         var footer=document.getElementById('wishlistFooter');
+         footer.style.position="relative";
+         footer.style.bottom="-300px";
+     }
 function handleLinkClick(event, itemid) {
     event.preventDefault();//prevents default behavious of link
 //            var link = event.currentTarget;

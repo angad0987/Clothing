@@ -37,10 +37,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.clothing.DTO.CartUpdateDTO;
 import com.example.clothing.DTO.SignUpDTO;
 import com.example.clothing.DTO.forgotPasswordDTO;
+import com.example.clothing.Entities.Cart;
 import com.example.clothing.Entities.ClothingItem;
 import com.example.clothing.Entities.OTP;
+import com.example.clothing.Entities.Order;
+import com.example.clothing.Entities.PromoCode;
 import com.example.clothing.Entities.Token;
 import com.example.clothing.Entities.User;
 import com.example.clothing.Entities.Wishlist;
@@ -268,9 +272,11 @@ public class homeController {
 
     private void expireAllOldTokens(String user_id) {
         List<Token> tokens = itemService.getAllTokens(user_id);
-        if (tokens != null && !tokens.isEmpty())
+        if (tokens != null && !tokens.isEmpty()) {
             tokens.forEach(t -> t.setLoggedOut(true));
-        this.itemService.saveAllTokens(tokens);
+            this.itemService.saveAllTokens(tokens);
+        }
+
     }
 
     @PostMapping("/loginUser")
@@ -476,8 +482,8 @@ public class homeController {
         int size = list.size();
         int size1 = relatedItems.size();
         System.out.println("No of related products" + size1);
-        m.addAttribute("Wishlist", list);
-        m.addAttribute("wishlistSize", size);
+        // m.addAttribute("Wishlist", list);
+        m.addAttribute("size", size);
         m.addAttribute("relatedItems", relatedItems);
         return "Wishlist";
     }
@@ -586,16 +592,36 @@ public class homeController {
     }
 
     @RequestMapping("/checkout")
-    public String getCheckoutPage(@RequestParam("total") String total, HttpSession session, Model m,
-            HttpServletRequest request) {
+    public String getCheckoutPage(@RequestParam("total") String total, @RequestParam("taxOnAmount") String tax,
+            HttpSession session, Model m,
+            HttpServletRequest request, RedirectAttributes redirectAttributes) {
         String customer_id = MyFunctions.get_User_Info_From_Cookies(request, "userid");
         List<Object[]> list = itemService.getCartItems(customer_id);
         User user = itemService.getUser(customer_id);
         int listLength = list.size();
+        session.setAttribute("total", total);
+        session.setAttribute("size", listLength);
+        session.setAttribute("cartList", list);
+        session.setAttribute("user", user);
+        session.setAttribute("taxAmount", tax);
+        return "redirect:checkoutRedirect";
+    }
+
+    @RequestMapping("/checkoutRedirect")
+    public String requestMethodName(HttpSession session, Model m, HttpServletRequest request,
+            RedirectAttributes redirect) {
+        String total = (String) session.getAttribute("total");
+        int listLength = (int) session.getAttribute("size");
+        List<Object[]> list = (List<Object[]>) session.getAttribute("cartList");
+        User user = (User) session.getAttribute("user");
+        String tax = (String) session.getAttribute("taxAmount");
+
+        // Set attributes in model
         m.addAttribute("total", total);
         m.addAttribute("size", listLength);
         m.addAttribute("cartList", list);
         m.addAttribute("user", user);
+        m.addAttribute("tax", tax);
         return "CheckOut_Page";
     }
 
@@ -860,6 +886,108 @@ public class homeController {
             // password not changed successfully
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Password not changed successfully");
         }
+    }
+
+    @GetMapping("/securePaymentPage")
+    public String getPaymentPage() {
+        return "paymentPage";
+    }
+
+    @GetMapping("/getPromoCodes")
+    public ResponseEntity<List<PromoCode>> getAllPromoCodes() {
+        try {
+            List<PromoCode> promoCodes = this.itemService.getAllPromoCodes();
+            promoCodes.forEach(code -> System.out.println(code));
+            return ResponseEntity.status(HttpStatus.OK).body(promoCodes);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @PostMapping("/placeOrder")
+    public String makeOrder(Model m, @RequestParam("customerid") String customerId,
+            @RequestParam("shippingAddress") String shippingAddress, @RequestParam("totalAmount") String totalAmount,
+            @RequestParam("paymentMethod") String paymentMethod, @RequestParam("tax") String tax,
+            @RequestParam("offer") String offer) {
+
+        Map<String, String> customerDetails = new HashMap<String, String>();
+        customerDetails.put("customer_id", customerId);
+        customerDetails.put("shipping_address", shippingAddress);
+        customerDetails.put("total_amount", totalAmount);
+        customerDetails.put("payment_method", paymentMethod);
+        customerDetails.put("tax", tax);
+        customerDetails.put("promo_code", offer);
+
+        // now we have to make order object
+        // then save the order in orde table
+        // and we have to send message on customer email that your order is confirmed
+        // and and placed
+
+        // first get all cart items by using customer id
+        List<ClothingItem> clothingItems = this.itemService.getAllClothingItemsFromCart(customerId);
+        List<Object[]> cartItems = this.itemService.getItem_and_quan_From_Cart(customerId);
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+        cartItems.forEach(item -> map.put((Integer) item[0], (Integer) item[1]));
+
+        if (clothingItems != null) {
+            // if clothing items are not null which is have to order by the customer
+            // then create object of order class and save the object in database and send
+            // the message to customer email
+            // that your order is confirmed
+            Boolean b = this.itemService.placeOrder(clothingItems, customerDetails);
+            if (b) {
+                // if order is confirmed and placed then send the message to customer
+                this.emailService.sendEmail(customerId, "Order confirmed",
+                        "Your order is confirmed and placed successfully!");
+
+                List<Order> orders = this.itemService.getAllOrders(customerId);
+                orders.forEach(order -> System.out.println(order.toString()));
+                m.addAttribute("orders", orders);
+                m.addAttribute("map", map);
+                return "orderSuccess";
+            } else {
+                return "errorPage";
+            }
+        } else {
+            return "errorPage";
+        }
+
+    }
+
+    @PostMapping("/updateCartQuantity")
+    public ResponseEntity<String> updateCartQuantity(@RequestBody List<CartUpdateDTO> cartItems,
+            HttpServletRequest request) {
+        // TODO: process POST request
+        String customer_id = MyFunctions.get_User_Info_From_Cookies(request, "userid");
+        System.out.println("Customer ID: " + customer_id);
+        cartItems.forEach(item -> System.out.println(item.toString()));
+
+        boolean b = this.itemService.updateCartItems(cartItems, customer_id);
+        if (b) {
+            return ResponseEntity.ok().body("Cart updated successfully");
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cart not updated successfully");
+
+    }
+
+    @GetMapping("/myOrdersPage")
+    public String myOrderPage(HttpServletRequest request, Model m) {
+        String customer_id = MyFunctions.get_User_Info_From_Cookies(request, "userid");
+        if (customer_id == null) {
+            m.addAttribute("username", MyFunctions.get_User_Info_From_Cookies(request, "username"));
+            m.addAttribute("login", "notlogin");
+            return "orderSuccess";
+        }
+        List<Order> orders = this.itemService.getAllOrders(customer_id);
+        List<Object[]> cartItems = this.itemService.getItem_and_quan_From_Cart(customer_id);
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+        cartItems.forEach(item -> map.put((Integer) item[0], (Integer) item[1]));
+        m.addAttribute("orders", orders);
+        m.addAttribute("map", map);
+        return "orderSuccess";
     }
 
 }

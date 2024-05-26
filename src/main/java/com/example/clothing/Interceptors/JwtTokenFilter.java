@@ -40,6 +40,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 System.out.println("JWT TOKEN IS ----------------->" + jwtToken);
                 request.setAttribute("Authorization", "Bearer " + jwtToken);
             }
+            System.out.println("there is no jwt token in the request");
             filterChain.doFilter(request, response);
         }
 

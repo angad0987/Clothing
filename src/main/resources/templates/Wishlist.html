@@ -24,14 +24,14 @@
     <th:block th:include="navbar::navbar"></th:block>
 
     
-        <div th:if="${#strings.isEmpty(username)}"  class="empty-cart-message">
+        <div th:if="${#strings.isEmpty(username)}"  class="empty-cart-message" id="empty-cart-message">
             <div class="noLogin"><img th:src="@{/images/errorIcon.png}" > <h1 class="empty-cart-empty-message" >YOU ARE NOT LOGGED IN</h1></div>
             <small> <a th:href="@{/login}" class="continue-shopping-link1">Click here</a> to log in</small>
         </div>
 
     <div th:unless="${#strings.isEmpty(username)}">
        
-            <div th:if="${#strings.isEmpty(Wishlist)}" class="empty-wishlist-message">
+            <div th:if="${size}==0" class="empty-wishlist-message" id="empty-wishlist-message">
                 <h1 class="empty-wishlist-empty-message">Oops! Your wishlist seems to be empty...</h1>
                 <p class="empty-wishlist-description">Looks like you haven't added anything to your wishlist yet. Start adding items now to save them for later!</p>
                 <small><a th:href="@{/collection}" class="continue-shopping-link">START EXPLORING</a></small>
@@ -40,7 +40,7 @@
 
         <!--<h1>Hello World!</h1>-->
         
-            <div th:unless="${#strings.isEmpty(Wishlist)}" class="main-container">
+            <div th:unless="${size}==0" class="main-container">
                 <div class="left-container">
                     <div class="wishlist-container container">
 
@@ -128,7 +128,7 @@
 
 
             </div>
-            <div class="related-products">
+            <div th:if="${size}!=0" class="related-products">
                 <div class="cart-heading" style="text-align:center;font-weight: bold;">
                     <h1>RELATED PRODUCTS</h1>
                 </div>
@@ -180,40 +180,81 @@
 
       
     </div>
-
-    <div class="containerfooter">
-        <div class="policies">
-            <h2>Policies</h2>
-            <p class="footer-p">Terms and Conditions</p>
-            <p class="footer-p">Delivery Shipping</p>
-            <p class="footer-p">Return Policy</p>
-            <p class="footer-p">Privacy Policy</p>
-            <p class="footer-p">Frequently Asked Questions</p>
+    <footer id="wishlistFooter" class="bg-body-tertiary text-center">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a
+            data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #3b5998;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+      
+            <!-- Twitter -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #55acee;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-twitter"></i
+            ></a>
+      
+            <!-- Google -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #dd4b39;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-google"></i
+            ></a>
+      
+            <!-- Instagram -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #ac2bac;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-instagram"></i
+            ></a>
+      
+            <!-- Linkedin -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #0082ca;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <!-- Github -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #333333;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-github"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
         </div>
-        <div class="policies">
-            <h2>Let us help you</h2>
-            <p class="footer-p">Contact Us </p>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2020 Copyright:
+          <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
         </div>
-        <div class="policies">
-            <h2>About Us</h2>
-            <p class="footer-p">Our Story</p>
-        </div>
-        <div class="policies">
-            <h2>Follow us</h2>
-            <div class="icons">
-                <!-- Add your social media icons here -->
-                <img  th:src="@{/images/instagram.png}" alt="Instagram">
-                <img  th:src="@{/images/facebook.png}" alt="Facebook">
-                <img  th:src="@{/images/youtube.png}" alt="Instagram">
-                <img  th:src="@{/images/twitter.png}" alt="Twitter">
-
-            </div>
-
-
-        </div>
-
-    </div>
-
+        <!-- Copyright -->
+      </footer>
 
 
     

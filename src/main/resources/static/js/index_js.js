@@ -29,4 +29,8 @@ console.log(username);
             // if (success1Message !== "") {
             //     alert(success1Message);
             // }
+            // Initialization for ES Users
+import { Input, initMDB } from "mdb-ui-kit";
+
+initMDB({ Input });
         

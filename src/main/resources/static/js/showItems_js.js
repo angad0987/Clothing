@@ -1,12 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var filterContainer = document.querySelector(".filter-container");
-    var contentContainer = document.querySelector(".content-container");
-    
-    // Check if both filter-container and content-container exist
-    if (filterContainer && contentContainer) {
-        // Set the height of filter-container to match the height of content-container
-        filterContainer.style.height = contentContainer.clientHeight + "px";
-    }
+    // var filterContainer = document.querySelector(".filter-container");
+    // var contentContainer = document.querySelector(".content-container");
+
+    // // Check if both filter-container and content-container exist
+    // if (filterContainer && contentContainer) {
+    //     // Set the height of filter-container to match the height of content-container
+    //     filterContainer.style.height = contentContainer.clientHeight + "px";
+    // }
+    // Get the .filter-container element
+    //   const filterContainer = document.querySelector('.filter-container');
+
+    //   // Calculate the height of the content
+    //   const contentHeight = filterContainer.scrollHeight;
+
+    //   // Set the bottom position to ensure content visibility
+    //   filterContainer.style.bottom = `calc(100vh - ${contentHeight}px)`;
 
 
 
@@ -89,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var filterForm = document.getElementById('filter-form');
     var colorInput = document.getElementById('color');
 
-    filterForm.addEventListener('submit', function(event) {
+    filterForm.addEventListener('submit', function (event) {
         // Check if a color is selected
         if (colorInput.value.trim() === '') {
             // Remove the color field from the form
@@ -197,5 +205,96 @@ function showAlert(message) {
     setTimeout(function () {
         custom_alert.classList.remove('active');
     }, 2000);
+}
+function open_filter_section() {
+    var filter_section = document.getElementById('filter-container');
+    filter_section.classList.toggle('active');
+    var open_filter = document.getElementById('openFilterId');
+    open_filter.innerHTML=`    <svg  onclick="close_filter_section()"  width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+    
+    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <g id="SVGRepo_iconCarrier"> <g id="Arrow / Chevron_Up"> <path id="Vector" d="M5 16L12 9L19 16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g> </g>
+    
+    </svg>`;
+}
+function close_filter_section() {
+    var filter_section = document.getElementById('filter-container');
+    filter_section.classList.remove('active');
+    var open_filter = document.getElementById('openFilterId');
+    open_filter.innerHTML=` <svg onclick="open_filter_section()" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7 10L12 15L17 10" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+}
+
+function removing_filter_section(filtername) {
+ // Hide all other filter contents
+ const allFilterContents = document.querySelectorAll('.filter-content');
+ allFilterContents.forEach(filterContent => {
+     if (filterContent.id !== 'filter-content' + filtername) {
+         filterContent.classList.remove('active');
+         var filtercontentName=filterContent.id;
+         const substringName=filtercontentName.slice(14);
+         console.log(substringName);
+         var inner_heading = document.getElementById('inner-heading' + substringName);
+         inner_heading.innerHTML = `
+         <svg onclick="toggleFilterContent('`+ substringName + `')" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path d="M7 10L12 15L17 10" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+         </svg>
+         <h1 class="filter-heading">`+ substringName + `</h1>
+     `;
+     }
+ });
+
+ //explicityly removing color content
+ var filterContent1=document.querySelector('.color-filter');
+ filterContent1.classList.remove('active');
+
+}
+function toggleFilterContent(filtername) {
+
+   removing_filter_section(filtername);
+
+    console.log('after toggle ' + filtername);
+    const inner_heading = document.getElementById('inner-heading' + filtername);
+    inner_heading.innerHTML = `
+    <svg  onclick="removeFilterContent('`+ filtername + `')"  width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+<g id="SVGRepo_iconCarrier"> <g id="Arrow / Chevron_Up"> <path id="Vector" d="M5 16L12 9L19 16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g> </g>
+
+</svg>
+
+    <h1 class="filter-heading">`+ filtername + `</h1>
+`;
+    if (filtername === 'Color') {
+        const filterContent = document.querySelector('.color-filter');
+        filterContent.classList.toggle('active');
+        return;
+    }
+    const filterContent = document.getElementById('filter-content' + filtername);
+    filterContent.classList.toggle('active');
+}
+function removeFilterContent(filtername) {
+    console.log('after remove ' + filtername);
+    const inner_heading = document.getElementById('inner-heading' + filtername);
+    inner_heading.innerHTML = `
+    <svg onclick="toggleFilterContent('`+ filtername + `')" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7 10L12 15L17 10" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1 class="filter-heading">`+ filtername + `</h1>
+`;
+    if (filtername === 'Color') {
+        const filterContent = document.querySelector('.color-filter');
+        filterContent.classList.remove('active');
+        return;
+    }
+    const filterContent = document.getElementById('filter-content' + filtername);
+    filterContent.classList.remove('active');
 }
 
