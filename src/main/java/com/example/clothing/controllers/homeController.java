@@ -941,7 +941,8 @@ public class homeController {
                 // if order is confirmed and placed then send the message to customer
                 this.emailService.sendEmail(customerId, "Order confirmed",
                         "Your order is confirmed and placed successfully!");
-
+                // now your order is confirmed then we have to empty the cart
+                this.itemService.emptyCart(customerId);
                 List<Order> orders = this.itemService.getAllOrders(customerId);
                 orders.forEach(order -> System.out.println(order.toString()));
                 m.addAttribute("orders", orders);
@@ -976,10 +977,11 @@ public class homeController {
     public String myOrderPage(HttpServletRequest request, Model m) {
         String customer_id = MyFunctions.get_User_Info_From_Cookies(request, "userid");
         if (customer_id == null) {
-            m.addAttribute("username", MyFunctions.get_User_Info_From_Cookies(request, "username"));
+            System.out.println("Customer id is nullllllllllllllllllllllllll");
             m.addAttribute("login", "notlogin");
             return "orderSuccess";
         }
+        m.addAttribute("username", MyFunctions.get_User_Info_From_Cookies(request, "username"));
         List<Order> orders = this.itemService.getAllOrders(customer_id);
         List<Object[]> cartItems = this.itemService.getItem_and_quan_From_Cart(customer_id);
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();

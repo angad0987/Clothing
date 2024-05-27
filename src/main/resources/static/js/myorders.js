@@ -17,3 +17,11 @@ document.addEventListener('DOMContentLoaded',function(){
          footer.style.position="relative";
          footer.style.bottom="-300px";
      }
+
+
+     window.onload = function() {
+         // Check if the attribute to clear local storage is present
+             localStorage.clear(); // Clear all local storage
+             console.log("Local storage has been cleared.");
+         
+     };

@@ -18,8 +18,8 @@ body{
     min-height: 100vh;
     position:relative;
     z-index:0;
-
-    margin-top:-41px;
+    
+    margin-top:100px!Important;
 }
 /*            .container1::before{
                 content:"";
@@ -62,7 +62,7 @@ body{
     align-items:center;
     flex-wrap:wrap;
 }
-.card{
+/* .card{
     background-color:#fff;
     border-color:#fff;
     width:30%;
@@ -72,24 +72,24 @@ body{
 }
 .card:hover{
     /*transform:scale(1.05);*/
-    /*border-color:black;*/
-    background-color:#e2e2e2;
-}
+    border-color:black;*/
+    /* background-color:#e2e2e2; */
+/* } */
 @media (max-width: 768px) {
 
 
-    .card {
+    /* .card {
         width: 100%;
         height:100%/* Make cards full-width on smaller screens */
-    }
+    /* } */ */
 }
-.card-body{
+/* .card-body{
 
     display:flex;
     flex-direction:column;
     align-items:center;
     text-align:center;
-}
+} */
 .card-image{
     max-width:100%;
     max-height:200px;
@@ -97,15 +97,15 @@ body{
     border-radius:8px;
     box-shadow:0 4px 8px rgba(0,0,0,0.1);
 }
-.card-text{
+/* .card-text{
     margin-top:10px;
     padding:5px;
-}
-.card-title{
+} */
+/* .card-title{
     font-size:1rem;
     font-weight: bold;
     color: #333;
-}
+} */
 .card-description{
     font-size:0.8rem;
     color:#666;
@@ -291,12 +291,30 @@ body{
 
 
     @media(max-width:540px){
-        #carouselExampleIndicators{
+        .container1 {
+            /* min-height: 33vh; */
+            position: relative;
+            z-index: 0;
+            margin-top: 100px;
+        }
+        #carouselExampleIndicators {
+            display: none;
+        }
+        .carousel-background {
+            margin-top: 15px;
+            display: block;
+            /* background-image: url(/Clothing/images/newBack.jpg); */
+            background-size: cover;
+            background-position: center;
+            height:390px!Important;
+            width: 100%;
+        }
+        /* #carouselExampleIndicators{
             position:absolute;
             top:200px!Important;
             left:0;
             z-index:-1;
-        }
+        } */
 
         .navbar{
             margin-top:-14px!Important;
@@ -333,12 +351,12 @@ body{
             margin-bottom: 10px;
             width: max-content;
         }
-        .card-body {
+        /* .card-body {
             -webkit-box-flex: 1;
             -ms-flex: 1 1 auto;
             flex: 1 1 auto;
             padding: 0.25rem;
-        }
+        } */
           .index-h1{
         font-size: 26px;
 
@@ -387,16 +405,16 @@ body{
         width: 226px;
         height: 294px;
     }
-    .card {
+    /* .card {
         width: 71%;
         height: 49vh;
         margin: auto;
-    }
-    .card-title {
+    } */
+    /* .card-title {
         font-size: 0.8rem;
         font-weight: bold;
         color: #333;
-    }
+    } */
     .btn{
         padding: 0px 0px;
         font-size: 0.9rem;
@@ -421,7 +439,7 @@ body{
             font-weight: bold;
             font-size: 1.3rem;
         }
-        card-image {
+        .card-image {
             margin-top: 9px;
             max-height: 113px;
         }
@@ -446,26 +464,21 @@ body{
             font-size: 0.8rem;
         }
     }
-    #carouselExampleIndicators{
-        position:absolute;
-        top:0;
-        left:0;
-        z-index:-1;
-    }
-    .w-100{
-        width:100%!important;
+   
+    /* .w-100{ */
+        /* width:100%!important;
         height:36vh!Important;
        object-fit:contain;
-    }
+    } */
     .navbar{
         margin-top:-14px!Important;
     }
 }
- .w-100{
+ /* .w-100{
         width:100%!important;
         height:85vh!Important;
        /*object-fit:contain;*/
-    }
+    /* } */ 
     /*                .marq-table{
                         max-width:100%;
                         margin-top: 0px;

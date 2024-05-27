@@ -30,10 +30,12 @@
 
     </table>
     <div id="username" th:data-itemid="${username}"></div>
-
+    
     <div class="container1">
         <br>
-        <th:block th:include="navbar::navbar"></th:block>  
+         <!-- Background image div for small screens -->
+         <th:block th:include="navbar::navbar"></th:block> 
+         <!-- <div class="carousel-background"></div> -->
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -54,7 +56,7 @@
                     <img class="d-block w-100" th:src="@{/images/carasoul4.png}" alt="Third slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" th:src="@{/images/carasoul6.png}" />" alt="Third slide">
+                    <img class="d-block w-100" th:src="@{/images/carasoul6.png}" >
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -95,18 +97,44 @@
             <div col="col-md-12 offset-md-3 ">
                 <h2 class="text-center sectionHeading"  >Featured Products</h2>
                 <div class="productCards">
-                    <div class="card">
+                  <div class="card text-center border border-primary shadow-0 ">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                      <img src="https://mdbootstrap.com/img/new/standard/nature/111.webp" class="img-fluid" />
+                      <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                      </a>
+                    </div>
+                  
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">
+                        Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                      </p>
+                  
+                      <button type="button" class="btn btn-primary">Button</button>
+                    </div>
+                  </div>
+                  <!-- <div class="card">
+                    <img th:src="@{/images/2.jpg}" class="card-img-top" alt="Fissure in Sandstone"/>
+                    <div class="card-body">
+                      <h5 class="card-title">Sunny Weather</h5>
+                      <p class="card-text">Embrace the sunshine with our vibrant collection of summer wear. From breezy dresses to stylish shorts, discover the perfect outfits to keep you cool and fashionable under the warm sun.</p>
+                      <a th:href="@{/getTypes/sunny_hot}" class="btn btn-primary" data-mdb-ripple-init>Explore</a>
+                    </div>
+                  </div> -->
+                    <!-- <div class="card">
                         <div class="card-body">
                             <img class="card-image" th:src="@{/images/2.jpg}" />
                             <div class="card-text">
 
                                 <h1 class="card-title">Sunny Weather</h1>
                                 <p class="card-description">
-                                    Embrace the sunshine with our vibrant collection of summer wear. From breezy dresses to stylish shorts, discover the perfect outfits to keep you cool and fashionable under the warm sun.
+                                    
                                 </p> 
                                 <div class="button-container text-center">
                                   
-                                    <a th:href="@{/getTypes/sunny_hot}">
+                                    <a th:href="">
                                         <button type="button" class="btn btn-explore">Check out ! </button>
                                     </a>
                                 </div>
@@ -114,7 +142,7 @@
 
 
                         </div>
-                    </div>
+                    </div> -->
                     <div class="card">
                         <div class="card-body">
                             <img class="card-image" th:src="@{/images/rainy_picture.jpg}" />
