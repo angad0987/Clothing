@@ -30,7 +30,7 @@ public interface CartRepository extends CrudRepository<Cart, Integer> {
     @Query(value = "select * from cart where customer_id=:customerid && item_id=:itemid", nativeQuery = true)
     public Cart getByCustomerIdAndItemid(@Param("customerid") String customerid, @Param("itemid") int quan);
 
-    @Query(value = "select item_id from cart where customer_id=:customerid",nativeQuery = true))
+    @Query(value = "select item_id from cart where customer_id=:customerid",nativeQuery = true)
     public List<Integer> getAllClothingItemsIdsFromCart(@Param("customerid") String customerId);
 
     @Query(value = "select item_id,quantity from cart where customer_id=:customerid", nativeQuery = true)
