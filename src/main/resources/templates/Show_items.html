@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show items page</title>
+    <link rel="stylesheet" th:href="@{/css/showItems_css.css}">
+    <script type="text/javascript" th:src="@{/js/showItems_js.js}"></script>
+    <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+    <th:block th:include="base::headContent"></th:block>
+</head>
+
+<body>
+    <table class="marquee-table">
+        <tr height="30px" style="background-color:#001f3f;
+            margin-top: 5px">
+            <td colspan="2">
+                <marquee direction="Right" height="30px" onmouseover="this.stop()" onmouseout="this.start()"
+                    style="color:white"><b>Welcome to Our Latest Collections </b></marquee>
+            </td>
+        </tr>
+
+    </table>
+    <th:block th:include="navbar::navbar"></th:block>
+    <div class="filter-container" id="filter-container">
+        <h1 class="filter-main-heading">Select your preferences</h1>
+        <!-- <div class="header_center">Sort!</div> -->
+        <!-- <hr> -->
+        <form id="filter-form" th:action="@{/handleFilterForm}" method="GET">
+            <div class="filter-type">
+                <div class="heading-and-cross">
+                    <div class="inner-heading" id="inner-headingCategory"><svg onclick="toggleFilterContent('Category')"
+                            width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 10L12 15L17 10" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <h1 class="filter-heading">Category</h1>
+                    </div>
+                    <button id="category-button"><img class="cross-image" th:src="@{/images/cross.png}"></button>
+                </div>
+
+                <div class="filter-content" id="filter-contentCategory">
+                    <div class="checkbox"> <input value="male" type="radio" name="gender" class="" required>
+                        <p class="filter-content-p">Male</p>
+                    </div>
+                    <div class="checkbox"> <input value="female" type="radio" name="gender" class="" required>
+                        <p class="filter-content-p">Female</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="filter-type">
+                <div class="heading-and-cross">
+                    <div class="inner-heading" id="inner-headingProducts"><svg onclick="toggleFilterContent('Products')"
+                            width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 10L12 15L17 10" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <h1 class="filter-heading">Products</h1>
+                    </div>
+
+                    <button id="product-button"><img class="cross-image" th:src="@{/images/cross.png}"></button>
+                </div>
+                <div class="filter-content" id="filter-contentProducts">
+                    <div th:each="type: ${itemTypes}" class="checkbox"> <input th:value="${type}" type="radio"
+                            name="product" class="" required>
+                        <p class="filter-content-p" th:text="${type}"></p>
+                    </div>
+                    <!-- <div class="checkbox"> <input value="Jeans" type="radio" name="product" class="" required> <p class="filter-content-p">Jeans</p></div>
+                    <div class="checkbox"> <input value="Shorts" type="radio" name="product" class="" required> <p class="filter-content-p">Shorts</p></div>
+                    <div class="checkbox"> <input value="Dresses" type="radio" name="product" class="" required> <p class="filter-content-p">Dresses</p></div> -->
+
+                </div>
+
+            </div>
+            <div class="filter-type">
+                <div class="heading-and-cross">
+                    <div class="inner-heading" id="inner-headingPrice"><svg onclick="toggleFilterContent('Price')"
+                            width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 10L12 15L17 10" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <h1 class="filter-heading">Price</h1>
+                    </div>
+
+                    <button id="price-button"><img class="cross-image" th:src="@{/images/cross.png}"></button>
+                </div>
+                <div class="filter-content" id="filter-contentPrice">
+                    <div class="checkbox"> <input value="under_300" type="radio" name="price" class="">
+                        <p class="filter-content-p">Under ₹300</p>
+                    </div>
+                    <div class="checkbox"> <input value="300_to_600" type="radio" name="price" class="">
+                        <p class="filter-content-p">₹300 - ₹500</p>
+                    </div>
+                    <div class="checkbox"> <input value="600_to_1200" type="radio" name="price" class="">
+                        <p class="filter-content-p">₹500 - ₹1,000</p>
+                    </div>
+                    <div class="checkbox"> <input value="1200_to_1600" type="radio" name="price" class="">
+                        <p class="filter-content-p">₹1,000 - ₹1,500</p>
+                    </div>
+                    <div class="checkbox"> <input value="over_1600" type="radio" name="price" class="">
+                        <p class="filter-content-p">Over ₹1,500</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="filter-type">
+                <div class="heading-and-cross">
+                    <div class="inner-heading" id="inner-headingDiscount"><svg onclick="toggleFilterContent('Discount')"
+                            width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 10L12 15L17 10" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <h1 class="filter-heading">Discount</h1>
+                    </div>
+
+                    <button id="discount_button"><img class="cross-image" th:src="@{/images/cross.png}"></button>
+                </div>
+                <div class="filter-content" id="filter-contentDiscount">
+                    <div class="checkbox"> <input value="10" type="radio" name="discount" class="">
+                        <p class="filter-content-p">10% Off or more</p>
+                    </div>
+                    <div class="checkbox"> <input value="25" type="radio" name="discount" class="">
+                        <p class="filter-content-p">25% Off or more</p>
+                    </div>
+                    <div class="checkbox"> <input value="35" type="radio" name="discount" class="">
+                        <p class="filter-content-p">35% Off or more</p>
+                    </div>
+                    <div class="checkbox"> <input value="50" type="radio" name="discount" class="">
+                        <p class="filter-content-p">50% Off or more</p>
+                    </div>
+                    <div class="checkbox"> <input value="60" type="radio" name="discount" class="">
+                        <p class="filter-content-p">60% Off or more</p>
+                    </div>
+                    <div class="checkbox"> <input value="70" type="radio" name="discount" class="">
+                        <p class="filter-content-p">70% Off or more</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="filter-type">
+                <div class="heading-and-cross">
+                    <div class="inner-heading" id="inner-headingColor">
+                        <svg onclick="toggleFilterContent('Color')" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 10L12 15L17 10" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <h1 class="filter-heading">Color</h1>
+                    </div>
+
+                    <button id="color-button"><img class="cross-image" th:src="@{/images/cross.png}"></button>
+                </div>
+                <div class="filter-content color-filter" id="filter-contentColor">
+                    <div class="color-box" style="background-color: #000000;" data-itemid="black"></div>
+                    <div class="color-box" style="background-color: #FFC0CB;" data-itemid="pink"></div>
+                    <div class="color-box" style="background-color: #FFFFFF;" data-itemid="white"></div>
+                    <div class="color-box" style="background-color: #A52A2A;" data-itemid="brown"></div>
+                    <div class="color-box" style="background-color: #0000FF;" data-itemid="blue"></div>
+                    <div class="color-box" style="background-color: #FFA500;" data-itemid="orange"></div>
+                    <div class="color-box" style="background-color: #00008B;" data-itemid="Dark Blue"></div>
+                    <div class="color-box" style="background-color: #808000;" data-itemid="Olive Green"></div>
+                    <div class="color-box" style="background-color: #000080;" data-itemid="Navy Blue"></div>
+                    <div class="color-box" style="background-color: #800080;" data-itemid="Purple"></div>
+                    <div class="color-box" style="background-color: #808080;" data-itemid="Grey"></div>
+                    <div class="color-box" style="background-color: #191919;" data-itemid="Black Quartz"></div>
+                    <div class="color-box" style="background-color: #080808;" data-itemid="Jet Black"></div>
+                    <div class="color-box" style="background-color: #EFDECD;" data-itemid="Almond"></div>
+                    <div class="color-box" style="background-color: #232F34;" data-itemid="Night Forest"></div>
+                    <div class="color-box" style="background-color: #F5F5DC;" data-itemid="Beige"></div>
+                    <div class="color-box" style="background-color: #FFDAB9;" data-itemid="Peach Pink"></div>
+                    <div class="color-box" style="background-color: #0066CC;" data-itemid="Hydro Blue"></div>
+                    <div class="color-box" style="background-color: #006400;" data-itemid="Dark Green"></div>
+                    <div class="color-box" style="background-color: #AC1E44;" data-itemid="French Wine"></div>
+                    <div class="color-box" style="background-color: #BCB88A;" data-itemid="Sage"></div>
+                    <div class="color-box" style="background-color: #AFEEEE;" data-itemid="Pale Blue"></div>
+                    <div class="color-box" style="background-color: #36454F;" data-itemid="Grey Charcoal"></div>
+                    <div class="color-box" style="background-color: #D3D3D3;" data-itemid="Light Grey"></div>
+                    <div class="color-box" style="background-color: #ADD8E6;" data-itemid="Light Blue"></div>
+                    <div class="color-box" style="background-color: #333333;" data-itemid="Black Grey"></div>
+                    <div class="color-box" style="background-color: #87CEEB;" data-itemid="Sky Blue"></div>
+                    <div class="color-box" style="background-color: #FF0000;" data-itemid="Red"></div>
+                    <div class="color-box" style="background-color: #848482;" data-itemid="Black Silver"></div>
+                    <div class="color-box" style="background-color: #3B2F2F;" data-itemid="Black Brown"></div>
+                    <div class="color-box" style="background-color: #800020;" data-itemid="Burgundy"></div>
+                    <div class="color-box" style="background-color: #554c3c;" data-itemid="Dark Beige"></div>
+                    <div class="color-box" style="background-color: #E6E6FA;" data-itemid="Lavender"></div>
+                    <div class="color-box" style="background-color: #800000;" data-itemid="Maroon"></div>
+                    <div class="color-box" style="background-color: #FFFDD0;" data-itemid="Cream"></div>
+                    <div class="color-box" style="background-color: #A92940;" data-itemid="Onion"></div>
+
+                </div>
+
+            </div>
+            <div class=" btn-find text-center">
+                <button class="btn">Find</button>
+            </div>
+            <input type="hidden" id="color" name="color">
+
+        </form>
+
+    </div>
+
+    <div class="border-after-navbar">
+
+    </div>
+    <div id="userid" th:data-userid="${#ctx.session.userid}"></div>
+    <div id="custom-alert" class="custom-alert">
+        <span id="alert-message"></span>
+    </div>
+    <div class="filter-icon-parent">
+        <div class="filter-icon">
+            <div><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8Z"
+                        fill="#1C274C" />
+                    <path opacity="0.7"
+                        d="M13.5798 13.7899C13.0765 13.9269 12.5468 14 12 14C9.46679 14 7.30024 12.4302 6.42018 10.2102C3.87293 10.9036 2 13.2331 2 16C2 19.3138 4.68629 22 8 22C11.3137 22 14 19.3138 14 16C14 15.2195 13.851 14.4739 13.5798 13.7899Z"
+                        fill="#1C274C" />
+                    <path opacity="0.4"
+                        d="M13.5798 13.7896C13.851 14.4736 14 15.2193 14 15.9998C14 17.7768 13.2275 19.3734 12 20.472C13.0615 21.4221 14.4633 21.9998 16 21.9998C19.3137 21.9998 22 19.3135 22 15.9998C22 13.2329 20.1271 10.9034 17.5798 10.21C16.8897 11.9508 15.4085 13.2918 13.5798 13.7896Z"
+                        fill="#1C274C" />
+                </svg></div>
+            <h1>Filters</h1>
+            <div id="openFilterId"><svg onclick="open_filter_section()" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 10L12 15L17 10" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg></div>
+        </div>
+        <div>
+            <div class="itemType1" >
+                <h1 th:if="${size}!=null" class="itemType-name" th:text="${size} +' results for your searched item'"></h1>
+            </div>
+        </div>
+       
+
+    </div>
+
+    <div class="main-container">
+
+
+
+        <div th:if="${items}!= null" class="searched-items-container">
+
+
+
+
+
+
+            <div class="productCards">
+                <div th:if="${#lists.isEmpty(items)}">
+                    <!-- Handle case when itemslist is empty -->
+                    <!-- <p >No items found.</p> -->
+                </div>
+                <div th:unless="${#lists.isEmpty(items)}" th:each="item : ${items}" class="card"
+                    th:data-itemid="${item.id}">
+                    <a th:href="@{'/singleItem/'+${item.id}}">
+                        <div class="card-body">
+
+                            <div class="card-image-container">
+                                <img class="card-image" th:src="@{'/images/'+${item.id}+'.jpg'}" />
+                            </div>
+
+
+
+                            <div class="new_heart_container">
+                                <div class="card-text">
+
+                                    <h1 th:text="${item.name}" class="card-title"></h1>
+                                    <p th:text="${item.color}" class=" card-color"></p>
+                                    <p class=" card-initials">Add your initials</p>
+                                    <p th:text="${item.price}" class=" card-price">&#8377;</p>
+
+                                </div>
+                                <div>
+                                    <form th:id="'wishlist-form'+${item.id}" th:action="@{/AddToWishList}"
+                                        method="post">
+                                        <input type="hidden" th:value="${item.id}" name="itemid" />
+                                        <input type="hidden" th:value="${item.name}" name="itemname" />
+                                        <input type="hidden" th:value="${item.price}" name="itemprice" />
+                                        <input type="hidden" th:value="1" name="quantity" />
+                                        <input type="hidden" th:value="${item.type}" name="category" />
+                                        <input type="hidden" th:value="${item.description}" name="description" />
+                                        <input type="hidden" th:value="${#ctx.session.userid}" name="user_id" />
+
+                                        <i th:id="'wishlist-icon'+${item.id}" class="fa-regular fa-heart "
+                                            th:onclick="'AddToWishList(' + ${item.id} + ')'"
+                                            style="color: #000000;"></i>
+
+
+
+                                    </form>
+
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div th:if="${items} == null" class="content-container">
+            <div th:each="itemType : ${itemTypes}" class="itemType-container">
+
+                <div class="itemType">
+                    <h1 th:text="${itemType}" class="itemType-name"></h1>
+                    <p class="itemType-description">Our Best quality products </p>
+                </div>
+
+
+
+                <div class="productCards" th:with="itemslist = ${itemsByType[__${itemType}__]}">
+                    <div th:if="${#lists.isEmpty(itemslist)}">
+                        <!-- Handle case when itemslist is empty -->
+                        <p>No items found.</p>
+                    </div>
+                    <div th:each="item : ${itemslist}" class="card" th:data-itemid="${item.id}">
+                        <a th:href="@{'/singleItem/'+${item.id}}">
+                            <div class="card-body">
+
+                                <div class="card-image-container">
+                                    <img class="card-image" th:src="@{'/images/'+${item.id}+'.jpg'}" />
+                                </div>
+
+                                <div class="new_heart_container">
+                                    <div class="card-text">
+
+                                        <h1 th:text="${item.name}" class="card-title"></h1>
+                                        <p th:text="${item.color}" class=" card-color"></p>
+                                        <p class=" card-initials">Add your initials</p>
+                                        <p th:text="${item.price}" class=" card-price">&#8377;</p>
+
+                                    </div>
+                                    <div class="heart-div">
+                                        <form th:id="'wishlist-form'+${item.id}" th:action="@{/AddToWishList}"
+                                            method="post">
+                                            <input type="hidden" th:value="${item.id}" name="itemid" />
+                                            <input type="hidden" th:value="${item.name}" name="itemname" />
+                                            <input type="hidden" th:value="${item.price}" name="itemprice" />
+                                            <input type="hidden" th:value="1" name="quantity" />
+                                            <input type="hidden" th:value="${item.type}" name="category" />
+                                            <input type="hidden" th:value="${item.description}" name="description" />
+                                            <input type="hidden" th:value="${#ctx.session.userid}" name="user_id" />
+
+                                            <i th:id="'wishlist-icon'+${item.id}" class="fa-regular fa-heart "
+                                                th:onclick="'AddToWishList(' + ${item.id} + ')'"
+                                                style="color: #000000;"></i>
+
+
+
+                                        </form>
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+
+
+                            </div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="explore-more-div"><a href="#">Explore more !</a></div>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    </div>
+
+    <footer class=" bg-body-tertiary text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2020 Copyright:
+          <a class="text-body" href="#">ForecastFits.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+
+
+</body>
+
+</html>

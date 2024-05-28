@@ -1,0 +1,73 @@
+body{
+    font-family: 'Mate SC', serif;
+}
+.card{
+    width:25rem;
+    background-color: #f2f3f4!Important;
+    /* transform: translate(-19%, 100%); */
+
+}
+.container{
+  
+        position: absolute;
+        top: 50%;
+        left: 40%;
+
+        transform: translate(-50%, -50%);
+   
+}
+.find-heading{
+    font-size: 20px;
+    font-weight: 600;
+    /* text-align: center; */
+    color: #041e3A;
+    letter-spacing: 1px;
+}
+.find-label{
+    font-size: 13px;
+    font-weight: 600;
+    /* text-align: center; */
+    color: #041e3A;
+    letter-spacing: 1px;
+}
+.btn-find{
+    font-size: 12px!Important;
+    width:10rem;
+    color:white;
+    letter-spacing: 1px;
+    background-color: #041e3A;
+}
+/* .container{
+    margin-top:200px;
+} */
+.custom-alert{
+    /*display:none;*/
+    opacity:0;
+    transition:opacity 0.3s ease;
+    position:fixed;
+    top:23%;
+    left:48%;
+    transform:translate(-50%,-50%);
+    background-color: aliceblue;
+    color: #041e3A;
+    border: 1px solid #041e3A;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
+}
+.account-found-container{
+    transition:opacity 0.3s ease;
+    display: none;
+    opacity:0;
+}
+.account-found-container.active{
+    display: block;
+    opacity: 1;
+}
+
+#alert-message{
+    font-size:1rem;
+}
+.custom-alert.active{
+    opacity:1;
+}

@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Login page</title>
+        <link rel="stylesheet" th:href="@{/css/login_css.css}">
+        <script type="text/javascript" th:src="@{/js/login.js}"></script>
+        <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+       <th:block th:include="base::headContent"></th:block>
+    
+    </head>
+    <body>
+        <th:block th:include="navbar::navbar"></th:block>  
+
+
+
+
+        <!--<div class="container2">-->
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6 offset-md-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="loginheader">
+                          
+                                <div class="header1">
+                                    <span >Sign in</span>
+                                </div>
+                                <!-- <div>
+                                    <a th:href="@{/newUser}" class="forgot">Create Account</a>
+                                </div> -->
+
+                            </div>
+
+                            <form th:action="@{/loginUser}" method="POST">
+                           
+                                <div class="form-group">
+                                    <!--<label>Login id</label>-->
+                                    <input  type="email" class="form-control smooth-placeholder" placeholder="Email address" required name="userid" id="login" />
+                                </div>
+                                <div class="text-right">
+                                    <a th:href="@{/findIdPage}" class="forgot">Forgot Password?</a>
+                                </div>
+                                <div class="form-group">
+                                    <!--<label>Password</label>-->
+                                    <input  type="password" class="form-control smooth-placeholder" placeholder="Password" required name="password" id="password" />
+                                </div>
+                                <div  th:if="${errorMessage}!= null" class="error-message alert alert-danger">
+                                    Bad Credentials
+                                  </div>
+
+                                <div> 
+                                    <small>By contiuining,you agree to ForecastFit's <a th:href="@{/conditions}">Conditions of Use</a>
+                                    and <a href="#">Privacy Notice</a> </small>
+                                </div>
+                                <div>
+                                    <div class="keep-sign-in">
+                                        <div class="detail-input">
+                                            <input type="checkbox" name="terms">
+                                            <label class="keep-sign-in-label">Keep me sign in</label>
+
+                                        </div>
+                                        <div class="detail-link-container">
+                                            <a class="detail-link" href="#">Details</a>
+                                            <img  th:src="@{/images/downArrow.png}" >
+                                        </div>
+                                        
+                                    </div>
+                          
+                                </div>
+                
+                               
+                                <div class="container btn-login text-center btn-signin">
+                                    <button class="btn " type="submit" >Sign in</button>
+                                </div>
+
+                                <div></div>
+                            </form>
+                                <div class="google-login text-center">
+                                    <img alt=""  style="width:30px;height: 30px"  th:src="@{/images/google.png}" >
+                                    <a th:href="@{/oauth2/authorization/google}">Sign in with Google</a>
+                                </div>
+                                <div class="header_center">New to ForecastFits ?</div>
+                                <div class="container btn-login text-center btn-signup">
+                                    <a th:href="@{/newUser}"><button class="btn" type="submit" >Sign up</button></a>
+                                </div>
+                        </div>
+                    
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- <div class="containerfooter">
+            <div class="policies">
+                <h2>Policies</h2>
+                <p>Terms and Conditions</p>
+                <p>Delivery Shipping</p>
+                <p>Return Policy</p>
+                <p>Privacy Policy</p>
+                <p>Frequently Asked Questions</p>
+            </div>
+            <div class="policies">
+                <h2>Let us help you</h2>
+                <p>Contact Us </p>
+            </div>
+            <div class="policies">
+                <h2>About Us</h2>
+                <p>Our Story</p>
+            </div>
+            <div class="policies">
+                <h2>Follow us</h2>
+                <div class="icons">
+                     Add your social media icons here -->
+                    <!-- <img  th:src="@{/images/instagram.png}" alt="Instagram">
+                    <img  th:src="@{/images/facebook.png}" alt="Facebook">
+                    <img  th:src="@{/images/youtube.png}" alt="Instagram">
+                    <img  th:src="@{/images/twitter.png}" alt="Twitter">
+
+                </div>
+
+
+            </div> -->
+
+        <!-- </div>  -->
+
+
+
+
+
+    </body>
+</html>

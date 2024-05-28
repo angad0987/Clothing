@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout page</title>
+    <link rel="stylesheet" th:href="@{/css/checkout.css}">
+    <script type="text/javascript" th:src="@{/js/checkout.js}"></script>
+    <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+
+    <th:block th:include="base::headContent"></th:block>
+</head>
+<body>
+    <table class="marq-table" style="background-color:#fff;
+    width:100%">
+ <tr height="50px" class="center-text" >
+     <td colspan="2" >
+         <div class="order-path">
+             <!--color: #3dd18c;-->
+             <div class="order-path-stop">
+                 <i class="fa-solid fa-circle-check" style="color: #94d6b7;"></i>
+                 <h class="order-path-heading">Order Summary</h>
+             </div>
+             <div>
+                 <span class="way">------------</span>
+             </div>
+             <div class="order-path-stop">
+                 <i class="fa-solid fa-circle-check" style="color:#94d6b7;"></i>
+                 <h class="order-path-heading">Shipping Address</h>
+             </div>
+             <div>
+                 <span class="way">------------</span>
+             </div >
+             <div class="order-path-stop">
+                 <i class="fa-solid fa-circle-check" style="color:#94d6b7;"></i>
+                 <h class="order-path-heading">Confirm and Payment</h>
+             </div>
+         </div>
+     </td>
+ </tr>
+
+</table>
+<hr>
+<div id="custom-alert" class="custom-alert">
+    <span id="alert-message"></span>
+</div>
+<div id="overlay">
+    <img th:src="@{/images/ZKZg.gif}" >
+</div>
+<form id="placeOrderForm" th:action="@{/placeOrder}" method="post">
+    <input type="hidden" name="shippingAddress" id="shippingAddress">
+    <input type="hidden" name="totalAmount" id="totalAmount">
+    <input type="hidden" name="paymentMethod" id="paymentMethod" value="debitcard">
+    <input type="hidden" name="tax" id="TAX" value="12%">
+    <input type="hidden" name="offer" id="offer">
+    <input type="hidden" name="customerid" id="customerid">
+</form>
+<div id="totalId" th:data-itemid="${total}"></div>
+<div id="discountId" th:data-itemid="600"></div>
+<div id="customerId" th:data-itemid="${user.getUsername()}"></div>
+<div id="tax" th:data-itemid="${tax}"></div>
+
+<div class="main-container">
+
+ <div class="first-container">
+
+     <div class="order-summary">
+         <div class="card order-summary-card">
+             <div class="card-body ">
+                 <div class="summary-body">
+                     <div class="summary-info">
+                         <h1 class="order-summary-heading">Order Summary</h1>
+                         <p th:text="${size}"> Items</p>
+                     </div>
+                     <div class="button-container text-center" >
+                         <a th:href="@{/Cart}"><button class="btn btn-change" type="button">Change</button></a>
+                     </div>
+
+                 </div>
+
+
+             </div>
+         </div>
+     </div>
+     <div class="order-address">
+         <div class="card order-shipping-address-card">
+             <div class="card-body " >
+                 <div class="summary-body">
+                     <div class="summary-info">
+                        <div class="load-and-header">
+                            <h1 class="order-summary-heading">Shipping Address</h1>
+                            <div class="gif-div"><img id="load-gif" style="display: none;"   th:src="@{/images/checkoutLoading.gif}"></div>
+                        </div>
+                        
+                         <div id="autofill-address-card" class="card autofill-address-card">
+                            <p id="address-p" class="address-text" th:text="${user.getHouse_no()}+' '+ ${user.getStreet_name()}+','+  ${user.getPincode()}+','+ ${user.getCity()}+','+ ${user.getState()}+','+ ${user.getCountry()}"></p>
+                             <div class="card-body">
+                                 <div class="autofill">
+                                     <p>Save time. Autofill your current location.</p>
+                                     <button type="button" onclick="getlocation()" class="btn btn-autofill">Autofill</button>    
+                                 </div>
+                                 <div class="address-div">
+                                  <button type="button" onclick="confirmAddress()" class="btn btn-confirmAddress">Use this address</button>
+                                 </div>
+
+                             </div>
+
+                         </div>
+
+                     </div>
+                     <div class="button-container text-center" >
+                         <button class="btn btn-change" type="button"  onclick="showAddressForm()">Change</button>
+                     </div>
+                 </div>
+
+             </div>
+         </div>
+     </div>
+     <!-- Address change modal -->
+     <div id="addressModal" class="modal">
+         <div class="modal-content1">
+             <span class="close" onclick="hideAddressForm()">&times;</span>
+             <form id="addressForm">
+                 <div class="card">
+                     <div class="card-body">
+                         <p>Address</p>
+                         <div class="form-group">
+
+                             <input type="text" 
+                                    name="house_no" 
+                                    id="houseno" 
+                                    placeholder="House no"
+                                    required
+                                    class="form-control"/>
+                         </div>
+                         <div class="form-group">
+
+                             <input type="text" 
+                                    name="street_name" 
+                                    id="street" 
+                                    placeholder="Street Name"
+                                    required
+                                    class="form-control"/>
+                         </div>
+                         <div class="form-group">
+
+                             <input type="number" 
+                                    name="pincode" 
+                                    id="pincode" 
+                                    placeholder="Pincode"
+                                    required
+                                    class="form-control"/>
+                         </div>
+                         <div class="form-group">
+
+                             <input type="text" 
+                                    name="city" 
+                                    id="city" 
+                                    placeholder="City"
+                                    required
+                                    class="form-control"/>
+                         </div>
+                         <div class="form-group">
+                             <input type="text" 
+                                    name="state" 
+                                    id="state" 
+                                    placeholder="State"
+                                    required
+                                    class="form-control"/>
+                         </div>
+                         <div class="form-group">
+                             <input type="text" 
+                                    name="country" 
+                                    id="country" 
+                                    placeholder="Country"
+                                    required
+                                    class="form-control"/>
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="container text-center" style="margin-top: 10px;">
+                     <button type="submit" class="btn btn-success" >Submit</button>
+                 </div>
+
+             </form>
+         </div>
+     </div>
+     <div class="order-payment">
+        <div class="card  order-payment-card">
+            <div class="card-body ">
+                <h1 class="order-payment-heading">Offers</h1>
+                <div id="offer-card" class="offer-card">
+                    <form class="promo-code-form">
+                        <input id="promo-code-input" type="text" class="promo-code-input" placeholder="Enter promo code">
+                        <button type="button" onclick="applyPromoCode()" class="promo-code-button">Apply</button>
+                    </form>
+                    <div class="offers-content">
+                        <!-- Discount Banner -->
+                        <div class="offer-item">
+                            <h2>Spring Sale - Up to 50% Off!</h2>
+                            <p>Enjoy massive discounts on selected items. Offer valid until May 31st.</p>
+                        </div>
+                        <!-- Promo Code -->
+                      
+                        <!-- Limited-Time Offer -->
+                        <div class="offer-item">
+                            <h2>Weekend Flash Sale</h2>
+                            <p>Get 30% off on all electronics this weekend only. Don't miss out!</p>
+                        </div>
+                        <!-- Bundle Deal -->
+                        <div class="offer-item">
+                            <h2>Buy More, Save More</h2>
+                            <p>Purchase any 3 items and get the 4th one free. Applies to selected categories.</p>
+                        </div>
+                        <!-- Loyalty Rewards -->
+                        <div class="offer-item">
+                            <h2>Loyalty Rewards Program</h2>
+                            <p>Join our loyalty program and earn points on every purchase. Redeem points for exclusive discounts and gifts.</p>
+                        </div>
+                        <div class="offer-item">
+                            <h2>Exclusive Promo Codes</h2>
+                            <p>Use code <strong>SPRING2024</strong> at checkout to get an extra 10% off your order.</p>
+                            <p class="promo-code">Use code <strong>SAVE20</strong> for $20 off your order.</p>
+                            <p class="promo-code">Use code <strong>FREESHIP</strong> to get free shipping on orders over $50.</p>
+                            <p class="promo-code">Use code <strong>FALL2024</strong> for 15% off on fall collection.</p>
+                            <p class="promo-code">Use code <strong>WELCOME50</strong> for $50 off for new customers.</p>
+                        </div>
+                    </div></div>
+            </div>
+        </div>
+    </div>
+     <div class="order-payment">
+         <div class="card  order-payment-card">
+             <div class="card-body ">
+                 <h1 class="order-payment-heading">Payment Options</h1>
+                 <div id="payment-card" class="card payment-card">
+                    <div class="card-body">
+                        <div class="address-div">
+                            <a th:href="@{/securePaymentPage}"><button type="button"  class="btn btn-confirmAddress">Make payment</button></a></a>
+                           </div>
+
+                    </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+    
+    <div class="order-payment">
+        <div class="card  order-payment-card">
+            <div class="card-body ">
+                <h1 class="order-payment-heading">Item Delivery</h1>
+            </div>
+        </div>
+    </div>
+ </div>
+ <div class="second-container">
+     <div class="card  order-price-card">
+         <div class="card-body">
+             <h1 id="price-detail-heading" style="text-align: center;" class="price-detail-heading">Price Details</h1>
+             <div class="button-container sidebar-button" >
+                <button id="changeAddressButton" class="btn btn-sidebar" type="button" style="display: none;"  onclick="setNewAddress()">Choose another</button>
+            </div>
+             <div class="pricings">
+                 <div class="headings">
+                     <h2 class="total-mrp">Total MRP</h2>
+                     <h2 class="discounted-mrp">Discounted MRP</h2>
+                     <h2 class="delivery">Delivery Charges</h2>
+                 </div>
+                 <div class="values">
+                     <h2 class="total-mrp-value" th:text="'&#8377;'+${total}"></h2>
+                     <h2 class="discounted-mrp-value">-&#8377;699</h2>
+                     <h2 class="delivery-charges">Free</h2>
+                 </div>
+
+             </div>
+             <div class="button-container sidebar-button" >
+                <p class="offer-code" id="offer-code" style="display: none;"></p>
+            </div>
+             <div class="total-amount">
+                 <h2 class="total-amount-heading">Total Amount</h2>
+                 <span class="total-amount-value" id="total-amount-value">&#8377;600</span>
+             </div>
+             <div class="button-container sidebar-button" >
+                <button id="placeorder" class="btn btn-success" type="button" style="display: none;"  onclick="placeOrder()">Place Order</button>
+            </div>
+         </div>
+     </div>
+ </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

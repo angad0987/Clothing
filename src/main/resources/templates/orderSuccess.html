@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My orders</title>
+    <link rel="stylesheet" th:href="@{/css/myorders.css}">
+    <script type="text/javascript" th:src="@{/js/myorders.js}"></script>
+    <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+
+    <th:block th:include="base::headContent"></th:block>
+</head>
+<body>
+    <table class="marquee-table">
+        <tr height="30px" style="background-color:#001f3f;
+            margin-top: 5px">
+            <td colspan="2">
+                <marquee direction="Right" height="30px" onmouseover="this.stop()" onmouseout="this.start()"
+                    style="color:white"><b>Enjoy 10% off on your next purchase! Use code CART10 at checkout. </b></marquee>
+            </td>
+        </tr>
+
+    </table>
+    <th:block th:include="navbar::navbar"></th:block>
+    <div th:if="${#strings.isEmpty(username)}" class="empty-cart-message" id="emptyCartMessage">
+        <div class="noLogin"><img th:src="@{/images/errorIcon.png}" > <h1 class="empty-cart-empty-message" >YOU ARE NOT LOGGED IN</h1></div>
+        <small> <a th:href="@{/login}" class="continue-shopping-link">Click here</a> to log in</small>
+    </div>
+    <div th:unless="${#strings.isEmpty(username)}">
+        <div th:if="${#lists.isEmpty(orders)}" class="empty-cart-message" id="emptyCartMessage">
+            <h1 class="empty-cart-empty-message" >No Orders</h1>
+            <small> <a th:href="@{/collection}" class="continue-shopping-link">CONTINUE SHOPPING</a></small>
+        </div>
+        <div th:unless="${#lists.isEmpty(orders)}">
+            <section class="vh-100 gradient-custom-2">
+                <div class="container py-5 h-100">
+                  <div class="row  d-flex flex-row justify-content-center align-items-center h-100">
+                    
+                    <div class="col-md-10 col-lg-8 col-xl-10 ">
+                        <div th:each="orderItem : ${orders}">
+                      <div class="card card-stepper" style="border-radius: 16px;">
+                        <div class="card-header p-4">
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                              <p class="text-muted mb-2"> Order ID <span class="fw-bold text-body" th:text="${orderItem.getOrder_id()}"></span></p>
+                              <p class="text-muted mb-0"> Place On <span class="fw-bold text-body" th:text="${orderItem.getOrder_date()}"></span> </p>
+                            </div>
+                            <div>
+                              <h6 class="mb-0"> <a href="#">View Details</a> </h6>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body p-4">
+                                 <div th:each="item : ${orderItem.getClothing_items()}" >
+                                    <div class="d-flex flex-row mb-4 pb-2">
+                                        <div class="flex-fill">
+                                          <h5 class="bold" th:text="${item.getName()}"></h5>
+                                          <p class="text-muted" th:text="'Qt: '+ ${map.get(item.getId())} +' item'"> </p>
+                                          <h4 class="mb-3" th:utext="${item.getPrice()} + '<span class=\'small text-muted\'> (item price) </span>'"></h4>
+        
+                                          <!-- <p class="text-muted">Tracking Status on: <span class="text-body">11:30pm, Today</span></p> -->
+                                        </div>
+                                        <!-- <div>
+                                          <img class="align-self-center img-fluid"
+                                            th:src="@{'/images/'+${item.getId()}+'.jpg'}" width="210" height="210">
+                                        </div> -->
+                                      </div>
+                                 </div>
+                                
+                            
+                         
+                          <ul id="progressbar-1" class="mx-0 mt-0 mb-5 px-0 pt-0 pb-4">
+                            <li class="step0 active" id="step1"><span
+                                style="margin-left: 22px; margin-top: 12px;">PLACED</span></li>
+                            <li class="step0 active text-center" id="step2"><span>SHIPPED</span></li>
+                            <li class="step0 text-muted " style="text-align: end;" id="step3"><span
+                                style="margin-right: 25px;">DELIVERED</span></li>
+                          </ul>
+                        </div>
+                        <div class="card-footer p-4">
+                          <div class="d-flex justify-content-between">
+                            <h5 class="fw-normal mb-0"><a href="#!">Track</a></h5>
+                            <div class="border-start h-100"></div>
+                            <h5 class="fw-normal mb-0"><a href="#!">Cancel</a></h5>
+                            <div class="border-start h-100"></div>
+                            <h5 class="fw-normal mb-0"><a href="#!">Pre-pay</a></h5>
+                            <div class="border-start h-100"></div>
+                            <h5 class="fw-normal mb-0"><a href="#!" class="text-muted"><i class="fas fa-ellipsis-v"></i></a>
+                            </h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+        </div>
+    </div>
+    <footer id="Cartfooter" class="bg-body-tertiary text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2020 Copyright:
+          <a class="text-body" href="#">ForecastFits.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+</body>
+</html>

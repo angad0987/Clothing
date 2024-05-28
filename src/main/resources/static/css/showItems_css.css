@@ -1,0 +1,726 @@
+
+body{
+    font-family: 'Mate SC', serif;
+}
+.border-after-navbar{
+    margin-top:10px;
+    border-bottom: 1px solid #888;
+    padding:3px 3px;
+    box-shadow:0 5px 8px rgba(0, 0, 0, 0.1);
+}
+.main-container{
+    /* position: relative; */
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:1rem;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+/* .sticky-container{
+    position: relative;
+} */
+.inner-heading{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:5px;
+}
+.inner-heading h1{
+    margin-bottom: 0px;
+}
+.filter-main-heading{
+    text-align: center;
+    font-size: 1.0rem;
+    font-weight: bold;
+    font-family: 'Mate SC', serif;
+    letter-spacing: 1px;
+    color:#041e3a;
+}
+.filter-container{
+
+  /* top:0;
+  position: sticky; */
+  transition:right 0.3s ease;
+  top:0;
+  height:100vh;
+  /* overflow:scroll;  */
+  z-index:1000;
+  right:-300px;
+  width:300px;
+  position: fixed;
+    /* margin-left: 10px; */
+    background-color: aliceblue;
+     /* max-width:40%; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* gap:4rem; */
+    /* height: 893vh; */
+    border-radius: 10px;
+    align-items: left;
+    padding:12px 16px;
+}
+.filter-container.active{
+
+    right:0px;
+}
+.filter-type{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    margin:2px 2px;
+    padding:5px 5px;
+}
+.header_center::before,
+.header_center::after{
+    content: ""; 
+            flex: 1 1; 
+            border-bottom: 1px solid black; 
+            margin: auto; 
+}
+.inner-heading h1{
+    font-family: 'Mate SC', serif;
+    font-size:0.8rem;
+    letter-spacing: 2px;
+    color:black;
+    font-weight:bold;
+}
+.filter-content{
+    display: none;
+    /* opacity: 0; */
+    padding: 1px 16px;
+    animation: slideUp 0.5s ease-in-out forwards;
+    gap:0.5rem;
+}
+@keyframes slideDown{
+    from {
+        transform: translateY(-10%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+.filter-content.active{
+    animation: slideDown 0.5s ease-in-out forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+.filter-content.deactive{
+    animation: slideUp 0.5s ease-in-out forwards;
+   opacity: 0;
+}
+.new_heart_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:1rem;
+}
+.filter-content-p {
+    font-family: 'Mate SC', serif;
+    font-size:0.7rem ;
+    color:black;
+}
+.nav-link{
+    color: #041e3a!Important;
+}
+.marquee-table{
+    width:100%;
+    margin-top: 0px;
+}
+.checkbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:0.3rem;
+}
+.checkbox p{
+    margin-bottom: 0;
+} 
+.color-filter {
+    display: none;
+    /* opacity: 0; */
+    padding: 1px 16px;
+    animation: slideUp 0.5s ease-in-out forwards;
+    width:8rem;
+   
+}
+.color-filter.active{
+    animation: slideDown 0.5s ease-in-out forwards;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+     flex-direction: row; 
+    gap: 5px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #aaa;
+    cursor: pointer;
+}
+
+/* Optional: Add hover effect */
+.color-box:hover {
+    border-color: #333;
+
+}
+.btn{
+    color:white;
+    padding: .375rem 3.75rem!Important;
+    background-color: #07376a;
+    transition:background-color 0.3s ease;
+   
+}
+.btn-find{
+    margin-top: 20px;
+}
+.btn-find button {
+
+    font-size: 0.6rem;
+    font-weight: bold;
+    font-family: 'Mate SC', serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:hover{
+    background-color: #041e3a;
+}
+.content-container{
+    /* position: relative;
+     */
+     /* width: 60%; */
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    gap:2rem;
+ 
+}
+.searched-items-container{
+    width:100%;
+    
+}
+.itemType-container{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+   
+}
+.itemType{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+}
+.itemType1{
+    margin-left: 40px;
+    margin-top: 50px;
+    align-items: left;
+}
+.itemType1 h1{
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    /* font-weight: bold; */
+    font-family: 'Mate SC', serif;
+    color:#041e3a;
+}
+
+.itemType p{
+    font-size: 0.7rem;
+    font-family: 'Mate SC', serif;
+    color:black;
+}
+.filter-icon-parent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: space-between;
+}
+.productCards{
+    margin-top:20px;
+    display:flex;
+justify-content: center;
+    gap:2rem;
+    align-items:center;
+    flex-wrap:wrap;
+}
+.card{
+    background-color:#fff;
+    width:30%;
+    /*height:70vh;*/
+    border:none!Important;
+    height:auto;
+    transition:background-color 0.3s ease;
+    /*box-shadow:0 4px 8px rgba(0,0,0,0.1);*/
+}
+
+.card:hover{
+    background-color:#f8f8f8;
+}
+.card:hover a{
+    text-decoration: none;
+}
+/*            @media (max-width: 768px) {
+
+
+                .card {
+                    width:30%;
+                    height:100% Make cards full-width on smaller screens 
+                }
+            }*/
+.card-body{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    /*text-align:center;*/
+    margin-top:-10px;
+}
+.card-image{
+    max-width:100%;
+    max-height:200px;
+    object-fit:cover;
+    border-radius:8px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+}
+.card-text{
+    margin-top:10px;
+    padding:5px;
+}
+.card-title{
+    font-size:15px;
+    /*font-weight: bold;*/
+    color:#041e3a;
+    margin-bottom: 3px;
+}
+
+.image_and_heart{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:1rem;
+}
+.custom-alert{
+    /*display:none;*/
+    opacity:0;
+    transition:opacity 0.3s ease;
+    position:fixed;
+    top:20%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
+}
+#alert-message{
+    font-size:1rem;
+}
+.custom-alert.active{
+    opacity:1;
+}
+
+
+
+@media(max-width: 768px) {
+    .explore-more-div a {
+        font-size: 14px;
+    }
+    .new_heart_container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap:0.6rem!Important;
+    }
+    .heart-div i{
+font-size: 12px;
+    }
+    .productCards{
+        gap:0;
+        justify-content: space-around;
+        /* margin-bottom: 400px; */
+    }
+    .card-title{
+        font-size:0.5rem!Important;
+        font-weight: bold;
+        color:  #041e3a;
+    }
+    .card-initials{
+        font-size: 8px!Important;
+    }
+
+    .card {
+        height: auto;
+    }
+    .card-color{
+        font-size: 0.6rem!Important;
+    }
+    .card-price{
+        font-size: 0.6rem!Important;
+    }
+
+    .card-image {
+        max-width:94px;
+        max-height:118px;
+        object-fit:scale-down;
+        border-radius:8px;
+        box-shadow:0 4px 8px rgba(0,0,0,0.1);
+        height: auto;
+    }
+
+    /*                .card-description {
+                        font-size: 0.7rem;
+                    }*/
+
+    button {
+        font-size: 12px;
+    }
+
+    .sectionHeading {
+        font-size: 1.7rem!Important;
+        color:black; /* Adjust the color for a more attractive look */
+        font-weight: bold;
+        text-transform: uppercase; /* Uppercase the text for emphasis */
+        margin-bottom: 20px; /* Add some space below the heading */
+        letter-spacing: 2px; /* Add letter spacing for a stylish look */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle text shadow */
+    }
+    .p-explore{
+        font-size: 1rem!Important;
+    }
+    .containerfooter{
+        position: relative!Important;
+    }
+}
+
+@media(max-width:1024px){
+    .card-image {
+        height: 200px;
+    }
+
+    /*                .card-description {
+                        font-size: 0.7rem;
+                    }*/
+
+    button {
+        font-size: 12px;
+    }
+
+    .sectionHeading {
+        color:black;
+        font-weight: bold;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}
+.btn-explore {
+    padding: 2px 4px;
+    height: 32px;
+    font-size: 13px;
+    color:white;
+    /*border-color:black;*/
+    background-color:black;
+    border-radius:9px;
+    transition: background-color 0.3s ease;
+    /*width:auto;*/
+}
+
+.btn-explore:hover {
+    background-color:white;
+    color:black;
+    border-radius:11px;
+
+}
+.p-explore{
+    font-size: 1.5rem;
+}
+.card-material{
+    font-size:1rem;
+    color: black;
+    margin-bottom: 1px;
+}
+.card-color{
+    color:#041e3a;
+    font-size:0.8rem;
+    margin-top:2px;
+    letter-spacing: 1px;
+    margin-bottom:0.4rem!Important;
+}
+.card-initials{
+    color:#6D6473;
+    font-size:12px;
+    margin-bottom:5px;
+}
+
+.card-price{
+    color:#041e3a;
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+}
+.button-container{
+    margin-bottom: 2px;
+    text-align: left;
+}
+.containerfooter {
+    background-color: #001f3f; /* Dark blue background color */
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+.policies {
+    flex: 1;
+    text-align: left;
+    padding: 10px;
+}
+
+.policies h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icons img {
+    width: 30px;
+    height: 30px;
+}
+.card-image-container{
+    overflow: hidden;
+}
+.card-image-container:hover .card-image{
+    transform: scale(1.5);
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+@media(max-width:540px){
+    .btn-find button {
+        font-size: 0.4rem;
+        font-weight: bold;
+        font-family: 'Mate SC', serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    .btn{
+        padding: 0.340rem 2.45rem ! Important;
+        transition:background-color 0.3s ease;
+       
+    }
+
+
+    .card-initials {
+        color: #6D6473;
+        font-size: 9px;
+        margin-bottom: 5px;
+    }
+    .icons img {
+        width: 18px;
+        height: 16px;
+    }
+    .icons {
+        display: flex;
+        gap: 3px;
+    }
+    .policies {
+        flex: 1;
+        text-align: left;
+        padding: 5px;
+
+    }
+
+    .containerfooter {
+        /*                    background-color: #001f3f;
+                            color: #fff;*/
+        position: relative!Important;
+        padding: 2px
+    }
+    .card-container {
+        width: 320px;
+    }
+    .footer-p{
+        font-size:0.5rem;
+    }
+    .policies h2{
+
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+        width: max-content;
+    }
+    .productCards{
+        gap:0!Important;
+        justify-content: space-around!Important;
+        /* margin-bottom: 176px; */
+    }
+    .card-body{
+        padding: 5px;
+        padding-top:14px;
+    }
+    .card-title {
+        font-size: 0.5rem!Important;
+        font-weight: bold;
+        color: #041e3a;
+    }
+    .btn{
+        padding: 2px 10px;
+        font-size: 0.6rem;
+    }
+    .btn-explore{
+        height:27px;
+    }
+    .card-image {
+        max-width: 76px;
+        max-height: 89px;
+        object-fit: scale-down;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        height: auto;
+    }
+    .filter-content-p {
+        font-family: 'Mate SC', serif;
+        font-size: 0.5rem;
+        color: black;
+    }
+    .filter-type h1 {
+        font-family: 'Mate SC', serif;
+        font-size: 0.7rem;
+        color: black;
+        font-weight: bold;
+    }
+
+}
+@media(max-width:420px){
+    .color-filter {
+        width: 5rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* flex-direction: row; */
+        gap: 5px;
+    }
+    .explore-more-div a {
+        font-size: 9px;
+    }
+    .card-initials {
+        font-size: 7px ! Important;
+    }
+    .card-color {
+        font-size: 0.5rem ! Important;
+    }
+    .filter-container {
+        margin-left: 4px ! Important;
+        background-color: aliceblue ! Important;
+        max-width: 30% ! Important;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 4rem;
+        border-radius: 17px ! Important;
+        align-items: left;
+        padding: 12px 4px;
+    }
+    .filter-type h1 {
+        font-family: 'Mate SC', serif;
+        font-size: 0.6rem!Important;
+        color: black;
+        font-weight: bold;
+    }
+    
+    .btn {
+        padding: 0.340rem 1.45rem ! Important;
+        transition: background-color 0.3s ease;
+    }
+    .color-box {
+        width: 13px;
+        height: 13px;
+        border: 1px solid #aaa;
+        cursor: pointer;
+    }
+
+}
+.navbar{
+    margin-top:-16px!Important;
+}
+.navbar:hover{
+    background-color:#E1F6FF;
+}
+
+.explore-more-div{
+    text-align: right;
+    margin-right: 10px;
+}
+.explore-more-div a {
+    color:#6D6473;
+}
+.explore-more-div a:hover{
+    color:#333;
+    text-decoration: none;
+}
+.heart-div{
+    margin-top: 10px;
+}
+
+.color-box.selected {
+    border:2px solid #000;
+}
+.heading-and-cross{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.heading-and-cross button{
+    background-color: transparent;
+    border:none;
+    margin-bottom: 8px;
+}
+.heading-and-cross button:hover{
+
+}
+.heading-and-cross img {
+    width:15px;
+    height: 15px;
+    
+}
+.filter-icon{
+    margin-left: 40px;
+    margin-top:50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+}
+
+.filter-icon h1{
+    /* font-weight: bold; */
+ font-size: 1.3rem;
+ color:#041e3a;
+ font-family:'Mate SC', serif;
+ letter-spacing: 1px;
+}
+
+
