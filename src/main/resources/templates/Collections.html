@@ -24,29 +24,37 @@
     </table>
     <th:block th:include="navbar::navbar"></th:block>
     <div class="main-container">
-        <div class="nav-container">
+      <div class="new-nav-container-div">
+        <nav aria-labelledby="nav-title-social">
+          <ul>
+            <li><a th:href="@{/collections/sunny}">Sunny</a></li>
+            <li><a th:href="@{/collections/cloudy}">Cloudy</a></li>
+            <li><a th:href="@{/collections/overcast}">Overcast</a></li>
+            <li><a th:href="@{/collections/mist}">Mist</a></li>
+            <li><a th:href="@{/collections/lightRain}">Light rain</a></li>
+            <li><a th:href="@{/collections/heavyRain}">Heavy rain</a></li>
+            <li><a th:href="@{/collections/coldWeather}">Cold Weather</a></li>
+            <li><a th:href="@{/collections/extremeSnowDrizzle}">Extreme Snow drizzle</a></li>
+            <li><a th:href="@{/collections/fog}">Fog</a></li>
+            <li><a th:href="@{/collections/heavyFrezzingRain}">Heavy freezing rains</a></li>
+            <li><a th:href="@{/collections/sleet}">Sleet</a></li>
+            <li><a th:href="@{/collections/heavySleet}">Heavy sleet</a></li>
+            <li><a th:href="@{/collections/lightSnow}">Light Snow</a></li>
+            <li><a th:href="@{/collections/heavySnow}">Heavy Snow</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+        <!-- <div class="nav-container">
             <div>
                 <ul class="side-navbar">
-                    <li><a th:href="@{/collections/sunny}">Sunny</a></li>
-                    <li><a th:href="@{/collections/cloudy}">Cloudy</a></li>
-                    <li><a th:href="@{/collections/overcast}">Overcast</a></li>
-                    <li><a th:href="@{/collections/mist}">Mist</a></li>
-                    <li><a th:href="@{/collections/lightRain}">Light rain</a></li>
-                    <li><a th:href="@{/collections/heavyRain}">Heavy rain</a></li>
-                    <li><a th:href="@{/collections/coldWeather}">Cold Weather</a></li>
-                    <li><a th:href="@{/collections/extremeSnowDrizzle}">Extreme Snow drizzle</a></li>
-                    <li><a th:href="@{/collections/fog}">Fog</a></li>
-                    <li><a th:href="@{/collections/heavyFrezzingRain}">Heavy freezing rains</a></li>
-                    <li><a th:href="@{/collections/sleet}">Sleet</a></li>
-                    <li><a th:href="@{/collections/heavySleet}">Heavy sleet</a></li>
-                    <li><a th:href="@{/collections/lightSnow}">Light Snow</a></li>
-                    <li><a th:href="@{/collections/heavySnow}">Heavy Snow</a></li>
+                 
                 </ul>
 
             </div>
 
 
-        </div>
+        </div> -->
 
         <div th:if="${content}== 'visible'" class="container mt-5">
             <div class="row ">

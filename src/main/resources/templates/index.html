@@ -35,7 +35,7 @@
         <br>
          <!-- Background image div for small screens -->
          <th:block th:include="navbar::navbar"></th:block> 
-         <!-- <div class="carousel-background"></div> -->
+         <div class="carousel-background"></div>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -99,20 +99,51 @@
                 <div class="productCards">
                   <div class="card text-center border border-primary shadow-0 ">
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                      <img src="https://mdbootstrap.com/img/new/standard/nature/111.webp" class="img-fluid" />
+                      <img th:src="@{/images/2.jpg}" class="img-fluid" />
                       <a href="#!">
                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                       </a>
                     </div>
                   
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
+                      <h5 class="card-title">Sunny Weather</h5>
                       <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
+                        Embrace the sunshine with our vibrant collection of summer wear. From breezy dresses to stylish shorts, discover the perfect outfits to keep you cool and fashionable under the warm sun.</p>
+                  
+                      <button type="button" class="btn btn-primary">Explore</button>
+                    </div>
+                  </div>
+                  <div class="card text-center border border-primary shadow-0 ">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                      <img th:src="@{/images/rainy_picture.jpg}" class="img-fluid" />
+                      <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                      </a>
+                    </div>
+                  
+                    <div class="card-body">
+                      <h5 class="card-title">Rainy Weather</h5>
+                      <p class="card-text">
+                        Stay dry and stylish during rainy days. Explore our waterproof jackets, colorful umbrellas, and trendy rain boots to make a splash while staying protected from the showers.
                       </p>
                   
-                      <button type="button" class="btn btn-primary">Button</button>
+                      <a th:href="@{/getTypes/heavyRain}"><button type="button" class="btn btn-primary">Explore</button></a>
+                    </div>
+                  </div> <div class="card text-center border border-primary shadow-0 ">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                      <img th:src="@{/images/snow_picture.jpg}" class="img-fluid" />
+                      <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                      </a>
+                    </div>
+                  
+                    <div class="card-body">
+                      <h5 class="card-title">Heavy Snow weather</h5>
+                      <p class="card-text">
+                        Embrace the winter wonderland with our cozy collection designed for heavy snow days. From insulated jackets to thermal layers and waterproof boots.
+                      </p>
+                  
+                      <a th:href="@{/getTypes/HeavySnow}" ><button type="button" class="btn btn-primary">Explore</button></a>
                     </div>
                   </div>
                   <!-- <div class="card">
@@ -143,7 +174,7 @@
 
                         </div>
                     </div> -->
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="card-body">
                             <img class="card-image" th:src="@{/images/rainy_picture.jpg}" />
                             <div class="card-text">
@@ -179,21 +210,26 @@
                         </div>
                     </div>
 
-                </div>
-                <p class="text-center" style="margin-top:18px;
-                   color:black">EXPLORE MORE ON COLLECTIONS </p>
-                <hr>
+                </div> -->
+                
             </div>
+            <p class="text-center" style="    font-size: 14px;
+            margin-top: 31px;
+            color: #041e3a;
+                   ">EXPLORE MORE ON COLLECTIONS </p>
+                <hr>
         </div>
     </div>
 
     <!--         Section 2: New Arrivals
         
-    -->     
+    -->  
+    </div>
+
     <div class="main-new-container">
         <div class="container   new-arrival-container">
             <div class="row justify-content-center">
-                <div col="col-md-6 offset-md-3 content">
+                <div col="col-md-12 offset-md-0 content">
     
                      <h2 class="text-center sectionHeading">NEW ARRIVALS </h2>
                     <p class="text-center" style="margin-top:18px;
@@ -267,6 +303,8 @@
         <!-- </div>
 
     </div> -->
+    
+
     <!-- Footer -->
 <footer class="bg-body-tertiary text-center mt-5" style="background-color: #f3f3f3;    font-family: RL_DroidKufi, LeJeuneDeck-Regular, Times New Roman, Times, serif;">
     <!-- Grid container -->
