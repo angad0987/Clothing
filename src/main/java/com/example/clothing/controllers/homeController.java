@@ -295,8 +295,8 @@ public class homeController {
         // session.setAttribute("username", user.getUsername());
         // session.setAttribute("userid", jwtRequest.getUserid());
 
-        // return "redirect:/";
-        return "index";
+        return "redirect:/";
+        // return "index";
     }
 
     private void doAuthenticate(String email, String password) {
