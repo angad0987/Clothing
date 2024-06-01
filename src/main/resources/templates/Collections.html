@@ -23,8 +23,16 @@
 
     </table>
     <th:block th:include="navbar::navbar"></th:block>
+    <div  id="weatherbuttoncontainer" class="weather-button-container">
+      <button id="weatherButton" onclick="showSideBar()" class="btn btn-primary btn-select-weather">
+        Select Weather
+      </button>
+    </div>
     <div class="main-container">
-      <div class="new-nav-container-div">
+      <div id="new-nav-container-div" class="new-nav-container-div">
+        <div id="cross-div" class="cross-div" style="text-align: center;">
+          <button onclick="hideSideBar()" id="category-button">Return</button>
+        </div>
         <nav aria-labelledby="nav-title-social">
           <ul>
             <li><a th:href="@{/collections/sunny}">Sunny</a></li>

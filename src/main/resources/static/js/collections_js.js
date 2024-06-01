@@ -14,3 +14,17 @@ function retainImage() {
         img1.style.opacity = 1;
     }, 200);
 }
+function showSideBar(){
+    var weatherbuttonContainer=document.getElementById('weatherButton');
+    weatherbuttonContainer.style.display='none';
+    var sidebar=document.getElementById('new-nav-container-div');
+    sidebar.classList.toggle('active');
+    
+}
+function hideSideBar(){
+    var weatherbuttonContainer=document.getElementById('weatherButton');
+    weatherbuttonContainer.style.display='block';
+    var sidebar=document.getElementById('new-nav-container-div');
+    sidebar.classList.remove('active');
+    
+}

@@ -6,6 +6,9 @@ body{
 .row{
     justify-content:center;
 }
+.cross-div{
+    display: none;
+}
 
 .productCards{
     margin-top:20px;
@@ -158,6 +161,33 @@ body{
             }*/
 
 @media(max-width:768px){
+    .new-nav-container-div{
+        overflow-y: scroll;
+        height: 80vh;
+        /* margin-left:0px; */
+        padding:20px 20px;
+        background-color:#E1F6FF;
+        position:fixed;
+        border-radius: 16px;
+        top:80px;
+        /* height: 80%; */
+        left:-300px;
+        transition:left 0.4s ease;
+        /* overflow-y:scroll; */
+        z-index:1000;
+
+    }
+    .cross-div{
+        display: block;;
+    }
+    .weather-button-container{
+        display: block!Important;
+    }
+    
+    .new-nav-container-div.active{
+        left:0;
+      
+    }
     .title-container{
         display:flex;
         flex-direction:column;
@@ -688,8 +718,8 @@ ul.side-navbar a:hover {
     }
   }
   .new-nav-container-div{
-    margin-top:50px;
-    margin-left:20px;
+    margin-top:75px;
+    /* margin-left:20px; */
   }
   
   /* demo */
@@ -704,3 +734,30 @@ ul.side-navbar a:hover {
     transition: background 1s;
     background: #fff;
   } */
+  .btn-select-weather{
+    padding:5px 5px;
+    letter-spacing: 1px;
+    font-size: 13px;
+    border-radius: 25px;
+    width:10rem;
+  }
+  .weather-button-container button{
+    border-radius: 20px;;
+  }
+  .weather-button-container{
+    display:none;
+    margin-top: 50px;
+    text-align: left;
+  }
+  .cross-div button{
+    width:8rem;
+   background-color: #041e3A;
+padding:5px 5px;
+color:white;
+font-size: 14px;
+letter-spacing: 1px;
+border-radius: 13px;
+}
+  .cross-div{
+  margin-bottom: 10px;
+  }
