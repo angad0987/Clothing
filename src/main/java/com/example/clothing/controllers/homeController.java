@@ -947,7 +947,7 @@ public class homeController {
                 orders.forEach(order -> System.out.println(order.toString()));
                 m.addAttribute("orders", orders);
                 m.addAttribute("map", map);
-                return "orderSuccess";
+                return "redirect:/myOrdersPage";
             } else {
                 return "errorPage";
             }
