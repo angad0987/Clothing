@@ -499,6 +499,56 @@ hr {
 .custom-alert.active{
     opacity:1;
 }
+@media(max-width:1024px){
+
+    .order-summary-card{
+        width:32rem;
+    }
+    .order-shipping-address-card{
+        width: 32rem;
+    }
+    .autofill-address-card{
+        width: 20rem;
+    }
+    .order-payment-card {
+        width:32rem;
+    }
+}
+@media(max-width:768px){
+     .main-container{
+        display: flex;
+        flex-direction: column;
+     }
+}
+@media(max-width:540px){
+    .order-summary-card{
+        width:24rem;
+    }
+    .order-shipping-address-card{
+        width: 24rem;
+    }
+    .autofill-address-card{
+        width: 17rem;
+    }
+    .order-payment-card {
+        width:24rem;
+    }
+    .btn-autofill {
+        font-size: 0.6rem ! Important;
+        border-radius: 10px ! Important;
+        color: white;
+        background-color: #041e3a;
+        transition: background-color 0.3s ease;
+    }
+    .btn-change {
+        color: #041e3a;
+        background-color: #fff;
+        border: 1px solid #041e3a ! Important;
+        font-size: 0.5rem ! Important;
+        border-radius: 10px ! Important;
+        transition: background-color 0.3s ease ! Important;
+    }
+}
 
 
 
