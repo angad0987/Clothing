@@ -16,7 +16,13 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface CartRepository extends CrudRepository<Cart, Integer> {
 
-    @Query(value = "SELECT clothing_items.id,item_color,item_name,clothing_items.price,SUM(cart.quantity),cart.id,cart.item_id FROM cart INNER JOIN clothing_items ON clothing_items.id=cart.item_id WHERE customer_id=:customerid GROUP BY item_id", nativeQuery = true)
+    @Query(value = "SELECT clothing_items.id,item_color,item_name,clothing_items.price,SUM(cart.quantity),cart.id AS 'Total Quantity',cart.item_id FROM cart INNER JOIN clothing_items ON clothing_items.id=cart.item_id WHERE customer_id=:customerid GROUP BY cart.item_id, \r\n"
+            + //
+            "    clothing_items.id, \r\n" + //
+            "    item_color, \r\n" + //
+            "    item_name, \r\n" + //
+            "    clothing_items.price, \r\n" + //
+            "    cart.id;", nativeQuery = true)
     public List<Object[]> getCartItems(@Param("customerid") String customer_id);
 
     @Transactional
