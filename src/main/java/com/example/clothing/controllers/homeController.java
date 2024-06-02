@@ -808,7 +808,7 @@ public class homeController {
         Cookie cookie = new Cookie("jwtToken", token);
         cookie.setPath("/"); // Set the cookie path to root so it's accessible from all paths
         cookie.setHttpOnly(true); // Set HttpOnly to true to prevent JavaScript access
-        cookie.setMaxAge(180); // Set the cookie expiration time in seconds (e.g., 1 hour)
+        cookie.setMaxAge(3600); // Set the cookie expiration time in seconds (e.g., 1 hour)
         response.addCookie(cookie);
 
         System.out.println("Username is : " + user.getUserId());
@@ -818,7 +818,7 @@ public class homeController {
         // all paths
         cookie1.setHttpOnly(true); // Set HttpOnly to true to prevent JavaScript
         // access
-        cookie1.setMaxAge(180); // Set the cookie expiration time in seconds (e.g.,
+        cookie1.setMaxAge(3600); // Set the cookie expiration time in seconds (e.g.,
         // 1 hour)
         response.addCookie(cookie1);
 
@@ -827,7 +827,7 @@ public class homeController {
         // all paths
         cookie2.setHttpOnly(true); // Set HttpOnly to true to prevent JavaScript
         // access
-        cookie2.setMaxAge(180); // Set the cookie expiration time in seconds (e.g.,
+        cookie2.setMaxAge(3600); // Set the cookie expiration time in seconds (e.g.,
         // 1 hour)
         response.addCookie(cookie2);
     }
