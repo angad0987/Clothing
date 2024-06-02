@@ -1,5 +1,11 @@
  // Get user information JSON string from the model
  document.addEventListener('DOMContentLoaded', function(){
+   var carasoulBackgroundDiv=document.getElementById('carasoul-background');
+   var baseUrl=document.getElementById('baseUrl').getAttribute('data-itemid');
+    if(carasoulBackgroundDiv){
+        carasoulBackgroundDiv.style.backgroundImage= 'url('+baseUrl+'/images/newBack.jpg)';
+    }
+
     var username=document.getElementById('username').getAttribute('data-itemid');
 
 console.log(username);

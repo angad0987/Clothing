@@ -30,12 +30,12 @@
 
     </table>
     <div id="username" th:data-itemid="${username}"></div>
-    
+    <div id="baseUrl" th:data-itemid="${baseUrl}"></div>
     <div class="container1">
         <br>
          <!-- Background image div for small screens -->
          <th:block th:include="navbar::navbar"></th:block> 
-         <div class="carousel-background"></div>
+         <div id="carousel-background" class="carousel-background"></div>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

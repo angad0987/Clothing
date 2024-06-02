@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -64,6 +65,8 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class homeController {
+    @Value("${baseUrl}")
+    private String baseUrl;
     @Autowired
     private EmailService emailService;
     @Autowired
@@ -111,6 +114,8 @@ public class homeController {
 
     @RequestMapping("/")
     public String home(HttpServletRequest request, HttpServletResponse response, Model m) {
+        System.out.println("Base url is :--------------------------------------------------->" + baseUrl);
+        m.addAttribute("baseUrl", baseUrl);
         m.addAttribute("username", MyFunctions.get_User_Info_From_Cookies(request, "username"));
         return "index";
     }
