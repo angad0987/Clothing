@@ -1,75 +1,77 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-        <meta http-equiv="pragma" content="no-cache">
-        <meta http-equiv="expires" content="0">
-        <title>JSP Page</title>
 
-        <link rel="stylesheet" th:href="@{/css/index_css.css}">
-        <script type="text/javascript" th:src="@{/js/index_js.js}"></script>
-        <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
-     
-       <th:block th:include="base::headContent"></th:block>
-        <!--<script src="<c:url value="/resources/javascript/newjavascript.js"/>"></script>-->
-        
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>JSP Page</title>
 
-       
+  <link rel="stylesheet" th:href="@{/css/index_css.css}">
+  <script type="text/javascript" th:src="@{/js/index_js.js}"></script>
+  <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
 
-        </head>
+  <th:block th:include="base::headContent"></th:block>
+  <!--<script src="<c:url value="/resources/javascript/newjavascript.js"/>"></script>-->
 
 
-        <body>
 
-            <table class="marq-table" style="background-color:#001f3f;
+
+</head>
+
+
+<body>
+
+  <table class="marq-table" style="background-color:#001f3f;
                    width:100%">
-                <tr height="50px" class="center-text" >
-                    <td colspan="2" ><span class="indexpage-heading">Free Standard Delivery</span> <a href="#" class="indexpage-heading details">Details</a></td>
-        </tr>
+    <tr height="50px" class="center-text">
+      <td colspan="2"><span class="indexpage-heading">Free Standard Delivery</span> <a href="#"
+          class="indexpage-heading details">Details</a></td>
+    </tr>
 
-    </table>
-    <div id="username" th:data-itemid="${username}"></div>
-    <div id="baseUrl" th:data-itemid="${baseUrl}"></div>
-    <div class="container1">
-        <br>
-         <!-- Background image div for small screens -->
-         <th:block th:include="navbar::navbar"></th:block> 
-         <div id="carousel-background" class="carousel-background"></div>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" th:src="@{/images/carasoul1.png}" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" th:src="@{/images/carasoul2.png}" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" th:src="@{/images/carasoul3.png}" alt="Third slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" th:src="@{/images/carasoul4.png}" alt="Third slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" th:src="@{/images/carasoul6.png}" >
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+  </table>
+  <div id="username" th:data-itemid="${username}"></div>
+  <div id="baseUrl" th:data-itemid="${baseUrl}"></div>
+  <div class="container1">
+    <br>
+    <!-- Background image div for small screens -->
+    <th:block th:include="navbar::navbar"></th:block>
+    <div id="carousel-background" class="carousel-background"></div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" th:src="@{/images/carasoul1.png}" alt="First slide">
         </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" th:src="@{/images/carasoul2.png}" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" th:src="@{/images/carasoul3.png}" alt="Third slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" th:src="@{/images/carasoul4.png}" alt="Third slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" th:src="@{/images/carasoul6.png}">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
 
-        <!--                <div class="container">
+    <!--                <div class="container">
                             <div class="row justify-content-center">
                                 <div col="col-md-12 offset-md-3">
                                     <div class='container text-center mt-5' >
@@ -88,65 +90,69 @@
                                 </div>
                             </div>
                         </div>-->
-    </div>
-    <hr>
-    <br><!-- comment -->
-    <!--Section 1: Featured Products--> 
-    <div class="container">
-        <div class="row ">
-            <div col="col-md-12 offset-md-3 ">
-                <h2 class="text-center sectionHeading"  >Featured Products</h2>
-                <div class="productCards">
-                  <div class="card text-center border border-primary shadow-0 ">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                      <img th:src="@{/images/2.jpg}" class="img-fluid" />
-                      <a href="#!">
-                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                      </a>
-                    </div>
-                  
-                    <div class="card-body">
-                      <h5 class="card-title">Sunny Weather</h5>
-                      <p class="card-text">
-                        Embrace the sunshine with our vibrant collection of summer wear. From breezy dresses to stylish shorts, discover the perfect outfits to keep you cool and fashionable under the warm sun.</p>
-                  
-                      <button type="button" class="btn btn-primary">Explore</button>
-                    </div>
-                  </div>
-                  <div class="card text-center border border-primary shadow-0 ">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                      <img th:src="@{/images/rainy_picture.jpg}" class="img-fluid" />
-                      <a href="#!">
-                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                      </a>
-                    </div>
-                  
-                    <div class="card-body">
-                      <h5 class="card-title">Rainy Weather</h5>
-                      <p class="card-text">
-                        Stay dry and stylish during rainy days. Explore our waterproof jackets, colorful umbrellas, and trendy rain boots to make a splash while staying protected from the showers.
-                      </p>
-                  
-                      <a th:href="@{/getTypes/heavyRain}"><button type="button" class="btn btn-primary">Explore</button></a>
-                    </div>
-                  </div> <div class="card text-center border border-primary shadow-0 ">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                      <img th:src="@{/images/snow_picture.jpg}" class="img-fluid" />
-                      <a href="#!">
-                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                      </a>
-                    </div>
-                  
-                    <div class="card-body">
-                      <h5 class="card-title">Heavy Snow weather</h5>
-                      <p class="card-text">
-                        Embrace the winter wonderland with our cozy collection designed for heavy snow days. From insulated jackets to thermal layers and waterproof boots.
-                      </p>
-                  
-                      <a th:href="@{/getTypes/HeavySnow}" ><button type="button" class="btn btn-primary">Explore</button></a>
-                    </div>
-                  </div>
-                  <!-- <div class="card">
+  </div>
+  <hr>
+  <br><!-- comment -->
+  <!--Section 1: Featured Products-->
+  <div class="container">
+    <div class="row ">
+      <div col="col-md-12 offset-md-3 ">
+        <h2 class="text-center sectionHeading">Featured Products</h2>
+        <div class="productCards">
+          <div class="card text-center border border-primary shadow-0 ">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img th:src="@{/images/2.jpg}" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+              </a>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Sunny Weather</h5>
+              <p class="card-text">
+                Embrace the sunshine with our vibrant collection of summer wear. From breezy dresses to stylish shorts,
+                discover the perfect outfits to keep you cool and fashionable under the warm sun.</p>
+
+              <button type="button" class="btn btn-primary">Explore</button>
+            </div>
+          </div>
+          <div class="card text-center border border-primary shadow-0 ">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img th:src="@{/images/rainy_picture.jpg}" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+              </a>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Rainy Weather</h5>
+              <p class="card-text">
+                Stay dry and stylish during rainy days. Explore our waterproof jackets, colorful umbrellas, and trendy
+                rain boots to make a splash while staying protected from the showers.
+              </p>
+
+              <a th:href="@{/getTypes/heavyRain}"><button type="button" class="btn btn-primary">Explore</button></a>
+            </div>
+          </div>
+          <div class="card text-center border border-primary shadow-0 ">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img th:src="@{/images/snow_picture.jpg}" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+              </a>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Heavy Snow weather</h5>
+              <p class="card-text">
+                Embrace the winter wonderland with our cozy collection designed for heavy snow days. From insulated
+                jackets to thermal layers and waterproof boots.
+              </p>
+
+              <a th:href="@{/getTypes/HeavySnow}"><button type="button" class="btn btn-primary">Explore</button></a>
+            </div>
+          </div>
+          <!-- <div class="card">
                     <img th:src="@{/images/2.jpg}" class="card-img-top" alt="Fissure in Sandstone"/>
                     <div class="card-body">
                       <h5 class="card-title">Sunny Weather</h5>
@@ -154,7 +160,7 @@
                       <a th:href="@{/getTypes/sunny_hot}" class="btn btn-primary" data-mdb-ripple-init>Explore</a>
                     </div>
                   </div> -->
-                    <!-- <div class="card">
+          <!-- <div class="card">
                         <div class="card-body">
                             <img class="card-image" th:src="@{/images/2.jpg}" />
                             <div class="card-text">
@@ -174,7 +180,7 @@
 
                         </div>
                     </div> -->
-                    <!-- <div class="card">
+          <!-- <div class="card">
                         <div class="card-body">
                             <img class="card-image" th:src="@{/images/rainy_picture.jpg}" />
                             <div class="card-text">
@@ -211,138 +217,208 @@
                     </div>
 
                 </div> -->
-                
-            </div>
-            <p class="text-center" style="    font-size: 14px;
+
+        </div>
+        <p class="text-center" style="    font-size: 14px;
             margin-top: 31px;
             color: #041e3a;
                    ">EXPLORE MORE ON COLLECTIONS </p>
-                <hr>
-        </div>
+        <hr>
+      </div>
     </div>
 
     <!--         Section 2: New Arrivals
         
-    -->  
+    -->
+  </div>
+
+
+
+<div class="arrivals-container">
+<div class="new-arrivals">
+  <h1>New Arrivals</h1>
+  <p>Explore our new arrivals , you might like them !</p>
+  <div class="item-grid">
+    <div class="item-box">
+      <img th:src="@{/images/45.jpg}" alt="Image 1">
+      <h3>Polo Tshirt</h3>
+      <p>Solid Tee - No Logo. No Print.
+        Fabric Collar
+        220 GSM Supima Polo.</p>
     </div>
+    <div class="item-box">
+      <img th:src="@{/images/89.jpg}" alt="Image 1">
+      <h3>1pc men scarf brown striped tassel shawl</h3>
+      <p>1pc men scarf brown striped tassel shawl Warm wrap muffler hijab scarves for use daily autumn Color:	Coffee Brown</p>
+    </div>
+    <div class="item-box">
+      <img th:src="@{/images/34.jpg}" alt="Image 2">
+      <h3>Loose Fit Sweatshirt</h3>
+      <p>Top in lightweight sweatshirt fabric made from a cotton blend with a soft brushed inside
 
-    <div class="main-new-container">
-        <div class="container   new-arrival-container">
-            <div class="row justify-content-center">
-                <div col="col-md-12 offset-md-0 content">
-    
-                     <h2 class="text-center sectionHeading">NEW ARRIVALS </h2>
-                    <p class="text-center" style="margin-top:18px;
-                       color:black
-                       " >Explore our new arrivals According to Your Destination</p>
-     
-    
-    
-    
-                    <div class="newArrivalsContent">
-                       
-                        <div  class="top-Arrival-Section">
-                            <h2>Introducing Exciting New Arrivals in Forecasting</h2>
-                            <div style="text-align: center;margin-top:40px">
-                                <button class="btn">Explore</button>
-                            </div>
-                      
-                            
-                        </div>
-                        <!-- <div class="newArrival-image" >
-                            <img  th:src="@{/images/newArrival.jpg}" />
-                         
-                       </div> -->
-    
-                    </div>
-                   
-                    <hr>
-    
-                </div>
-            </div>
-         
-        </div>
-        <video loop autoplay muted  class="back-video">
-            <!-- Provide the source of the video using Thymeleaf's URL syntax -->
-            <source th:src="@{/videos/video1.mp4}" type="video/mp4">
-    
-        </video>      
-    </div>     
+      </p>
+    </div>
+    <!-- Add more item boxes here -->
+  </div>
+</div>
+</div>
+  
+  <!-- <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="false">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
    
-      
-    <!-- <br>
-    <div class="containerfooter">
-        <div class="policies">
-            <h2>Policies</h2>
-            <p class="footer-p">Terms and Conditions</p>
-            <p class="footer-p">Delivery Shipping</p>
-            <p class="footer-p">Return Policy</p>
-            <p class="footer-p">Privacy Policy</p>
-            <p class="footer-p">Frequently Asked Questions</p>
+    <div class="carousel-inner">
+      <div>
+        <h1>New Arrivals</h1>
+        <p>Explore our new Arrivals,  you might get something New !</p>
+      </div>
+      <div class="carousel-item active">
+        <div class="card-group">
+          <div class="card arrival-card">
+            <img th:src="@{/images/5.jpg}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div class="card arrival-card">
+            <img  th:src="@{/images/23.jpg}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div class="card arrival-card">
+            <img  th:src="@{/images/55.jpg}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This card has even longer content than the first to show that equal height action.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
         </div>
-        <div class="policies">
-            <h2>Let us help you</h2>
-            <p class="footer-p">Contact Us </p>
+      </div>
+
+      <div class="carousel-item">
+        <div class="card-group">
+          <div class="card arrival-card">
+            <img  th:src="@{/images/109.jpg}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div class="card arrival-card">
+            <img th:src="@{/images/45.jpg}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div class="card arrival-card">
+            <img  th:src="@{/images/7.jpg}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This card has even longer content than the first to show that equal height action.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
         </div>
-        <div class="policies">
-            <h2>About Us</h2>
-            <p class="footer-p">Our Story</p>
+
+      </div>
+      <div class="carousel-item">
+        <div class="card-group">
+          <div class="card arrival-card">
+            <img th:src="@{/images/8.jpg}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div class="card arrival-card">
+            <img  th:src="@{/images/67.jpg}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div class="card arrival-card">
+            <img  th:src="@{/images/74.jpg}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This card has even longer content than the first to show that equal height action.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
         </div>
-        <div class="policies">
-            <h2>Follow us</h2>
-            <div class="icons">
-                Add your social media icons here -->
-                <!-- <img  th:src="@{/images/instagram.png}" alt="Instagram">
-                <img  th:src="@{/images/facebook.png}" alt="Facebook">
-                <img  th:src="@{/images/youtube.png}" alt="Instagram">
-                <img  th:src="@{/images/twitter.png}" alt="Twitter">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> -->
 
-            </div> -->
 
 
-        <!-- </div>
 
-    </div> -->
-    
 
-    <!-- Footer -->
-<footer class="bg-body-tertiary text-center mt-5" style="background-color: #f3f3f3;    font-family: RL_DroidKufi, LeJeuneDeck-Regular, Times New Roman, Times, serif;">
+
+  <!-- Footer -->
+  <footer class="bg-body-tertiary text-center mt-5"
+    style="background-color: #f3f3f3;    font-family: RL_DroidKufi, LeJeuneDeck-Regular, Times New Roman, Times, serif;">
     <!-- Grid container -->
     <div class="container p-4">
       <!-- Section: Social media -->
       <section class="mb-4">
         <!-- Facebook -->
-        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-facebook-f"></i
-        ></a>
-  
+        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+            class="fab fa-facebook-f"></i></a>
+
         <!-- Twitter -->
-        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-twitter"></i
-        ></a>
-  
+        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+            class="fab fa-twitter"></i></a>
+
         <!-- Google -->
-        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-google"></i
-        ></a>
-  
+        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+            class="fab fa-google"></i></a>
+
         <!-- Instagram -->
-        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-instagram"></i
-        ></a>
-  
+        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+            class="fab fa-instagram"></i></a>
+
         <!-- Linkedin -->
-        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-linkedin-in"></i
-        ></a>
-  
+        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+            class="fab fa-linkedin-in"></i></a>
+
         <!-- Github -->
-        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-github"></i
-        ></a>
+        <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+            class="fab fa-github"></i></a>
       </section>
       <!-- Section: Social media -->
-  
+
       <!-- Section: Form -->
       <section class="">
         <form action="">
@@ -355,17 +431,17 @@
               </p>
             </div>
             <!--Grid column-->
-  
+
             <!--Grid column-->
             <div class="col-md-5 col-12">
               <!-- Email input -->
               <div data-mdb-input-init class="form-outline mb-4">
-                <input type="email" id="form5Example24" class="form-control" placeholder="Email"/>
+                <input type="email" id="form5Example24" class="form-control" placeholder="Email" />
                 <!-- <label class="form-label" for="form5Example24">Email address</label> -->
               </div>
             </div>
             <!--Grid column-->
-  
+
             <!--Grid column-->
             <div class="col-auto">
               <!-- Submit button -->
@@ -379,15 +455,18 @@
         </form>
       </section>
       <!-- Section: Form -->
-  
+
       <!-- Section: Text -->
       <section class="mb-4">
         <p>
-            Welcome to our exclusive world of weather-inspired fashion! At ForecastFits, we believe that every weather condition is an opportunity to express your unique style. Whether it's embracing the warmth of summer, dancing in the rain, or cozying up during the winter chill, we've got you covered with the perfect ensemble for every forecast.
+          Welcome to our exclusive world of weather-inspired fashion! At ForecastFits, we believe that every weather
+          condition is an opportunity to express your unique style. Whether it's embracing the warmth of summer, dancing
+          in the rain, or cozying up during the winter chill, we've got you covered with the perfect ensemble for every
+          forecast.
         </p>
       </section>
       <!-- Section: Text -->
-  
+
       <!-- Section: Links -->
       <section class="">
         <!--Grid row-->
@@ -395,7 +474,7 @@
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
             <h5 class="text-uppercase">Policies</h5>
-        
+
             <ul class="list-unstyled mb-0">
               <li>
                 <a class="text-body" href="#!">Terms and Conditions</a>
@@ -415,34 +494,34 @@
             </ul>
           </div>
           <!--Grid column-->
-  
+
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
             <h5 class="text-uppercase">Let us help you</h5>
-  
+
             <ul class="list-unstyled mb-0">
               <li>
                 <a class="text-body" href="#!">Contact Us</a>
               </li>
-             
+
             </ul>
           </div>
           <!--Grid column-->
-  
+
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
             <h5 class="text-uppercase">About Us</h5>
-  
+
             <ul class="list-unstyled mb-0">
               <li>
                 <a class="text-body" href="#!">Our Story</a>
               </li>
-             
+
             </ul>
           </div>
           <!--Grid column-->
-  
-      
+
+
           <!--Grid column-->
         </div>
         <!--Grid row-->
@@ -450,7 +529,7 @@
       <!-- Section: Links -->
     </div>
     <!-- Grid container -->
-  
+
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
       © 2020 Copyright:
@@ -461,4 +540,5 @@
   <!-- Footer -->
 
 </body>
+
 </html>
