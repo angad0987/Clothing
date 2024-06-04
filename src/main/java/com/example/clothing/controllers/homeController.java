@@ -122,6 +122,8 @@ public class homeController {
 
     @RequestMapping("/ChooseDestination")
     public String destinationMethod(Model m, HttpServletRequest request) {
+        System.out.println("Base url is :--------------------------------------------------->" + baseUrl);
+        m.addAttribute("baseUrl", baseUrl);
         m.addAttribute("username", MyFunctions.get_User_Info_From_Cookies(request, "username"));
         return "Destination";
     }
