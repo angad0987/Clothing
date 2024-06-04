@@ -378,7 +378,11 @@ public class homeController {
             System.out.println("Exception is : " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
         }
-        return ResponseEntity.status(HttpStatus.OK).body("User created successfully");
+        String baseUrlUpdated = baseUrl;
+        if (baseUrl.equals("/Clothing")) {
+            baseUrlUpdated = "Clothing";
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(baseUrlUpdated);
     }
 
     @RequestMapping("/collection")

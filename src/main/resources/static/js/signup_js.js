@@ -59,9 +59,18 @@ function ValidateForm() {
     }
     if(response.status === 200) {
         document.getElementById('overlay').style.display='none';
-        alert('User signed up successfully');
-        window.location.href = '/Clothing/';
-    }
+        response.text()
+        .then(function (baseUrl) {
+            var baseUrlUpdated = '';
+            if (baseUrl === 'Clothing') {
+                baseUrlUpdated = '/Clothing';
+            }
+            else {
+                baseUrlUpdated = baseUrl;
+            }
+            window.location.href = baseUrlUpdated + '/';
+        });
+}
     else{
         // alert('Error is : '+response.text());
 
