@@ -44,7 +44,7 @@ async function submitSignUpForm() {
                     else {
                         baseUrlUpdated = baseUrl;
                     }
-                    console.log(baseUrlUpdated);
+                    // console.log(baseUrlUpdated);
                     alert('Password changed successfully');
                     document.getElementById('overlay').style.display = 'none';
                     window.location.href = baseUrlUpdated + '/';
