@@ -34,10 +34,24 @@ async function submitSignUpForm() {
             body:JSON.stringify(jsonData)
         });
 
-        if(response.status===200){
-            alert('Password changed successfully');
-            document.getElementById('overlay').style.display='none';
-            window.location.href='/Clothing/';
+        if (response.status === 200) {
+            response.text()
+                .then(function (baseUrl) {
+                    var baseUrlUpdated = '';
+                    if (baseUrl === 'Clothing') {
+                        baseUrlUpdated = '/Clothing';
+                    }
+                    else {
+                        baseUrlUpdated = baseUrl;
+                    }
+                    console.log(baseUrlUpdated);
+                    alert('Password changed successfully');
+                    document.getElementById('overlay').style.display = 'none';
+                    window.location.href = baseUrlUpdated + '/';
+                })
+                .catch(function (error) {
+                    console.error('Error extracting response text:', error);
+                });
         }
         if(response.status===500){
             alert("An error occurred while updating your password");

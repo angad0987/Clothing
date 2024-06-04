@@ -887,8 +887,12 @@ public class homeController {
         }
         boolean b = this.itemService.changePassword(passwordDTO.getUserid(), passwordDTO.getNewPassword());
         if (b) {
+            String baseUrlUpdated = baseUrl;
+            if (baseUrl.equals("/Clothing")) {
+                baseUrlUpdated = "Clothing";
+            }
             // password changed successfully
-            return ResponseEntity.status(HttpStatus.OK).body("Password changed successfully");
+            return ResponseEntity.status(HttpStatus.OK).body(baseUrlUpdated);
         } else {
             // password not changed successfully
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Password not changed successfully");
