@@ -519,6 +519,9 @@ font-size: 12px;
     transition: transform 0.3s ease-in-out;
 }
 @media(max-width:540px){
+    .itemType h1{
+        font-size: 19px;
+    }
     .btn-find button {
         font-size: 0.4rem;
         font-weight: bold;
@@ -573,7 +576,7 @@ font-size: 12px;
     }
     .productCards{
         gap:0!Important;
-        justify-content: space-around!Important;
+        justify-content: space-evenly!Important;
         /* margin-bottom: 176px; */
     }
     .card-body{
@@ -581,7 +584,7 @@ font-size: 12px;
         padding-top:14px;
     }
     .card-title {
-        font-size: 0.5rem!Important;
+        font-size: 0.8rem ! Important;
         font-weight: bold;
         color: #041e3a;
     }
@@ -593,8 +596,8 @@ font-size: 12px;
         height:27px;
     }
     .card-image {
-        max-width: 76px;
-        max-height: 89px;
+        max-width: 110px;
+        max-height: 140px;
         object-fit: scale-down;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -614,9 +617,32 @@ font-size: 12px;
 
 }
 @media(max-width:420px){
+    .color-filter.active {
+        animation: slideDown 0.5s ease-in-out forwards;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 3px;
+    }
+    .filter-container {
+        margin-left: 4px ! Important;
+        background-color: aliceblue ! Important;
+        max-width: 47% ! Important;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: s; */
+        gap: 0rem;
+        border-radius: 17px ! Important;
+        align-items: left;
+        padding: 12px 4px;
+    }
+    .productCards .card{
+        width:50%;
+    }
     .color-filter {
         width: 5rem;
-        display: flex;
+        display: none;
         flex-direction: row;
         flex-wrap: wrap;
         /* flex-direction: row; */
@@ -626,23 +652,12 @@ font-size: 12px;
         font-size: 9px;
     }
     .card-initials {
-        font-size: 7px ! Important;
+        font-size: 11px ! Important;
     }
     .card-color {
-        font-size: 0.5rem ! Important;
+        font-size: 0.7rem ! Important;
     }
-    .filter-container {
-        margin-left: 4px ! Important;
-        background-color: aliceblue ! Important;
-        max-width: 30% ! Important;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 4rem;
-        border-radius: 17px ! Important;
-        align-items: left;
-        padding: 12px 4px;
-    }
+  
     .filter-type h1 {
         font-family: 'Mate SC', serif;
         font-size: 0.6rem!Important;

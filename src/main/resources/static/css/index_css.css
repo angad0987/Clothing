@@ -331,7 +331,7 @@ body{
             background-repeat: no-repeat;
         } */
         .carousel-background {
-            margin-top: -8px;
+            margin-top: 2px;
             display: block;
             /* background-image: url(/Clothing/images/newBack.jpg); */
             background-size: cover;
