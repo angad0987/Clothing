@@ -21,7 +21,7 @@ public interface WishlistRepository extends CrudRepository<Wishlist, Integer> {
 
         @Query(value = "SELECT id,item_name,item_price,SUM(quantity),category,item_description,item_id,user_id FROM wishlist WHERE user_id=:userId  "
                         +
-                        "GROUP BY item_id", nativeQuery = true)
+                        "GROUP BY id, item_name, item_price, category, item_description, item_id, user_id", nativeQuery = true)
         public List<Object[]> getWishlistItems(@Param("userId") String user_id);
 
         @Query(value = "SELECT * " +

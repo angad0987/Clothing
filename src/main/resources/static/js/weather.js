@@ -173,7 +173,7 @@ function Weather() {
                     var baseUrl = document.getElementById('baseUrl').getAttribute('data-itemid');
                     if (bodyElement) {
                       console.log(baseUrl);
-                      bodyElement.style.backgroundImage = 'url(' + baseUrl + '/images/bluewater.jpg)';
+                      bodyElement.style.backgroundImage = 'url(' + baseUrl + '/images/calmsea.jpg)';
                     }
                  
                 });
