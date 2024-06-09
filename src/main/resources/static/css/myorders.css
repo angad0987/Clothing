@@ -118,3 +118,6 @@
     .card-stepper {
     z-index: 0
     }
+    .cartFooter{
+        bottom:-383px!Important;
+    }

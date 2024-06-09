@@ -65,6 +65,9 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class homeController {
+    @Value("${spring.security.oauth2.client.registration.google.redirect-uri}")
+    private String googleAuthorizationUri;
+
     @Value("${baseUrl}")
     private String baseUrl;
     @Autowired
@@ -645,6 +648,8 @@ public class homeController {
 
     @RequestMapping("/login")
     public String getLoginPage(HttpServletRequest request, Model m) {
+        System.out.println(googleAuthorizationUri);
+        m.addAttribute("oauth2AuthorizationUri", googleAuthorizationUri);
         m.addAttribute("username", MyFunctions.get_User_Info_From_Cookies(request, "username"));
         return "login";
     }

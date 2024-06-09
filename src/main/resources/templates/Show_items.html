@@ -245,12 +245,6 @@
 
 
         <div th:if="${items}!= null" class="searched-items-container">
-
-
-
-
-
-
             <div class="productCards">
                 <div th:if="${#lists.isEmpty(items)}">
                     <!-- Handle case when itemslist is empty -->
@@ -260,13 +254,13 @@
                     th:data-itemid="${item.id}">
             
                         <div class="card-body">
-                          
+                            <a th:href="@{'/singleItem/'+${item.id}}">
                             <div class="card-image-container">
-                                <!-- <a th:href="@{'/singleItem/'+${item.id}}"> -->
+                          
                                 <img class="card-image" th:src="@{'/images/'+${item.id}+'.jpg'}" />
-                            <!-- </a> -->
+                          
                             </div> 
-
+                        </a>
 
 
                             <div class="new_heart_container">
@@ -328,12 +322,12 @@
                         <p>No items found.</p>
                     </div>
                     <div th:each="item : ${itemslist}" class="card" th:data-itemid="${item.id}">
-                        <!-- <a th:href="@{'/singleItem/'+${item.id}}"> -->
+                 
                             <div class="card-body">
-
+                                <a th:href="@{'/singleItem/'+${item.id}}">
                                 <div class="card-image-container">
                                     <img class="card-image" th:src="@{'/images/'+${item.id}+'.jpg'}" />
-                                </div>
+                                </div></a>
 
                                 <div class="new_heart_container">
                                     <div class="card-text">

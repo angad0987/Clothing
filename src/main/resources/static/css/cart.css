@@ -591,3 +591,6 @@ body{
 .checkout-link{
     text-align: center;
 }
+.cartFooter{
+    bottom:-383px!Important;
+}
