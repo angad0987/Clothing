@@ -168,4 +168,13 @@ function Weather() {
     
     
     
+                document.addEventListener('DOMContentLoaded', function(){
+                    var bodyElement = document.body;
+                    var baseUrl = document.getElementById('baseUrl').getAttribute('data-itemid');
+                    if (bodyElement) {
+                      console.log(baseUrl);
+                      bodyElement.style.backgroundImage = 'url(' + baseUrl + '/images/bluewater.jpg)';
+                    }
+                 
+                });
     
