@@ -128,6 +128,11 @@ public class homeController {
         return "Destination";
     }
 
+    @GetMapping("/about")
+    public String getAboutPage() {
+        return "AboutUs";
+    }
+
     @RequestMapping("/getPage")
     public String getPage(@RequestParam("conditionCode") String conditionCode, @RequestParam("gender") String gender,
             @RequestParam("temp") String temperature, Model m, HttpServletRequest request) {

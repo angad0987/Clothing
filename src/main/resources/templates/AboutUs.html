@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <link rel="stylesheet" th:href="@{/css/aboutus.css}">
+    <script type="text/javascript" th:src="@{/js/aboutus.js}"></script>
+    <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+
+    <th:block th:include="base::headContent"></th:block>
+</head>
+<body>
+    
+    <div class="container">
+        <header class="header">
+            <h1>About Us</h1>
+            <h2>Welcome to ForecastFits!</h2>
+            <p>Your One-Stop Destination for Weather-Ready Fashion</p>
+        </header>
+        
+        <section class="section">
+            <h3>Our Story</h3>
+            <p>ForecastFits was founded with a simple idea: to create clothing that not only looks great but also performs exceptionally well in any weather condition. Our journey began in [Year], when a group of outdoor enthusiasts and fashion designers came together with a common vision. We were tired of having to choose between style and practicality, so we decided to combine the two.</p>
+        </section>
+        
+        <section class="section">
+            <h3>Our Mission</h3>
+            <p>At ForecastFits, our mission is to provide high-quality, weather-appropriate clothing that keeps you comfortable and stylish no matter what Mother Nature throws your way. Whether it’s a rainy day, a snowy adventure, or a sunny outing, we’ve got you covered.</p>
+        </section>
+        
+        <section class="section">
+            <h3>Why Choose ForecastFits?</h3>
+            <ul>
+                <li><strong>Innovative Designs:</strong> Our products are designed by experts who understand the nuances of different weather conditions. Every piece is tested to ensure it meets our high standards.</li>
+                <li><strong>Premium Quality:</strong> We use only the best materials to ensure durability, comfort, and functionality.</li>
+                <li><strong>Sustainable Practices:</strong> We are committed to sustainability and use eco-friendly materials and processes wherever possible.</li>
+                <li><strong>Customer Satisfaction:</strong> Your satisfaction is our top priority. We offer a 100% satisfaction guarantee on all our products.</li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h3>Meet the Team</h3>
+            <img src="path-to-team-photo.jpg" alt="Team Photo">
+            <p>Our diverse team is made up of passionate individuals who bring their unique skills and perspectives to the table. From designers to customer service representatives, we all share a common goal: to deliver the best possible products and experience to our customers.</p>
+        </section>
+        
+        <section class="section">
+            <h3>Testimonials</h3>
+            <p><strong>Jane D.</strong><br>"WeatherWear's rain jackets have been a lifesaver during my travels. Stylish, comfortable, and completely waterproof!"</p>
+            <p><strong>John S.</strong><br>"The winter collection is fantastic. I stay warm without compromising on style. Highly recommend!"</p>
+        </section>
+        
+        <section class="section">
+            <h3>Join Us on Our Journey</h3>
+            <p>We believe in building a community around our brand. Follow us on social media, sign up for our newsletter, and be part of the WeatherWear family. Share your weather wear stories with us using #WeatherWearStories.</p>
+        </section>
+<!--         
+        <section class="section">
+            <h3>Contact Us</h3>
+            <p>Have questions, comments, or feedback? We’d love to hear from you!</p>
+            <p><strong>Email:</strong> support@weatherwear.com</p>
+            <p><strong>Phone:</strong> (123) 456-7890</p>
+            <p><strong>Address:</strong> 123 WeatherWear Lane, Fashion City, CA 12345</p>
+            <p>Follow us on social media:</p>
+            <p>
+                <a href="#">Facebook</a> |
+                <a href="#">Instagram</a> |
+                <a href="#">Twitter</a>
+            </p>
+        </section>
+        
+        <footer class="footer">
+            <p>© 2024 WeatherWear. All Rights Reserved.</p>
+        </footer> -->
+        
+    </div>
+    <!-- Footer -->
+  <footer class="bg-body-tertiary text-center mt-5"
+  style="background-color: #f3f3f3;    font-family: RL_DroidKufi, LeJeuneDeck-Regular, Times New Roman, Times, serif;">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+          class="fab fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+          class="fab fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+          class="fab fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+          class="fab fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+          class="fab fa-linkedin-in"></i></a>
+
+      <!-- Github -->
+      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+          class="fab fa-github"></i></a>
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="email" id="form5Example24" class="form-control" placeholder="Email" />
+              <!-- <label class="form-label" for="form5Example24">Email address</label> -->
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button data-mdb-ripple-init type="submit" class="btn btn-outline mb-4">
+              Subscribe
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+        Welcome to our exclusive world of weather-inspired fashion! At ForecastFits, we believe that every weather
+        condition is an opportunity to express your unique style. Whether it's embracing the warmth of summer, dancing
+        in the rain, or cozying up during the winter chill, we've got you covered with the perfect ensemble for every
+        forecast.
+      </p>
+    </section>
+    <!-- Section: Text -->
+
+    <!-- Section: Links -->
+    <section class="">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Policies</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a class="text-body" href="#!">Terms and Conditions</a>
+            </li>
+            <li>
+              <a class="text-body" href="#!">Delivery Shipping</a>
+            </li>
+            <li>
+              <a class="text-body" href="#!">Return Policy</a>
+            </li>
+            <li>
+              <a class="text-body" href="#!">Privacy Policy</a>
+            </li>
+            <li>
+              <a class="text-body" href="#!">Frequently Asked Questions</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Let us help you</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a class="text-body" href="#!">Contact Us</a>
+            </li>
+
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">About Us</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a class="text-body" href="#!">Our Story</a>
+            </li>
+
+          </ul>
+        </div>
+        <!--Grid column-->
+
+
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2020 Copyright:
+    <a class="text-reset fw-bold" href="#">ForecastFits.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+</body>
+</html>
