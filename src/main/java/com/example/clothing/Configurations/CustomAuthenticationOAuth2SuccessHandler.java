@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,7 +28,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 public class CustomAuthenticationOAuth2SuccessHandler implements AuthenticationSuccessHandler {
-
+    @Value("${baseUrl}")
+    private String baseUrl;
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -91,7 +93,7 @@ public class CustomAuthenticationOAuth2SuccessHandler implements AuthenticationS
             // 1 hour)
             response.addCookie(cookie2);
 
-            response.sendRedirect("/Clothing/");
+            response.sendRedirect(baseUrl + "/");
         }
 
     }

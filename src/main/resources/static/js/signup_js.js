@@ -5,18 +5,17 @@ function limitMobileNumber(input, maxlength) {
 }
 function ValidateForm() {
 
-    //client side validation
-    var pass1 = document.getElementById('pass1').value;
-    var pass2 = document.getElementById('pass2').value;
-    if (pass1 !== pass2) {
-        alert('password doesnot match');
-        return false;
-    }
-    submitSignUpForm();
-    return false;
+  
     
 }
  async function submitSignUpForm() {
+  //client side validation
+  var pass1 = document.getElementById('pass1').value;
+  var pass2 = document.getElementById('pass2').value;
+  if (pass1 !== pass2) {
+      alert('password doesnot match');
+      return false;
+  }
 
     console.log('I am in submit ginup mehtod');
     document.getElementById('overlay').style.display='flex';
@@ -185,6 +184,8 @@ function enableVerifyButton(){
             verifyContainer.appendChild(otpInput);
             verifyContainer.appendChild(resendButton);
 
+            enableFormFields();
+
     }
     else{
         const responseBody = await response.text();
@@ -192,8 +193,43 @@ function enableVerifyButton(){
       document.getElementById('overlay').style.display='none';
     }
 }
+function enableFormFields(){
+    const fields = [
+        'mobileno', 'pass1', 'pass2', 'gender', 
+        'houseno', 'street_name', 'pincode', 
+        'city', 'state', 'country'
+    ];
+    
+    fields.forEach(field => {
+        document.getElementById(field).removeAttribute('readOnly');
+    });
+}
 function hideSidebar(){
     var sidebar=document.getElementById('sidebar');
     sidebar.classList.remove('active');
 
 }
+document.addEventListener('DOMContentLoaded', function () {
+    var input = document.querySelector("#mobileno");
+    var iti = window.intlTelInput(input, {
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+            fetch('https://ipinfo.io/json')
+                .then(response => response.json())
+                .then(data => callback(data.country))
+                .catch(() => callback('us'));
+        },
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js" // for formatting/validation etc
+    });
+
+    var form = document.getElementById('signupForm');
+    form.addEventListener('submit', function(event) {
+        if (!iti.isValidNumber()) {
+            event.preventDefault();
+            alert('Please enter a valid mobile number.');
+        }
+        else{
+            submitSignUpForm() ;
+        }
+    });
+});
