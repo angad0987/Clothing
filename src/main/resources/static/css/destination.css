@@ -168,7 +168,10 @@ body {
 }
 
 @media(max-width:540px) {
-
+    .destination-card{
+        width:90%;
+        height: auto !Important;
+    }
     .icons img {
         width: 18px;
         height: 16px;
@@ -233,7 +236,7 @@ body {
     }
 
     .card {
-        height: 62vh !Important;
+        height: auto !Important;
     }
 
     .humidity {
@@ -267,13 +270,13 @@ body {
 
 .navbar {
     margin-top: -16px !Important;
-    background:rgba(0,0,0,0.5) !Important;
+    background-color:#ffffff;
 }
 .navbar-brand{
-    color:white!Important;
+    color:black!Important;
 }
 .nav-link{
-    color:white!Important;
+    color:black!Important;
 }
 
 

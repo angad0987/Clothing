@@ -226,7 +226,7 @@ public class homeController {
         m.addAttribute("itemsByType", map);
         // List<ClothingItem> list1 = map.get("Tshirts");
         // System.out.println("NO of tshirts are : " + list1.size());
-        m.addAttribute("username", MyFunctions.get_User_Info_From_Cookies(request, "username"));
+        m.addAttribute("userid", MyFunctions.get_User_Info_From_Cookies(request, "userid"));
         return "Show_items";
     }
 
@@ -406,6 +406,8 @@ public class homeController {
 
     @RequestMapping("/CheckWeather")
     public String getWeatherPage(HttpServletRequest request, Model m) {
+        System.out.println("Base url is :--------------------------------------------------->" + baseUrl);
+        m.addAttribute("baseUrl", baseUrl);
         m.addAttribute("username", MyFunctions.get_User_Info_From_Cookies(request, "username"));
         return "Weather";
     }
@@ -487,13 +489,13 @@ public class homeController {
         // wishlist items of user id
         List<Wishlist> list = itemService.getWishlistItems(user_id);
 
-        // types of items in the wishlist
+        // types of related items in the wishlist
         List<Wishlist> relatedItems = itemService.getWishlistItemsTypes(user_id);
 
         int size = list.size();
         int size1 = relatedItems.size();
         System.out.println("No of related products" + size1);
-        // m.addAttribute("Wishlist", list);
+        m.addAttribute("Wishlist", list);
         m.addAttribute("size", size);
         m.addAttribute("relatedItems", relatedItems);
         return "Wishlist";
@@ -514,7 +516,7 @@ public class homeController {
             @RequestParam("user_id") String userId) {
 
         Wishlist wishlistItem = new Wishlist();
-
+        System.out.println("user id in on adding item to wishlist : " + userId);
         // eh itemprice te userid set ni ho rhian c fr apa ehna nu explicitly set kita
         int itemid1 = Integer.parseInt(itemid);
         float itemprice = Float.parseFloat(itemPrice);
@@ -539,9 +541,9 @@ public class homeController {
     // @ResponseBody
     public ResponseEntity<List<Integer>> checkWishlist(@PathVariable("userid") String userid,
             HttpServletRequest request) {
-        System.out.println("I am in controller method " + userid);
+        System.out.println("I am in controller method-------- " + userid);
         List<Integer> list = itemService.getWishlistItemsIds(userid);
-        System.out.println(list.size());
+        System.out.println("Wishlist item sizes" + list.size());
         list.forEach(item -> System.out.println(item));
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

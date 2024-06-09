@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" th:href="@{/css/weather.css}">
+    <script type="text/javascript" th:src="@{/js/weather.js}"></script>
+    <script type="text/javascript" th:src="@{/js/base_js.js}"></script>
+
+    <th:block th:include="base::headContent"></th:block>
+</head>
+<body>
+    <table class="marquee-table" style="background-color:#001f3f;width:100%">
+        <tr height="30px" >
+            <td colspan="2"><marquee direction="Right" height="30px" onmouseover="this.stop()" onmouseout="this.start()"  style="color:white"><b>Welcome   to  Our Latest Collections </b></marquee></td>
+</tr>
+
+</table>
+<th:block th:include="navbar::navbar"></th:block>
+<div id="baseUrl" th:data-itemid="${baseUrl}"></div>
+
+<div class="weather-container">
+    <div id="weatherDetails" >
+        <div class="weather-details-inner">
+            <div class="weather-image">
+                <img  class="weather-icon" id="weatherIcon" th:src="@{/images/cloudy.png}" >
+            </div>
+            <div class="weather">
+
+
+                <h1 class="temperature" id="temp" style="color:#ffffff" ></h1>
+
+                <p class="city" id="city1"  style="color:#ffffff" ></p>
+                <p style="color:white;margin-bottom: 0" id="condition2"></p>
+                <div class="details">
+                    <div class="col-info">
+                        <img class="humidity" 
+                        th:src="@{/images/humidity1.png}" alt="alt"/>
+                        <div>
+                            <p class="info" id="humidityId" style="color:#ffffff"></p>
+                            <p class="info2" style="color:#ffffff">Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col-info">
+                        <img class="wind"        th:src="@{/images/wind1.png}" alt="alt"/>
+                        <div>
+                            <p class="info" id="windId" style="color:#ffffff"></p>
+                            <p class="info2" style="color:#ffffff">Wind speed</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class=" card-container">
+        <!--            <div class="row">
+                        <div class="col-md-6 offset-md-3">-->
+        <div class="card mx-auto mt-5" style="background:rgba(0,0,0,0.3)">
+            <div class="card-body">
+                <form action="#" method="GET" onsubmit="return Weather()" id="form">
+                    <div class="form-group">
+                        <div class="container input-cont" style="display: flex;justify-content: space-between">
+                            <input style="color:#fff" class="input-search"type="text" name="location" id="location1" placeholder="Search location" oninput="inputBased()" required   />
+
+                            <button class="search-button" type="submit"><img class="search-image" th:src="@{/images/searchmagnifierinterfacesymbol1_79893.png}" ></button>
+                            <hr>
+                        </div>
+                    </div>
+
+
+                </form>
+
+                <!--<hr>-->
+                <!--
+                                                <div class="container text-center">
+                                                    <button style="width:100%" type="button" onclick="submitForm()"  class="btn btn-explore">Explore Forecasting Fashion!</button>
+                                                </div>-->
+
+            </div>
+
+        </div>
+        <!--</div>-->
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

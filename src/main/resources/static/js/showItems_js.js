@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+    var userid=document.getElementById('userid').getAttribute('data-itemid');
+    checkWishlist(userid);
     // var filterContainer = document.querySelector(".filter-container");
     // var contentContainer = document.querySelector(".content-container");
 
@@ -121,6 +123,7 @@ function checkWishlist(userid) {
     xhr.onload = function () {
         if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
+            // console.log(response);
             var cards = document.querySelectorAll('.card');
             cards.forEach(function (card) {
                 var itemid = card.getAttribute('data-itemid');
@@ -153,6 +156,7 @@ function addToCart(itemid) {
 }
 function AddToWishList(itemid) {
     var userid = document.getElementById('userid').getAttribute('data-userid');
+    console.log('on adding in wishlist'+userid);
     if (userid !== null) {
         var wishlistIcon = document.getElementById('wishlist-icon' + itemid);
         wishlistIcon.style.transition = 'color 0.3s';
@@ -172,7 +176,7 @@ function AddToWishList(itemid) {
                 }
                 ;
             };
-            xhr.send('itemname=' + formData.get('itemname') + '&itemprice=' + formData.get('itemprice') + '&quantity=' + formData.get('quantity') + '&category=' + formData.get('category') + '&description=' + formData.get('description') + '&user_id=' + formData.get('user_id') + '&itemid=' + formData.get('itemid'));
+            xhr.send('itemname=' + formData.get('itemname') + '&itemprice=' + formData.get('itemprice') + '&quantity=' + formData.get('quantity') + '&category=' + formData.get('category') + '&description=' + formData.get('description') + '&user_id=' + userid + '&itemid=' + formData.get('itemid'));
             //                    if (wishlistIcon.classList.contains('fa-regular')) {
             //                        wishlistIcon.classList.replace('fa-regular', 'fa-solid');
             //                        wishlistIcon.style.color = '#FF0000';

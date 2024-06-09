@@ -207,7 +207,7 @@
     <div class="border-after-navbar">
 
     </div>
-    <div id="userid" th:data-userid="${#ctx.session.userid}"></div>
+    <div id="userid" th:data-userid="${userid}"></div>
     <div id="custom-alert" class="custom-alert">
         <span id="alert-message"></span>
     </div>
@@ -258,12 +258,14 @@
                 </div>
                 <div th:unless="${#lists.isEmpty(items)}" th:each="item : ${items}" class="card"
                     th:data-itemid="${item.id}">
-                    <a th:href="@{'/singleItem/'+${item.id}}">
+            
                         <div class="card-body">
-
+                          
                             <div class="card-image-container">
+                                <!-- <a th:href="@{'/singleItem/'+${item.id}}"> -->
                                 <img class="card-image" th:src="@{'/images/'+${item.id}+'.jpg'}" />
-                            </div>
+                            <!-- </a> -->
+                            </div> 
 
 
 
@@ -285,7 +287,7 @@
                                         <input type="hidden" th:value="1" name="quantity" />
                                         <input type="hidden" th:value="${item.type}" name="category" />
                                         <input type="hidden" th:value="${item.description}" name="description" />
-                                        <input type="hidden" th:value="${#ctx.session.userid}" name="user_id" />
+                                        <input type="hidden" th:value="${userid}" name="user_id" />
 
                                         <i th:id="'wishlist-icon'+${item.id}" class="fa-regular fa-heart "
                                             th:onclick="'AddToWishList(' + ${item.id} + ')'"
@@ -303,7 +305,7 @@
 
                         </div>
 
-                    </a>
+                   
                 </div>
             </div>
 
@@ -326,7 +328,7 @@
                         <p>No items found.</p>
                     </div>
                     <div th:each="item : ${itemslist}" class="card" th:data-itemid="${item.id}">
-                        <a th:href="@{'/singleItem/'+${item.id}}">
+                        <!-- <a th:href="@{'/singleItem/'+${item.id}}"> -->
                             <div class="card-body">
 
                                 <div class="card-image-container">
@@ -374,7 +376,7 @@
 
                             </div>
 
-                        </a>
+                        <!-- </a> -->
                     </div>
                 </div>
                 <div class="explore-more-div"><a href="#">Explore more !</a></div>

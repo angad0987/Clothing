@@ -196,7 +196,12 @@ body{
 
 }
 @media(max-width:540px){
+    .productCards .card{
+        width: 40%!Important;
+    }
     .productCards{
+        gap:0!Important;
+        justify-content: space-evenly!Important;
         margin-bottom: 340px!Important;
     }
     .card-color {
@@ -205,8 +210,8 @@ body{
         margin-bottom: 1px ! Important;
     }
     .card-initials {
-        color: #6D6F73;
-        font-size: 10px;
+        color: #6D6473;
+        font-size: 9px;
         margin-bottom: 5px;
     }
     .card-price {
@@ -216,13 +221,21 @@ body{
         margin-bottom: 0px ! Important;
     }
     .card-title {
-        font-size: 9px ! Important;
-        /* text-align: center; */
+        font-size: 0.8rem ! Important;
+        font-weight: bold;
         color: #041e3a;
     }
     .wishlist-image iframe{
-        width:400px;
+        width:350px;
         height:400px;
+    }
+    .card-image {
+        max-width: 110px!Important;
+        max-height: 140px!Important;
+        object-fit: scale-down;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        height: auto!Important;
     }
 
 

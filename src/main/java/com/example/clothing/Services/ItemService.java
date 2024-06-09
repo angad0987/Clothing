@@ -149,7 +149,9 @@ public class ItemService {
     }
 
     public List<Wishlist> getWishlistItemsTypes(String user_id) {
-        List<Object[]> list = wishlistRepository.getWishlistItemTypes(user_id);
+        // we have to get related items also on the basis of user gender
+        User user = userRepository.findByUserId(user_id);
+        List<Object[]> list = wishlistRepository.getWishlistItemTypes(user_id, user.getGender());
         List<Wishlist> anslist = new ArrayList<>();
         for (Object[] item : list) {
             Wishlist wishlistItem = new Wishlist();
