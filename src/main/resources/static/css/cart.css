@@ -229,6 +229,10 @@ body{
     height: 30px;
 }
 @media(max-width:1024px){
+    .cartFooter {
+        /* position: relative; */
+        bottom: -1042px!Important;
+    }
     .containerfooter{
         position: absolute;
     }
@@ -592,5 +596,5 @@ body{
     text-align: center;
 }
 .cartFooter{
-    bottom:-383px!Important;
+    bottom:-383px;
 }

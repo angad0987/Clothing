@@ -1,5 +1,6 @@
 package com.example.clothing.controllers;
 
+import com.example.clothing.Utilities.Constants;
 import com.example.clothing.Utilities.MyFunctions;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -966,8 +967,9 @@ public class homeController {
             Boolean b = this.itemService.placeOrder(clothingItems, customerDetails);
             if (b) {
                 // if order is confirmed and placed then send the message to customer
-                this.emailService.sendEmail(customerId, "Order confirmed",
-                        "Your order is confirmed and placed successfully!");
+                this.emailService.sendEmail(customerId,
+                        "🌤️ Order Confirmed! Your Weather-Perfect Clothing from Forecast Fits 🌦️",
+                        Constants.orderMessageBody);
                 // now your order is confirmed then we have to empty the cart
                 this.itemService.emptyCart(customerId);
                 List<Order> orders = this.itemService.getAllOrders(customerId);

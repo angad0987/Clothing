@@ -41,7 +41,7 @@
                             <img width="50" height="50" th:src="@{/images/registration.png}" alt=""/>
                         </div>
                         <h1 class="text-center form-heading">Sign up</h1>
-
+                         <form th:action="@{/newUser}" th:object="${signupData}" th:method="post">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" 
@@ -84,7 +84,7 @@
 
                             <div class="form-group">
                                 <label for="id">Mobile no</label>
-                                <input type="tel" 
+                                <input readonly type="tel" 
                                 th:value="${signupData.mobileno}"
                                 th:classappend=" ${#fields.hasErrors('mobileno')? 'is-invalid':''}"
                                        name="mobileno" 
@@ -192,7 +192,7 @@
                                     </div>
                                     <div class="form-group">
 
-                                        <input readonly  type="text" 
+                                        <input readonly type="text" 
                                         th:value="${signupData.pincode}"
                                    
                                                name="pincode" 
@@ -222,7 +222,7 @@
         
                                     </div>
                                     <div class="form-group">
-                                        <input readonly type="text" 
+                                        <input readonly  type="text" 
                                         th:value="${signupData.state}"
                                        
                                                name="state" 

@@ -411,6 +411,10 @@ font-size: 12px;
 }
 
 @media(max-width:1024px){
+    .collectionFooter {
+        position: relative;
+        bottom: -946px!Important;
+    }
     .card-image {
         height: 200px;
     }
@@ -519,6 +523,10 @@ font-size: 12px;
     transition: transform 0.3s ease-in-out;
 }
 @media(max-width:540px){
+    .collectionFooter {
+        position: relative;
+        bottom: -300px;
+    }
     .itemType h1{
         font-size: 19px;
     }
@@ -617,6 +625,10 @@ font-size: 12px;
 
 }
 @media(max-width:420px){
+    .collectionFooter {
+        position: relative;
+        bottom: -261px!Important;
+    }
     .color-filter.active {
         animation: slideDown 0.5s ease-in-out forwards;
         display: flex;
@@ -736,6 +748,10 @@ font-size: 12px;
  color:#041e3a;
  font-family:'Mate SC', serif;
  letter-spacing: 1px;
+}
+.collectionFooter{
+    position: relative;
+    bottom:-163px;
 }
 
 

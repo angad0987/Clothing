@@ -201,7 +201,7 @@ function enableFormFields(){
     ];
     
     fields.forEach(field => {
-        document.getElementById(field).removeAttribute('readOnly');
+        document.getElementById(field).removeAttribute('readonly');
     });
 }
 function hideSidebar(){

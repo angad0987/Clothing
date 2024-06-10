@@ -400,25 +400,18 @@ body{
 .navbar-brand{
     color:black!Important;
 }
-.navbar:hover{
 
-    background-color:#fff;
-}
 .navbar-light .navbar-nav .nav-link {
-    color:white!Important;
-}
-.navbar:hover .navbar-brand{
-   
-}
-.navbar:hover .nav-link{
     color:black!Important;
 }
+
+
 .navbar:hover .welcome-message{
     color:black!Important;
 }
 
 .welcome-message{
-    color:white!Important;
+    color:black!Important;
 }
 .welcome-message:hover{
     background-color:#D3D3D3!Important;
