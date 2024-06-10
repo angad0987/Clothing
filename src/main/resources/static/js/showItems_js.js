@@ -167,7 +167,7 @@ function AddToWishList(itemid) {
             console.log(formData.get('itemname'));
             //send async reuqest
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/Clothing/AddToWishlist', true);
+            xhr.open('POST', 'AddToWishlist', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (xhr.status === 200) {
