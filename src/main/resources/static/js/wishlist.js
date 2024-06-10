@@ -131,9 +131,10 @@ function updateWishlistUI(data) {
 //                cardBody.className = 'card-body wishlist-items';
 //                // Get item ID before using it in the HTML string
 //               
+var baseUrl=document.getElementById('baseUrl').getAttribute('data-itemid');
         var itemId = item.item_id;
         console.log('item id is: ' + itemId);
-        var imageUrl = "/Clothing/images/" + itemId + ".jpg";
+        var imageUrl = baseUrl+"/images/" + itemId + ".jpg";
         console.log('Image url is :' + imageUrl);
         var itemname = item.itemname;
         console.log('Item name :' + itemname);
@@ -200,6 +201,10 @@ function updateWishlistUI(data) {
         wishlistContainer.innerHTML += htmlString;
 //                     cardBody.innerHTML='<h1>I am angad</h1>';
         console.log('In the end of update wishlist ui');
+        // Trigger a reload asynchronously after the wishlist UI update
+    setTimeout(function () {
+        location.reload();
+    }, 1000);
     });
 }
 

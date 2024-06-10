@@ -490,10 +490,11 @@ public class homeController {
 
         String user_id = MyFunctions.get_User_Info_From_Cookies(request, "userid");
         if (user_id == null || user_id.equals("")) {
-
+            m.addAttribute("baseUrl", baseUrl);
             return "Wishlist";
 
         }
+        m.addAttribute("baseUrl", baseUrl);
         //
         // wishlist items of user id
         List<Wishlist> list = itemService.getWishlistItems(user_id);

@@ -22,7 +22,7 @@
 
     </table>
     <th:block th:include="navbar::navbar"></th:block>
-
+    <div id="baseUrl" th:data-itemid="${baseUrl}"></div>
     
         <div th:if="${#strings.isEmpty(username)}"  class="empty-cart-message" id="empty-cart-message">
             <div class="noLogin"><img th:src="@{/images/errorIcon.png}" > <h1 class="empty-cart-empty-message" >YOU ARE NOT LOGGED IN</h1></div>
