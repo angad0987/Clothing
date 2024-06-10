@@ -329,6 +329,7 @@ async function getPromoCodes() {
     }
 
     function placeOrder(){
+        document.getElementById('overlay').style.display='flex';
          var customerId=localStorage.getItem('customerId');
          var totalAmount=localStorage.getItem('totalAmount');
          var promocodeName=localStorage.getItem('promocodeName');
@@ -348,7 +349,10 @@ async function getPromoCodes() {
             document.getElementById('shippingAddress').value = shippingAddress;
             
             // Submit the form
-            document.getElementById('placeOrderForm').submit();
+            setTimeout(function(){
+                document.getElementById('placeOrderForm').submit();
+            },3000);
+          
         } else {
             console.error("Payment failed");
             // Handle payment failure (e.g., show error message to user)

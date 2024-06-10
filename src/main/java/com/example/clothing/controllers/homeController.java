@@ -955,7 +955,7 @@ public class homeController {
     public String makeOrder(Model m, @RequestParam("customerid") String customerId,
             @RequestParam("shippingAddress") String shippingAddress, @RequestParam("totalAmount") String totalAmount,
             @RequestParam("paymentMethod") String paymentMethod, @RequestParam("tax") String tax,
-            @RequestParam("offer") String offer) {
+            @RequestParam("offer") String offer, RedirectAttributes redirectAttributes) {
 
         Map<String, String> customerDetails = new HashMap<String, String>();
         customerDetails.put("customer_id", customerId);
@@ -997,8 +997,9 @@ public class homeController {
                 this.itemService.emptyCart(customerId);
                 List<Order> orders = this.itemService.getAllOrders(customerId);
                 orders.forEach(order -> System.out.println(order.toString()));
-                m.addAttribute("orders", orders);
-                m.addAttribute("map", map);
+                redirectAttributes.addFlashAttribute("orders", orders);
+                redirectAttributes.addFlashAttribute("map", map);
+                redirectAttributes.addFlashAttribute("orderPlaced", "Success");
                 return "redirect:/myOrdersPage";
             } else {
                 return "errorPage";

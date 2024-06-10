@@ -55,8 +55,8 @@
                                     <div class="d-flex flex-row mb-4 pb-2">
                                         <div class="flex-fill">
                                           <h5 class="bold" th:text="${item.getName()}"></h5>
-                                          <p class="text-muted" th:text="'Qt: 2' "> </p>
-                                          <!-- <p class="text-muted" th:text="'Qt: '+ ${map[__${item.id}__]} +' item'"> </p> -->
+                                          <!-- <p class="text-muted" th:text="'Qt:"> </p> -->
+                                          <p class="text-muted" th:text="'Qt: '+ ${map[__${item.id}__]} +' item'"> </p>
                                           <h4 class="mb-3" th:utext="${item.getPrice()} + '<span class=\'small text-muted\'> (item price) </span>'"></h4>
         
                                           <!-- <p class="text-muted">Tracking Status on: <span class="text-body">11:30pm, Today</span></p> -->
@@ -98,6 +98,10 @@
               </section>
         </div>
     </div>
+    <div id="custom-alert" class="custom-alert">
+      <span id="alert-message"></span>
+  </div>
+    <div id="orderSuccess" th:data-itemid="${orderPlaced}"></div>
     <footer id="Cartfooter" class="bg-body-tertiary text-center text-lg-start cartFooter" >
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
