@@ -970,12 +970,17 @@ public class homeController {
         // and we have to send message on customer email that your order is confirmed
         // and and placed
 
+        System.out.println("MY ORDERS--------------------------------------------");
         // first get all cart items by using customer id
         List<ClothingItem> clothingItems = this.itemService.getAllClothingItemsFromCart(customerId);
         List<Object[]> cartItems = this.itemService.getItem_and_quan_From_Cart(customerId);
+
+        cartItems.forEach(object -> System.out.println(object[0] + " " + object[1]));
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
         cartItems.forEach(item -> map.put((Integer) item[0], (Integer) item[1]));
+
+        System.out.println(map);
 
         if (clothingItems != null) {
             // if clothing items are not null which is have to order by the customer
