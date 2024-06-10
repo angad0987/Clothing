@@ -23,7 +23,9 @@
     </table>
     <th:block th:include="navbar::navbar"></th:block>
     <div id="baseUrl" th:data-itemid="${baseUrl}"></div>
-    
+    <div id="custom-alert" class="custom-alert">
+        <span id="alert-message"></span>
+    </div>
         <div th:if="${#strings.isEmpty(username)}"  class="empty-cart-message" id="empty-cart-message">
             <div class="noLogin"><img th:src="@{/images/errorIcon.png}" > <h1 class="empty-cart-empty-message" >YOU ARE NOT LOGGED IN</h1></div>
             <small> <a th:href="@{/login}" class="continue-shopping-link1">Click here</a> to log in</small>
@@ -91,7 +93,7 @@
                                         <div class="item-remove-addcart">
                                             <a class="ajax-link" href="#"><i class="fa-solid fa-trash " th:onclick="'handleLinkClick(event,'+${item.getItem_id()}+')'"  style="color:#001f3f; margin-right: 0px"></i></a>
                                             <div class="wishlist-buttons">
-                                                <a th:href="@{/booking}"><button class="btn-new"  style="background-color:#FFD700">Buy Now</button></a>
+                                                <button class="btn-new" onclick="showAlert('The Buy Now feature is currently not available. Please add items to your cart and proceed with the purchase from the cart.')"  style="background-color:#FFD700">Buy Now</button>
 
                                                 <form th:id="'singleItemForm'+${item.getItem_id()}" th:action="@{/addtocart}" method="POST"  th:onsubmit="'addQuantity('+${item.getItem_id()}+',event)'">
                                                     <input type="hidden" th:value="${item.getItem_id()}" name="item_id" >

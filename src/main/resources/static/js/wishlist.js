@@ -207,6 +207,16 @@ var baseUrl=document.getElementById('baseUrl').getAttribute('data-itemid');
     }, 1000);
     });
 }
+function showAlert(message) {
+    var custom_alert = document.getElementById('custom-alert');
+    var alert_message = document.getElementById('alert-message');
+    alert_message.textContent = message;
+    custom_alert.classList.toggle('active');
+    //hide alert after 2 seconds;
+    setTimeout(function () {
+        custom_alert.classList.remove('active');
+    }, 2000);
+}
 
 
 
