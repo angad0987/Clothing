@@ -29,7 +29,7 @@ public interface WishlistRepository extends CrudRepository<Wishlist, Integer> {
                         "FROM clothing_items  " +
                         "WHERE item_type IN (SELECT DISTINCT category FROM wishlist WHERE user_id = :userId)) " +
                         "AS ranked_items " +
-                        "WHERE row_no <= 3 && gender= :g", nativeQuery = true)
+                        "WHERE row_no <= 3 && gender COLLATE utf8mb4_general_ci = :g", nativeQuery = true)
         List<Object[]> getWishlistItemTypes(@Param("userId") String userId, @Param("g") String gender);
 
         @Transactional

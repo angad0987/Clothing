@@ -11,35 +11,35 @@
     <th:block th:include="base::headContent"></th:block>
 </head>
 <body>
-    <table class="marq-table" style="background-color:#fff; width:100%">
-        <tr height="50px" class="center-text">
-            <td colspan="2">
-                <div class="order-path">
-                    <!-- Updated Checkout Heading -->
-                    <h2 style="font-size: 24px; color: #333; margin-bottom: 10px;">Checkout Progress</h2>
-                    <!-- End Updated Checkout Heading -->
-    
-                    <!-- Original Order Path Stops -->
-                    <div class="order-path-stop">
-                        <i class="fa-solid fa-circle-check" style="color: #94d6b7;"></i>
-                        <h class="order-path-heading">Order Summary</h>
-                    </div>
-                    <div class="separator"></div> <!-- Decorative Separator -->
-                    <div class="order-path-stop">
-                        <i class="fa-solid fa-circle-check" style="color:#94d6b7;"></i>
-                        <h class="order-path-heading">Shipping Address</h>
-                    </div>
-                    <div class="separator"></div> <!-- Decorative Separator -->
-                    <div class="order-path-stop">
-                        <i class="fa-solid fa-circle-check" style="color:#94d6b7;"></i>
-                        <h class="order-path-heading">Confirm and Payment</h>
-                    </div>
-                    <!-- End Original Order Path Stops -->
-                </div>
-            </td>
-        </tr>
-    </table>
-    
+    <table class="marq-table" style="background-color:#fff;
+    width:100%">
+ <tr height="50px" class="center-text" >
+     <td colspan="2" >
+         <div class="order-path">
+             
+              <div class="order-path-stop">
+                 <i class="fa-solid fa-circle-check" style="color: #94d6b7;"></i>
+                 <h class="order-path-heading">Order Summary</h>
+              </div>
+             <div>
+                 <span class="way">--</span>
+             </div>
+             <div class="order-path-stop">
+                 <i class="fa-solid fa-circle-check" style="color:#94d6b7;"></i>
+                 <h class="order-path-heading">Shipping Address</h>
+             </div>
+             <div>
+                 <span class="way">--</span>
+             </div >
+             <div class="order-path-stop">
+                 <i class="fa-solid fa-circle-check" style="color:#94d6b7;"></i>
+                 <h class="order-path-heading">Confirm and Payment</h>
+             </div>
+         </div>
+     </td>
+ </tr> 
+
+</table> 
 <hr>
 <div id="custom-alert" class="custom-alert">
     <span id="alert-message"></span>
