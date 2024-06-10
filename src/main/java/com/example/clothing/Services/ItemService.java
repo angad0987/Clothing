@@ -339,7 +339,7 @@ public class ItemService {
         System.out.println("OTP IS SAVED SUCCESSFULLY");
     }
 
-    @Scheduled(fixedRate = 300000)
+    @Scheduled(fixedRate = 5000000)
     public void deleteExpiredOtp() {
         System.out.println("i am in deleteExpiredOtp method");
         otpRepository.deleteByExpiresATLessThan(LocalDateTime.now());

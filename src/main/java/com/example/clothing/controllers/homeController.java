@@ -365,7 +365,7 @@ public class homeController {
     @RequestMapping(value = "/handleSignup", method = RequestMethod.POST)
     public ResponseEntity<?> handleSignup(@Valid @RequestBody SignUpDTO signupData, BindingResult results,
             HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+        System.out.println("I am in controller method");
         // First we have to verify email using user entered otp(one time password)
         // if otp is correct then we can create new user
         // if otp is incorrect then we can not create new user

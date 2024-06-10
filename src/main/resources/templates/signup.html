@@ -41,7 +41,7 @@
                             <img width="50" height="50" th:src="@{/images/registration.png}" alt=""/>
                         </div>
                         <h1 class="text-center form-heading">Sign up</h1>
-                         <form th:action="@{/newUser}" th:object="${signupData}" th:method="post">
+                         <form id="signupForm" th:action="@{/handleSignup}" th:object="${signupData}" th:method="POST">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" 
@@ -255,7 +255,7 @@
                                
                             </div>
                             <div class="container text-center">
-                                <button type="submit" class="btn btn-primary" >Submit</button>
+                                <button id="submitButton" type="submit" class="btn btn-primary" >Submit</button>
                             </div>
 
 

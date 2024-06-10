@@ -36,6 +36,7 @@ function ValidateForm() {
     for(const [key,value] of formData.entries()){
         if(key !== 'password1'){
             jsonData[key]=value;
+
         }
 
     }
@@ -67,6 +68,7 @@ function ValidateForm() {
             else {
                 baseUrlUpdated = baseUrl;
             }
+            console.log(baseUrlUpdated)
             window.location.href = baseUrlUpdated + '/';
         });
 }
@@ -224,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var form = document.getElementById('signupForm');
     form.addEventListener('submit', function(event) {
+        event.preventDefault();
         if (!iti.isValidNumber()) {
             event.preventDefault();
             alert('Please enter a valid mobile number.');
