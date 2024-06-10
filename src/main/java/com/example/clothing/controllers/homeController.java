@@ -833,6 +833,13 @@ public class homeController {
         cookie.setPath("/"); // Set the cookie path to root so it's accessible from all paths
         cookie.setHttpOnly(true); // Set HttpOnly to true to prevent JavaScript access
         cookie.setMaxAge(3600); // Set the cookie expiration time in seconds (e.g., 1 hour)
+
+        if (baseUrl.equals("/Clothing")) {
+            cookie.setSecure(false);
+        } else {
+            cookie.setSecure(true);
+        }
+
         response.addCookie(cookie);
 
         System.out.println("Username is : " + user.getUserId());
@@ -844,6 +851,11 @@ public class homeController {
         // access
         cookie1.setMaxAge(3600); // Set the cookie expiration time in seconds (e.g.,
         // 1 hour)
+        if (baseUrl.equals("/Clothing")) {
+            cookie1.setSecure(false);
+        } else {
+            cookie1.setSecure(true);
+        }
         response.addCookie(cookie1);
 
         Cookie cookie2 = new Cookie("userid", user.getUsername().replace(" ", "_"));
@@ -853,6 +865,11 @@ public class homeController {
         // access
         cookie2.setMaxAge(3600); // Set the cookie expiration time in seconds (e.g.,
         // 1 hour)
+        if (baseUrl.equals("/Clothing")) {
+            cookie2.setSecure(false);
+        } else {
+            cookie2.setSecure(true);
+        }
         response.addCookie(cookie2);
     }
 
