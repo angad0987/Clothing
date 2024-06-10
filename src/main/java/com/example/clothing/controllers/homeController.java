@@ -229,7 +229,7 @@ public class homeController {
         List<String> list = getItemTypes(condition, gender);
         System.out.println("Size of list is " + list.size());
         m.addAttribute("itemTypes", list);
-
+        m.addAttribute("baseUrl", baseUrl);
         // now we have to us a map to map a itemtype to its list of items
         Map<String, List<ClothingItem>> map = getItemMap(gender, list);
         m.addAttribute("itemsByType", map);
@@ -510,7 +510,7 @@ public class homeController {
         return "Wishlist";
     }
 
-    @RequestMapping(path = "/AddToWishlist", method = RequestMethod.POST)
+    @RequestMapping(value = "/AddToWishlist", method = RequestMethod.POST)
     // @ResponseBody is an annotation in Spring MVC framework for a method that
     // returns data directly to the client instead of relying on a view resolver to
     // render the data into a view such as HTML.
@@ -546,7 +546,7 @@ public class homeController {
 
     }
 
-    @RequestMapping(path = "/CheckWishlist/{userid:.+}", method = RequestMethod.GET)
+    @RequestMapping(value = "/CheckWishlist/{userid:.+}", method = RequestMethod.GET)
     // @ResponseBody
     public ResponseEntity<List<Integer>> checkWishlist(@PathVariable("userid") String userid,
             HttpServletRequest request) {

@@ -161,13 +161,14 @@ function AddToWishList(itemid) {
         var wishlistIcon = document.getElementById('wishlist-icon' + itemid);
         wishlistIcon.style.transition = 'color 0.3s';
         if (wishlistIcon.classList.contains('fa-regular')) {
+            var baseUrl=document.getElementById('baseUrl').getAttribute('data-itemid');
             //accessing form from dom and accessing form data from form object
             var form = document.getElementById('wishlist-form' + itemid);
             var formData = new FormData(form);
             console.log(formData.get('itemname'));
             //send async reuqest
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'AddToWishlist', true);
+            xhr.open('POST', baseUrl+'/AddToWishlist', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (xhr.status === 200) {
